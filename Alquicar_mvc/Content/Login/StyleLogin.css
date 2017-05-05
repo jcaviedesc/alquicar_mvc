@@ -1,0 +1,35 @@
+﻿.together-section {
+    position: relative;
+    height: 800px;
+    width: auto;
+    background-color: #9E9E9E;
+    background-size: cover;
+}
+
+.contenido {
+    position: relative;
+    top: 6em;
+    background-color: #fff;
+    border-radius: 0.85%;
+}
+.mdl-all {
+    width:100%;
+    
+}
+.mdl-lg-ctr{
+    width:68%;
+    margin:0 auto;
+}
+.lgn-horz-ctr {
+ padding:8px 0;
+}
+.spa {
+    border-top: 1px dotted;
+}
+.izq-item{
+    padding-left:0em;
+    text-align:left;
+}
+.text_center {
+    margin:auto;
+}

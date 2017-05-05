@@ -1,0 +1,57 @@
+﻿@using Alquicar_mvc.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+<link href="~/Content/Login/StyleLogin.css" rel="stylesheet" />
+<div class="together-section">
+    <div class="mdl_card mdl-cell mdl-cell--4-col mdl-cell--4-offset mdl-shadow--16dp contenido">
+        <div class="mdl-lg-ctr">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                    <div class="mdl-card__title ">
+                        <h2 class="mdl-card__title-text text_center">Iniciar sesión</h2>
+                    </div>
+                    @Html.AntiForgeryToken()
+                    <div class="mdl-card__supporting-text izq-item">
+                        Use a local account to log in.
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "mdl-textfield__input", @type = "email" })
+                        @Html.LabelFor(m => m.Email, new { @class = "mdl-textfield__label" })
+                        @Html.ValidationMessageFor(m => m.Email, "E-mail incorrecto", new { @class = "mdl-textfield__error" })
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.PasswordFor(m => m.Password, new { @class = "mdl-textfield__input" })
+                        @Html.LabelFor(m => m.Password, new { @class = "mdl-textfield__label" })
+                        @Html.ValidationMessageFor(m => m.Password, "ingrese su contraseña", new { @class = "mdl-textfield__error" })
+                    </div>
+                    <div class="lgn-horz-ctr">
+                        <label for="switch1" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                            <input type="checkbox" id="switch1" class="mdl-switch__input ">
+                            <span class="mdl-switch__label">Remember me?</span>
+                        </label>
+                    </div>
+                    <div class="lgn-horz-ctr" >
+                        <input type="submit" value="Log in" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--light-green-800 mdl-all" />
+                    </div>
+                    <p>
+                        @Html.ActionLink("Register as a new user", "Register")
+                    </p>
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+                    <p><span>@ViewBag.description</span></p>
+                }
+            </section>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

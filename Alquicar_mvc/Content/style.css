@@ -1,0 +1,99 @@
+html,
+body {
+    height: 100%;
+}
+
+form {
+    padding: 2% 2% 3% 10%;
+}
+
+.page-content {
+    margin-top: 5%;
+}
+
+.demo-card-square > .mdl-card__title {
+    color: #fff;
+    background: url('../Img/518084-background-hd.jpg') center / cover;
+
+}
+.demo-card-square > .xt{
+    background:url('../../Img/fd.jpg') center/cover;
+}
+
+
+
+.mdl-card__title-text {
+text-align:center;
+}
+
+.demo-card-square.mdl-card {
+    margin: 0 auto;
+    width: 40%;
+    height: 700px;
+}
+
+.btn-form {
+    float: right;
+    margin-right: 5%;
+}
+
+mdl-layout__content {
+    height:auto;
+}
+
+
+/* ==========  Select Field Variables ========== */
+/* ==========  Select Field ========== */
+/* Style Select Field */
+select {
+  font-family: inherit;
+  background-color: transparent;
+  width: 62%;
+  padding: 6px 0;
+  font-size: 16px;
+  color:black;/*rgba(0,0,0, 0.26);*/
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.12);
+  margin-left:5px;
+  margin-top:8.2%;
+}
+
+/* Remove focus */
+select:focus {
+  outline: none;
+}
+
+/* Hide label */
+.mdl-selectfield label {
+  display: none;
+}
+
+/* Use custom arrow */
+.mdl-selectfield select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.mdl-selectfield {
+  font-family: 'Roboto','Helvetica','Arial',sans-serif;
+  position: relative;
+}
+.mdl-selectfield:after {
+  position: absolute;
+  top: 0.75em;
+  right: 0.5em;
+  /* Styling the down arrow 
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: .25em solid transparent;
+  border-right: .25em solid transparent;
+  border-top: 0.375em solid rgba(0,0,0, 0.12);
+  pointer-events: none;*/
+}
+
+option {
+padding-left:5px;
+}

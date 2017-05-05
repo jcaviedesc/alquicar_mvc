@@ -1,0 +1,29 @@
+﻿@try
+{
+    if (Session["status"].ToString() == "OK")
+    {
+        using (Html.BeginForm("salirboard", "Dashboard", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ActionLink("hello " + Session["nombre_user"].ToString() + "!", "index", "Manage", new { area = "" }, new { @title = "Manage", @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+            @*@Html.ActionLink("hello " + Session["nombre_user"].ToString()+"!", "Index", "Manage", new { id = "userlogin", title = "Manage", @class = "mdl-navigation__link mdl-typography--text-uppercase" })*@
+
+            @*@Html.ActionLink("Hello " + (string)(Session["nombre_user"]) + "!", "Index", "Manage", routeValues: null,new {@class="mdl-navigation__link mdl-typography--text-uppercase"})*@
+
+            <a class="mdl-navigation__link mdl-typography--text-uppercase" id="btnlogout" href="#">Log off</a>
+
+        }
+    }
+    else {
+          @Html.ActionLink("log in", "Login", "Account", new { area = "" }, new { @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+          @Html.ActionLink("sign in", "Register", "Account", new { area = "" }, new { @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+
+    }
+
+}
+catch
+{
+    @Html.ActionLink("log in", "Login", "Account", new { area = "" }, new { @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+    @Html.ActionLink("sign in", "Register", "Account", new { area = "" }, new { @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+
+}
