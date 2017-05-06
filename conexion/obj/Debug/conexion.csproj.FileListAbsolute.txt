@@ -26,3 +26,17 @@ C:\Users\GIECOM\Documents\Visual Studio 2015\Projects\Mvc_alquicar\conexion\bin\
 C:\Users\GIECOM\Documents\Visual Studio 2015\Projects\Mvc_alquicar\conexion\obj\Debug\conexion.dll
 C:\Users\GIECOM\Documents\Visual Studio 2015\Projects\Mvc_alquicar\conexion\obj\Debug\conexion.pdb
 C:\Users\GIECOM\Documents\Visual Studio 2015\Projects\Mvc_alquicar\conexion\obj\Debug\conexion.csprojResolveAssemblyReference.cache
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\conexion.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\conexion.pdb
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Data.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Data.Entity.EF5.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Fabric.Plugin.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Web.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Data.xml
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Data.Entity.EF5.xml
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Web.xml
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\obj\Debug\conexion.csprojResolveAssemblyReference.cache
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\obj\Debug\conexion.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\obj\Debug\conexion.pdb

@@ -1,9 +1,10 @@
 ﻿.together-section {
     position: relative;
-    height: 800px;
+    height: 100%;
     width: auto;
     background-color: #9E9E9E;
     background-size: cover;
+    margin:0 0 0 0;
 }
 
 .contenido {

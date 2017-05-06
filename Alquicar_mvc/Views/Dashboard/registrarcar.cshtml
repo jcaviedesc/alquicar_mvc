@@ -143,46 +143,49 @@
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
-                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            @*<input class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion">*@
-                            <label class="mdl-textfield__label" for="nombre">Tipo Direccion</label>
-                            @Html.DropDownList("tipo_direccion", ViewData["tipo_direccion"] as SelectList, new { @class = "mdl-textfield__input" })
-                        </div>
+                        //---------- tipo de vehiculo ----------
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                            <input class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion" value="selecione direccion" readonly tabIndex="-1">
-                            <label for="tipo_direccion" class="mdl-textfield__label">Tipo de Direccion</label>
-                            <ul id="ul_direccion" for="tipo_direccion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                
+                            <input class="mdl-textfield__input" type="text" id="tipo_vehiculo" name="tipo_vehiculo" value="selecione" readonly tabIndex="-1">
+                            <label for="tipo_vehiculo" class="mdl-textfield__label">Direccion</label>
+                            <ul for="tipo_vehiculo" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                @foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows)
+                                {
+                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                                }
                             </ul>
                         </div>
-                        //----------------------list  ------------
+                        //-------------- direccion  ----------------
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                            <input class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion" value="selecione" readonly tabIndex="-1">
+                            <label for="tipo_direccion" class="mdl-textfield__label">Direccion</label>
+                            <ul for="tipo_direccion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                @foreach (System.Data.DataRow row in ViewBag.direcciones.Rows)
+                                {
+                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                                }
+                            </ul>
+                        </div>
+                        //---------------------- tipo trasmiciones  ------------
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
                                 <input class="mdl-textfield__input" type="text" id="tipo_trasmicion" name="tipo_trasmicion" value="selecione" readonly tabIndex="-1">
                                 <label for="tipo_trasmicion" class="mdl-textfield__label">Transmicion</label>
                                 <ul for="tipo_trasmicion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                                     @foreach (System.Data.DataRow row in ViewBag.transmicion.Rows)
                                     {
-                                        <li class="mdl-menu__item" id= @row["id"].ToString()>@row["transmicion"].ToString()</li>
+                                        <li class="mdl-menu__item" id= @row["id"].ToString()>@row["nombre"].ToString()</li>
                                     }
                                 </ul>
-                            </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label class="mdl-textfield__label" for="nombre">Tipo de Vehiculo</label>
-                            @Html.DropDownList("tipo_vehiculo", ViewData["tipo_vehiculo"] as SelectList, new { @class = "mdl-textfield__input" })
-                           
                         </div>
+                        //------------- marca ---------------
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                            <input class="mdl-textfield__input" type="text" id="marca" name="marca" value="seleccione marca" readonly tabIndex="-1">
-                            <label for="marca" class="mdl-textfield__label">Tipo de Direccion</label>
-                            <ul id="ul_marca" for="marca" class="mdl-menu mdl-menu--bottom-left mdl-js-menu"></ul>
-                        </div>
-
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            @*<input class="mdl-textfield__input" type="text" id="marca" name="marca">*@
-                            <label class="mdl-textfield__label" for="nombre">Marca</label>
-                            @Html.DropDownListFor(model => model.marca, ViewData["marcas"] as SelectList, htmlAttributes: new { @class = "mdl-textfield__input" })
-
+                            <input class="mdl-textfield__input" type="text" id="marca" name="marca" value="selecione marca" readonly tabIndex="-1">
+                            <label for="marca" class="mdl-textfield__label">Marcas</label>
+                            <ul for="marca" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                @foreach (System.Data.DataRow row in ViewBag.marcas.Rows)
+                                {
+                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                                }
+                            </ul>
                         </div>
                         @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="gama" name="gama">
@@ -316,52 +319,74 @@
 
 
             });
-            load_categories();
-            load_direciones();
+            //load_trasmiciones();
+            load_direcciones();
             load_marcas();
+            load_tiposvehiculos();
         });
 
-        function load_categories() {
+        @*function load_trasmiciones() {
             $.getJSON('@Url.Action("getTrasmicion", "Dashboard")', displaydata);
-        }
+        }*@
 
         function displaydata(response) {
+            if (response != null) {
+                for (var i = 0; i < response.length; i++) {
+                     var lit = $('<li/>', {
+                        'class': 'mdl-menu__item',
+                        'id': response[i].id,
+                        'tabindex': -1,
+                        'text': response[i].nombre
+                    });
+                    $(".ul_direccion").append(lit)
+                }
+            }
+        }
+        function displaymarcas(response) {
             if (response != null) {
                 for (var i = 0; i < response.length; i++) {
                     var lit = $('<li/>', {
                         'class': 'mdl-menu__item',
                         'id': response[i].id,
-                        'tabindex': -1
+                        'tabindex': -1,
+                        'text': response[i].nombre
                     });
-                    lit.text(response[i].transmicion)
-                    $(".transmition").append(lit)
-                    //var li = $("<li></li>").text(response[i].transmicion)
-                    //li.addClass("mdl-menu__item")
-                    //li.attr(id, response[i].id)
-                    //$("#list_transmition").append(li)
+                    $(".ul_marca").append(lit)
                 }
             }
         }
-        function load_direciones() {
-            var ul = $("#ul_direccion")
-            $.getJSON('@Url.Action("getDirecciones", "Dashboard")', dsdata(data,ul));
-        }
-        function load_marcas() {
-            var ul = $("#ul_marca")
-            $.getJSON('@Url.Action("getmarcas", "Dashboard")', dsdata(data, ul));
-        }
-        function dsdata(data,selector) {
-            if (data != null) {
-                for (var i = 0; i < data.length; i++) {
+        function displayvehiculos(response) {
+            if (response != null) {
+                for (var i = 0; i < response.length; i++) {
                     var lit = $('<li/>', {
                         'class': 'mdl-menu__item',
                         'id': response[i].id,
-                        'tabindex': -1
+                        'tabindex': -1,
+                        'text': response[i].nombre
                     });
-                    lit.text(data[i].auto_nombre)
-                    $(selector).append(lit)
+                    $(".ul_vehiculo").append(lit)
                 }
             }
+        }
+
+        function load_direcciones() {
+            $.getJSON('@Url.Action("getdireccion", "Dashboard")', displaydata);
+        }
+
+        function load_marcas() {        
+            $.getJSON('@Url.Action("getmarcas", "Dashboard")', displaymarcas);       
+        }
+
+        function load_tiposvehiculos() {
+            $.getJSON('@Url.Action("tipovehiculo", "Dashboard")', displayvehiculos);     
+        }
+
+        function datos ( data ) {
+            var items = [];
+            $.each( data, function( key, val ) {
+                items.push( "<li id='" + key + "'class=mdl-menu__item>" + val + "</li>" );
+            });
+           $()
         }
     </script>
 </body>

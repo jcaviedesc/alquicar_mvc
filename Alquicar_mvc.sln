@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alquicar_mvc", "Alquicar_mvc\Alquicar_mvc.csproj", "{66251E7D-96AD-40F5-B2C9-B6750CD21C46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conexion", "..\Mvc_alquicar\conexion\conexion.csproj", "{23018856-A1D7-4974-AAC8-858FAEEC0BDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conexion", "conexion\conexion.csproj", "{23018856-A1D7-4974-AAC8-858FAEEC0BDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

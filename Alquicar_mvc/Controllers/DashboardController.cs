@@ -25,20 +25,23 @@ namespace Alquicar_mvc.Controllers
             return View();
         }
         //GET: registrar auto
+        [HttpGet]
         public ActionResult Registrarcar()
         {
-            //ViewData["tipo_vehiculo"] = carmodel.get_tiposcar();
-            //ViewData["tipo_direccion"] = carmodel.GetTipoDir();
-            //ViewData["marcas"] = new SelectList(carmodel.GetMarcas(), "Id", "Nombre");
-            //ViewData["transmiciones"] = carmodel.GetTransmicionesmodel();
+       
+            ViewBag.vehiculos = carmodel.QueryTipoVehiculo();
+            ViewBag.direcciones = carmodel.QueryDireccion();
+            ViewBag.marcas = carmodel.QueryMarcas();
             ViewBag.transmicion = carmodel.QueryTransmition();
             return View();
         }
         //GET: registrar cliente
+        [HttpGet]
         public ActionResult RegistrarCliente()
         {
             return View();
         }
+        [HttpGet]
         //Json method for types transmition
         public JsonResult getTrasmicion() {
             DataTable Query = carmodel.QueryTransmition();
@@ -46,26 +49,36 @@ namespace Alquicar_mvc.Controllers
         }
         //Json marcas
         // /Dashboard/getmarcas
+        [HttpGet]
         public JsonResult getmarcas() {
             DataTable marcasdt = carmodel.QueryMarcas();
             return Json(ConvertDatatableToJsonNative(marcasdt), JsonRequestBehavior.AllowGet);
         }
-
+        [HttpGet]
         public JsonResult getdireccion() {
             DataTable dirdt = carmodel.QueryDireccion();
-            string jsondt = ConvertIntoJsonwithStringBuilder(dirdt);
+            List<object> jsondt = ConvertDatatableToJsonNative(dirdt);
             return Json(jsondt, JsonRequestBehavior.AllowGet);
         }
-        //objeto prueba
-        public JsonResult Marcas()
-        {
-            DataTable marcasdt = carmodel.QueryMarcas();
-            return Json(ConvertDatatableToJsonNative(marcasdt), JsonRequestBehavior.AllowGet);
-        }
+        [HttpGet]
         public JsonResult tipovehiculo() {
             DataTable dttipovh = carmodel.QueryTipoVehiculo();
             return Json(ConvertDatatableToJsonNative(dttipovh), JsonRequestBehavior.AllowGet);
         }
+        //intentos de serializar un datatable a Json sin que salga con el caracter  => \
+        public ActionResult marcasjson()
+        {
+
+            DataTable marcasdt = carmodel.QueryMarcas();
+
+            return Json(marcasdt, "application/json", Encoding.UTF8, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult marcasjsonresult()
+        {
+            DataTable marcasdt = carmodel.QueryMarcas();
+            return Json(DataTableToJSONwithJsonConvert(marcasdt),"application/json",Encoding.UTF8, JsonRequestBehavior.AllowGet);
+        }
+
         // json result
         public ActionResult Transmiciones() {
 
@@ -77,19 +90,19 @@ namespace Alquicar_mvc.Controllers
         //native
         public List<object> ConvertDatatableToJsonNative(DataTable dt) {
 
-            var Transmicion = new List<object>();
+            var jsontxt = new List<object>();
             //for (int i = 0; i < dt.Rows.Count; i++) {
             //    for (int j = 0; j < dt.Columns.Count; j++) {
-            //        Transmicion.Add(new { dt.Columns[j].ColumnName = dt.Rows[i].ToString(), dt.Columns[j].ColumnName = dt.Rows[i].ToString() });
+            //        jsontxt.Add(new { dt.Columns[j].ColumnName = dt.Rows[i].ToString(), dt.Columns[j].ColumnName = dt.Rows[i].ToString() });
             //    }
             //}
 
                 foreach (DataRow row in dt.Rows)
             {
-                Transmicion.Add(new { id = row["id"].ToString(), transmicion = row["nombre"].ToString() });
+                jsontxt.Add(new { id = row["id"].ToString(), nombre = row["nombre"].ToString() });
             }
 
-            return Transmicion;
+            return jsontxt;
         }
 
    
