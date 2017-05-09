@@ -1,5 +1,4 @@
-﻿@model Alquicar_mvc.Models.RegisterCarModels
-@{
+﻿@{
     Layout = null;
 }
 <!doctype html>
@@ -143,6 +142,17 @@
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
+                        // ------------- proveedores ---------------------
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                            <input class="mdl-textfield__input" type="text" id="proveedor_car" name="proveedor_car" value="selecione" readonly tabIndex="-1">
+                            <label for="proveedor_car" class="mdl-textfield__label">Propietario</label>
+                            <ul for="proveedor_car" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                @foreach (System.Data.DataRow row in ViewBag.proveedores.Rows)
+                                {
+                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                                }
+                            </ul>
+                        </div>
                         //---------- tipo de vehiculo ----------
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
                             <input class="mdl-textfield__input" type="text" id="tipo_vehiculo" name="tipo_vehiculo" value="selecione" readonly tabIndex="-1">
@@ -172,7 +182,7 @@
                                 <ul for="tipo_trasmicion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                                     @foreach (System.Data.DataRow row in ViewBag.transmicion.Rows)
                                     {
-                                        <li class="mdl-menu__item" id= @row["id"].ToString()>@row["nombre"].ToString()</li>
+                                        <li class="mdl-menu__item" value="@row["id"].ToString()" id= @row["id"].ToString()>@row["nombre"].ToString()</li>
                                     }
                                 </ul>
                         </div>

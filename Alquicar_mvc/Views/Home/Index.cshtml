@@ -1,156 +1,292 @@
-﻿
-@{
-    ViewBag.Title = "Home Page";
+﻿@{
+    Layout = null;
 }
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title- Alquicar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="~/Content/material.min.css" rel="stylesheet" />
+    <link href="~/Content/Home/styles.css" rel="stylesheet" />
+    <script src="~/Scripts/material.min.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <a name="top"></a>
-    <div class="android-be-together-section mdl-typography--text-center">
-        <div class="logo-font android-slogan">be together. not the same.</div>
-        <div class="logo-font android-sub-slogan">Welcome to Alquicar ... be yourself. Rent a car or rent your own.</div>
-        <div class="logo-font android-create-character">
-            <a href="../SearchCar/index"><i class="material-icons">directions_car</i> Find the car you are looking for.</a>
+
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="android-header mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+                <!-- Título  del header-->
+                <span class="android-title mdl-layout-title">
+                    <img class="android-logo-image" src="~/images/alquicar--logo.png">
+                </span>
+                <!-- Añade un espacio para alineación -->
+                <div class="android-header-spacer mdl-layout-spacer"></div>
+                <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" id="search-field">
+                    </div>
+                </div>
+                <!-- Navigation -->
+                <div class="android-navigation-container">
+                    <nav class="android-navigation mdl-navigation">
+                        @Html.Partial("_LoginPartial")
+                        @Html.ActionLink("contact", "Contact", "Home", new { area = "" }, new { @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+                        @Html.ActionLink("home", "Index", "Home", new { area = "" }, new { @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+                        @Html.ActionLink("about", "About", "Home", new { area = "" }, new { @class = "mdl-navigation__link mdl-typography--text-uppercase" })
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- Menú de navegación lateral. -->
+        <div class="android-drawer mdl-layout__drawer">
+            <span class="mdl-layout-title">
+                <img class="android-logo-image" src="~/images/alquicar-logo-white.png">
+            </span>
+            <!----nav class="mdl-navigation"-->
+            <nav class="mdl-navigation">
+                @Html.Partial("_LoginPartial")
+                @Html.ActionLink("contact", "Contact", "Home", new { area = "" }, new { @class = "mdl-navigation__link " })
+                @Html.ActionLink("home", "Index", "Home", new { area = "" }, new { @class = "mdl-navigation__link " })
+                @Html.ActionLink("about", "About", "Home", new { area = "" }, new { @class = "mdl-navigation__link " })
+            </nav>
         </div>
-        <a href="#screens">
-            <button class="android-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-                <i class="material-icons">expand_more</i>
-            </button>
-        </a>
-    </div>
-    <div class="android-screen-section mdl-typography--text-center">
-        <a name="screens"></a>
-        <div class="mdl-typography--display-1-color-contrast">Automoviles para cada estilo</div>
-        <div class="android-screens">
-            <div class="android-wear android-screen">
-                <a class="android-image-link" href="">
-                    <img class="android-screen-image" src="~/images/wear-silver-on.png" />
-                    <img class="android-screen-image" src="~/images/wear-black-on.png">
+        <main class="mdl-layout__content">
+            <a name="top"></a>
+            <div class="android-be-together-section mdl-typography--text-center">
+                <div class="logo-font android-slogan">be together. not the same.</div>
+                <div class="logo-font android-sub-slogan">Welcome to Alquicar ... be yourself. Rent a car or rent your own.</div>
+                <div class="logo-font android-create-character">
+                    <a href="../SearchCar/index"><i class="material-icons">directions_car</i> Find the car you are looking for.</a>
+                </div>
+                <a href="#screens">
+                    <button class="android-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                        <i class="material-icons">expand_more</i>
+                    </button>
                 </a>
-                <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android Wear</a>
             </div>
-            <div class="android-phone android-screen">
-                <a class="android-image-link" href="">
-                    <img class="android-screen-image" src="~/images/nexus6-on.jpg">
-                </a>
-                <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Phones</a>
+            <div class="android-screen-section mdl-typography--text-center">
+                <a name="screens"></a>
+                <div class="mdl-typography--display-1-color-contrast">Automoviles para cada estilo</div>
+                <div class="android-screens">
+                    <div class="android-wear android-screen">
+                        <a class="android-image-link" href="">
+                            <img class="android-screen-image" src="~/images/wear-silver-on.png" />
+                            <img class="android-screen-image" src="~/images/wear-black-on.png">
+                        </a>
+                        <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android Wear</a>
+                    </div>
+                    <div class="android-phone android-screen">
+                        <a class="android-image-link" href="">
+                            <img class="android-screen-image" src="~/images/nexus6-on.jpg">
+                        </a>
+                        <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Phones</a>
+                    </div>
+                    <div class="android-tablet android-screen">
+                        <a class="android-image-link" href="">
+                            <img class="android-screen-image" src="~/images/nexus9-on.jpg">
+                        </a>
+                        <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Tablets</a>
+                    </div>
+                    <div class="android-tv android-screen">
+                        <a class="android-image-link" href="">
+                            <img class="android-screen-image" src="~/images/tv-on.jpg">
+                        </a>
+                        <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android TV</a>
+                    </div>
+                    <div class="android-auto android-screen">
+                        <a class="android-image-link" href="">
+                            <img class="android-screen-image" src="~/images/auto-on.jpg">
+                        </a>
+                        <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left" href="">Coming Soon: Android Auto</a>
+                    </div>
+                </div>
             </div>
-            <div class="android-tablet android-screen">
-                <a class="android-image-link" href="">
-                    <img class="android-screen-image" src="~/images/nexus9-on.jpg">
-                </a>
-                <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Tablets</a>
+            <div class="android-wear-section">
+                <div class="android-wear-band">
+                    <div class="android-wear-band-text">
+                        <div class="mdl-typography--display-2 mdl-typography--font-thin">Lo mejor de Aquicar lo encuentras aqui</div>
+                        <p class="mdl-typography--headline mdl-typography--font-thin">
+                            Alquicar te ofrece entre cientos de autos para que elijas
+                            y filtres de acuerdo a tu estilo.
+                        </p>
+                        <p>
+                            <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="../SearchCar/index">
+                                Encuentra el auto que mas necesites&nbsp;<i class="material-icons">chevron_right</i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="android-tv android-screen">
-                <a class="android-image-link" href="">
-                    <img class="android-screen-image" src="~/images/tv-on.jpg">
-                </a>
-                <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android TV</a>
+            <div class="android-customized-section">
+                <div class="android-customized-section-text">
+                    <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Arrienda tu auto con Alquicar</div>
+                    <p class="mdl-typography--font-light">
+                        Tienes un auto y quieres ganar dinero!, arrendar tu auto con nosotros es sencillo
+                        solo ingresa aqui abajo y sigue el proceso.
+                        <br>
+                        <a href="" class="android-link mdl-typography--font-light">Arrendar automovil</a>
+                    </p>
+                </div>
+                <div class="android-customized-section-image"></div>
             </div>
-            <div class="android-auto android-screen">
-                <a class="android-image-link" href="">
-                    <img class="android-screen-image" src="~/images/auto-on.jpg">
-                </a>
-                <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left" href="">Coming Soon: Android Auto</a>
+            <div class="android-more-section">
+                <div class="android-section-title mdl-typography--display-1-color-contrast">Mas de Aquicar</div>
+                <div class="android-card-container mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                        <div class="mdl-card__media">
+                            <img src="~/images/more-from-1.png">
+                        </div>
+                        <div class="mdl-card__title">
+                            <h4 class="mdl-card__title-text">Trabaja con nosotros</h4>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="mdl-typography--font-light mdl-typography--subhead">Quieres hacer parte de la familia de Aquicar?</span>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                                Trabajar
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                        <div class="mdl-card__media">
+                            <img src="~/images/more-from-4.png">
+                        </div>
+                        <div class="mdl-card__title">
+                            <h4 class="mdl-card__title-text">Paquetes</h4>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="mdl-typography--font-light mdl-typography--subhead">Elije el plan que mas se adapte a ti ahora.</span>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                                Alquicar.com
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                        <div class="mdl-card__media">
+                            <img src="~/images/more-from-2.png">
+                        </div>
+                        <div class="mdl-card__title">
+                            <h4 class="mdl-card__title-text">Obten nuestra aplicacion</h4>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="mdl-typography--font-light mdl-typography--subhead">ingresa ya, obten la aplación, pruebala y descubre sus novedades</span>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                                Descargar ahora
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                        <div class="mdl-card__media">
+                            <img src="~/images/more-from-3.png">
+                        </div>
+                        <div class="mdl-card__title">
+                            <h4 class="mdl-card__title-text">Sucursales</h4>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="mdl-typography--font-light mdl-typography--subhead">lugares de colombia en los cuales puedes rentar o arrendar tu automovil.</span>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                                apps disponibles.
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--top-section">
+                    <div class="mdl-mega-footer--right-section">
+                        <a class="mdl-typography--font-light" href="#top">
+                            Back to Top
+                            <i class="material-icons">expand_less</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mdl-mega-footer__middle-section">
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Features</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Updates</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Details</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">Specs</a></li>
+                            <li><a href="#">Tools</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Technology</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Patterns</a></li>
+                            <li><a href="#">Usage</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">Contracts</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">FAQ</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">Questions</a></li>
+                            <li><a href="#">Answers</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="mdl-mega-footer__bottom-section">
+                    <div class="mdl-logo">Title</div>
+                    <ul class="mdl-mega-footer__link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                    </ul>
+                </div>
+
+            </footer>
+        </main>
     </div>
-    <div class="android-wear-section">
-        <div class="android-wear-band">
-            <div class="android-wear-band-text">
-                <div class="mdl-typography--display-2 mdl-typography--font-thin">Lo mejor de Aquicar lo encuentras aqui</div>
-                <p class="mdl-typography--headline mdl-typography--font-thin">
-                    Alquicar te ofrece entre cientos de autos para que elijas
-                    y filtres de acuerdo a tu estilo.
-                </p>
-                <p>
-                    <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="../SearchCar/index">
-                        Encuentra el auto que mas necesites&nbsp;<i class="material-icons">chevron_right</i>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="android-customized-section">
-        <div class="android-customized-section-text">
-            <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Arrienda tu auto con Alquicar</div>
-            <p class="mdl-typography--font-light">
-                Tienes un auto y quieres ganar dinero!, arrendar tu auto con nosotros es sencillo
-                solo ingresa aqui abajo y sigue el proceso.
-                <br>
-                <a href="" class="android-link mdl-typography--font-light">Arrendar automovil</a>
-            </p>
-        </div>
-        <div class="android-customized-section-image"></div>
-    </div>
-    <div class="android-more-section">
-        <div class="android-section-title mdl-typography--display-1-color-contrast">Mas de Aquicar</div>
-        <div class="android-card-container mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-                <div class="mdl-card__media">
-                    <img src="~/images/more-from-1.png">
-                </div>
-                <div class="mdl-card__title">
-                    <h4 class="mdl-card__title-text">Trabaja con nosotros</h4>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">Quieres hacer parte de la familia de Aquicar?</span>
-                </div>
-                <div class="mdl-card__actions">
-                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-                        Trabajar
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-                <div class="mdl-card__media">
-                    <img src="~/images/more-from-4.png">
-                </div>
-                <div class="mdl-card__title">
-                    <h4 class="mdl-card__title-text">Paquetes</h4>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">Elije el plan que mas se adapte a ti ahora.</span>
-                </div>
-                <div class="mdl-card__actions">
-                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-                        Alquicar.com
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-                <div class="mdl-card__media">
-                    <img src="~/images/more-from-2.png">
-                </div>
-                <div class="mdl-card__title">
-                    <h4 class="mdl-card__title-text">Obten nuestra aplicacion</h4>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">ingresa ya, obten la aplación, pruebala y descubre sus novedades</span>
-                </div>
-                <div class="mdl-card__actions">
-                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-                        Descargar ahora
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-                <div class="mdl-card__media">
-                    <img src="~/images/more-from-3.png">
-                </div>
-                <div class="mdl-card__title">
-                    <h4 class="mdl-card__title-text">Sucursales</h4>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">lugares de colombia en los cuales puedes rentar o arrendar tu automovil.</span>
-                </div>
-                <div class="mdl-card__actions">
-                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-                        apps disponibles.
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <script>
+        $(document).ready(function () {
+            $("#btnlogout").click(function () {
+                document.getElementById('logoutForm').submit();
+            });
+
+        });
+
+    </script>
+</body>
+</html>

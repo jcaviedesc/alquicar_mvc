@@ -28,7 +28,7 @@ namespace Alquicar_mvc.Controllers
         [HttpGet]
         public ActionResult Registrarcar()
         {
-       
+            ViewBag.proveedores = carmodel.QueryProveedor();
             ViewBag.vehiculos = carmodel.QueryTipoVehiculo();
             ViewBag.direcciones = carmodel.QueryDireccion();
             ViewBag.marcas = carmodel.QueryMarcas();
@@ -39,6 +39,10 @@ namespace Alquicar_mvc.Controllers
         [HttpGet]
         public ActionResult RegistrarCliente()
         {
+            //ViewBag.vehiculos = carmodel.QueryTipoVehiculo();
+            //ViewBag.direcciones = carmodel.QueryDireccion();
+            //ViewBag.marcas = carmodel.QueryMarcas();
+            //ViewBag.transmicion = carmodel.QueryTransmition();
             return View();
         }
         [HttpGet]
@@ -182,6 +186,7 @@ namespace Alquicar_mvc.Controllers
                 if (ModelState.IsValid)
                 {
                     carmodel.RegistrarCar(car);
+                    
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else {

@@ -19,15 +19,14 @@
 </head>
 <body>
     <div class="mdl-layout mdl-js-layout">
-        <main class="mdl-layout__content">
-            <div class="together-section">
+        <main class="mdl-layout__content together-section">
                 <div class="mdl_card mdl-cell mdl-cell--4-col mdl-cell--4-offset mdl-shadow--16dp contenido">
                     <div class="mdl-lg-ctr">
                         <section id="loginForm">
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
                              {
-                                <div class="mdl-card__title ">
-                                    <h2 class="mdl-card__title-text text_center">Iniciar sesión</h2>
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text text-center">Iniciar sesión</h2>
                                 </div>
                                 @Html.AntiForgeryToken()
                                 <div class="mdl-card__supporting-text izq-item">
@@ -53,7 +52,7 @@
                                 <div class="lgn-horz-ctr">
                                     <input type="submit" value="Log in" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-all mdl-button--colored" />
                                 </div>
-                                <p>
+                                <p class="mdl-typography--text-center pding_b">
                                     @Html.ActionLink("Register as a new user", "Register")
                                 </p>
                                 @* Enable this once you have account confirmation enabled for password reset functionality
@@ -66,9 +65,8 @@
                     </div>
                 </div>
                 <div>
-                    @Html.ActionLink("Regresar", "Index")
+                    @Html.ActionLink("Regresar", "Index","Home")
                 </div>
-            </div>
         </main>
     </div>
     @section Scripts {

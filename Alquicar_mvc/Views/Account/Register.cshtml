@@ -1,41 +1,147 @@
 ﻿@model Alquicar_mvc.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = null;
 }
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title- Alquicar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="~/Content/material.min.css" rel="stylesheet" />
+    <link href="~/Content/Home/styles.css" rel="stylesheet" />
+    <link href="~/Content/Login/StyleLogin.css" rel="stylesheet" />
+    <script src="~/Scripts/material.min.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 
-<h2>@ViewBag.Title.</h2>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        @Html.Partial("_Header")
+        <main class="mdl-layout__content">
+            <a name="top"></a>
+            <div class="together-section ">
+                <div class="mdl-typography--text-center mdl_card mdl-cell mdl-cell--4-col mdl-cell--4-offset mdl-shadow--16dp contenido">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="mdl-card__title ">
+                            <h2 class="mdl-card__title-text text_center">Create a new account.</h2>
+                        </div>
+                        <hr />
+                        <div class="izq-item">
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                        </div>            
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            @Html.LabelFor(m => m.Email, new { @class = "mdl-textfield__label" })
+                            <div>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "mdl-textfield__input" })
+                            </div>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            @Html.LabelFor(m => m.Password, new { @class = "mdl-textfield__label" })
+                            <div>
+                                @Html.PasswordFor(m => m.Password, new { @class = "mdl-textfield__input" })
+                            </div>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "mdl-textfield__label" })
+                            <div>
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "mdl-textfield__input" })
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-all mdl-button--colored" value="Register" />
+                            </div>
+                        </div>
+                    }
+                </div>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+            </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--top-section">
+                    <div class="mdl-mega-footer--right-section">
+                        <a class="mdl-typography--font-light" href="#top">
+                            Back to Top
+                            <i class="material-icons">expand_less</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mdl-mega-footer__middle-section">
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Features</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Updates</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Details</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">Specs</a></li>
+                            <li><a href="#">Tools</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Technology</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Patterns</a></li>
+                            <li><a href="#">Usage</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">Contracts</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">FAQ</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">Questions</a></li>
+                            <li><a href="#">Answers</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="mdl-mega-footer__bottom-section">
+                    <div class="mdl-logo">Title</div>
+                    <ul class="mdl-mega-footer__link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                    </ul>
+                </div>
+
+            </footer>
+        </main>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <script>
+        $(document).ready(function () {
+            $("#btnlogout").click(function () {
+                document.getElementById('logoutForm').submit();
+            });
+
+        });
+
+    </script>
+</body>
+</html>

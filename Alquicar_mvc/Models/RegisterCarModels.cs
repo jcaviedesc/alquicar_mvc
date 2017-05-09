@@ -139,11 +139,14 @@ namespace Alquicar_mvc.Models
         {
             return registracar.Query("PR_QUERYTRANSMITION", null);
         }
-
+        public System.Data.DataTable QueryProveedor()
+        {
+            return registracar.Query("PR_QUERYPROPIETARIO", null);
+        }
 
         public bool RegistrarCar(RegisterCarModels car)
         {
-            Parameter[] para_car = new Parameter[4];
+            Parameter[] para_car = new Parameter[10];
 
             para_car[0] = new Parameter("_provedorid", car.proveedor_car);
             para_car[1] = new Parameter("_tipo_vehiculo", car.tipo_vehiculo);

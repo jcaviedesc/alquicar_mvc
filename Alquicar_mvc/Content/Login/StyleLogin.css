@@ -1,10 +1,10 @@
 ﻿.together-section {
     position: relative;
-    height: 100%;
-    width: auto;
     background-color: #9E9E9E;
     background-size: cover;
-    margin:0 0 0 0;
+    /*padding: 0;*/
+    height: 800px;
+    width: auto;
 }
 
 .contenido {
@@ -20,6 +20,9 @@
 .mdl-lg-ctr{
     width:68%;
     margin:0 auto;
+}
+.pding_b {
+ padding-bottom: 5px;
 }
 .lgn-horz-ctr {
  padding:8px 0;
