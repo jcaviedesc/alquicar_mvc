@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ArquitecturaMVC.Models
+namespace Alquicar_mvc.Models
 {
     public class SearchCarModel
     {

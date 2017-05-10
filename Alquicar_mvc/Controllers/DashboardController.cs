@@ -1,4 +1,5 @@
 ﻿using Alquicar_mvc.Models;
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Alquicar_mvc.Controllers
     public class DashboardController : Controller
     {
         RegisterCarModels carmodel = new RegisterCarModels();
+        ClienteModels cliente = new ClienteModels();
         // GET: Dashboard
         public ActionResult Index()
         {
@@ -35,171 +37,61 @@ namespace Alquicar_mvc.Controllers
             ViewBag.transmicion = carmodel.QueryTransmition();
             return View();
         }
-        //GET: registrar cliente
-        [HttpGet]
-        public ActionResult RegistrarCliente()
-        {
-            //ViewBag.vehiculos = carmodel.QueryTipoVehiculo();
-            //ViewBag.direcciones = carmodel.QueryDireccion();
-            //ViewBag.marcas = carmodel.QueryMarcas();
-            //ViewBag.transmicion = carmodel.QueryTransmition();
-            return View();
-        }
-        [HttpGet]
-        //Json method for types transmition
-        public JsonResult getTrasmicion() {
-            DataTable Query = carmodel.QueryTransmition();
-            return Json(ConvertDatatableToJsonNative(Query), JsonRequestBehavior.AllowGet);
-        }
-        //Json marcas
-        // /Dashboard/getmarcas
-        [HttpGet]
-        public JsonResult getmarcas() {
-            DataTable marcasdt = carmodel.QueryMarcas();
-            return Json(ConvertDatatableToJsonNative(marcasdt), JsonRequestBehavior.AllowGet);
-        }
-        [HttpGet]
-        public JsonResult getdireccion() {
-            DataTable dirdt = carmodel.QueryDireccion();
-            List<object> jsondt = ConvertDatatableToJsonNative(dirdt);
-            return Json(jsondt, JsonRequestBehavior.AllowGet);
-        }
-        [HttpGet]
-        public JsonResult tipovehiculo() {
-            DataTable dttipovh = carmodel.QueryTipoVehiculo();
-            return Json(ConvertDatatableToJsonNative(dttipovh), JsonRequestBehavior.AllowGet);
-        }
-        //intentos de serializar un datatable a Json sin que salga con el caracter  => \
-        public ActionResult marcasjson()
-        {
-
-            DataTable marcasdt = carmodel.QueryMarcas();
-
-            return Json(marcasdt, "application/json", Encoding.UTF8, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult marcasjsonresult()
-        {
-            DataTable marcasdt = carmodel.QueryMarcas();
-            return Json(DataTableToJSONwithJsonConvert(marcasdt),"application/json",Encoding.UTF8, JsonRequestBehavior.AllowGet);
-        }
-
-        // json result
-        public ActionResult Transmiciones() {
-
-            DataTable Query = carmodel.QueryTransmition();
-
-            return Json(Query, JsonRequestBehavior.AllowGet);
-        }
-        
-        //native
-        public List<object> ConvertDatatableToJsonNative(DataTable dt) {
-
-            var jsontxt = new List<object>();
-            //for (int i = 0; i < dt.Rows.Count; i++) {
-            //    for (int j = 0; j < dt.Columns.Count; j++) {
-            //        jsontxt.Add(new { dt.Columns[j].ColumnName = dt.Rows[i].ToString(), dt.Columns[j].ColumnName = dt.Rows[i].ToString() });
-            //    }
-            //}
-
-                foreach (DataRow row in dt.Rows)
-            {
-                jsontxt.Add(new { id = row["id"].ToString(), nombre = row["nombre"].ToString() });
-            }
-
-            return jsontxt;
-        }
-
-   
-        public static string ConvertIntoJsonwithStringBuilder(DataTable dt)
-        {
-            //[{"id":"1","name":}]
-            var jsonString = new StringBuilder();
-            if (dt.Rows.Count > 0)
-            {
-                jsonString.Append("[");
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    jsonString.Append("{");
-                    for (int j = 0; j < dt.Columns.Count; j++)
-                    {
-                        jsonString.Append('"' + dt.Columns[j].ColumnName.ToString() + '"' + ":" + '"'
-                            + dt.Rows[i][j].ToString() + (j < dt.Columns.Count - 1 ? "\"," : "\""));
-                    }
-                    jsonString.Append(i < dt.Rows.Count - 1 ? "}," : "}");
-                }
-                return jsonString.Append("]").ToString();
-            }
-            else
-            {
-                return "[]";
-            }
-        }
-
-        public string DataTableToJSONwithJsonConvert(DataTable table)
-        {
-            string JSONString = string.Empty;
-            JSONString = JsonConvert.SerializeObject(table);
-            return JSONString;
-        }
-
-        public string DataTableToJSONWithJavaScriptSerializer(DataTable table)
-        {
-            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
-            List<Dictionary<string, object>> parentRow = new List<Dictionary<string, object>>();
-            Dictionary<string, object> childRow;
-            foreach (DataRow row in table.Rows)
-            {
-                childRow = new Dictionary<string, object>();
-                foreach (DataColumn col in table.Columns)
-                {
-                    childRow.Add(col.ColumnName, row[col]);
-                }
-                parentRow.Add(childRow);
-            }
-            return jsSerializer.Serialize(parentRow);
-        }
-
-        public  string ConvertDataTableToJSONwithDictionary(DataTable table)
-        {
-            var list = new List<Dictionary<string, object>>();
-
-            foreach (DataRow row in table.Rows)
-            {
-                var dict = new Dictionary<string, object>();
-
-                foreach (DataColumn col in table.Columns)
-                {
-                    dict[col.ColumnName] = row[col];
-                }
-                list.Add(dict);
-            }
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            return serializer.Serialize(list);
-        }
-
 
         //Post Dashboard/registercar 
         [HttpPost]
-        public ActionResult Registrarcar(RegisterCarModels car) {
+        public ActionResult Registrarcar(RegisterCarModels car)
+        {
             try
             {
                 if (ModelState.IsValid)
                 {
                     carmodel.RegistrarCar(car);
-                    
                     return RedirectToAction("Index", "Dashboard");
                 }
-                else {
+                else
+                {
                     return View();
                 }
-                   
+
             }
             catch
             {
                 return View();
             }
-            
+
         }
+
+        //GET: registrar cliente
+        [HttpGet]
+        public ActionResult RegistrarCliente()
+        {
+           
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegistrarCliente(ClienteModels cli)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    cliente.registrarUsur(cli);
+
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    return View();
+                }
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        
 
         //Post para salir de toda la app
         [HttpPost]
@@ -278,6 +170,141 @@ namespace Alquicar_mvc.Controllers
             {
                 return View();
             }
+        }
+
+        //intentos de serializar un datatable a Json sin que salga con el caracter  => \
+        [HttpGet]
+        //Json method for types transmition
+        public JsonResult getTrasmicion()
+        {
+            DataTable Query = carmodel.QueryTransmition();
+            return Json(ConvertDatatableToJsonNative(Query), JsonRequestBehavior.AllowGet);
+        }
+        //Json marcas
+        // /Dashboard/getmarcas
+        [HttpGet]
+        public JsonResult getmarcas()
+        {
+            DataTable marcasdt = carmodel.QueryMarcas();
+            return Json(ConvertDatatableToJsonNative(marcasdt), JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult getdireccion()
+        {
+            DataTable dirdt = carmodel.QueryDireccion();
+            List<object> jsondt = ConvertDatatableToJsonNative(dirdt);
+            return Json(jsondt, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult tipovehiculo()
+        {
+            DataTable dttipovh = carmodel.QueryTipoVehiculo();
+            return Json(ConvertDatatableToJsonNative(dttipovh), JsonRequestBehavior.AllowGet);
+        }
+        
+        public ActionResult marcasjson()
+        {
+            DataTable marcasdt = carmodel.QueryMarcas();
+            return Json(marcasdt, "application/json", Encoding.UTF8, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult marcasjsonresult()
+        {
+            DataTable marcasdt = carmodel.QueryMarcas();
+            return Json(DataTableToJSONwithJsonConvert(marcasdt), "application/json", Encoding.UTF8, JsonRequestBehavior.AllowGet);
+        }
+
+        // json result
+        public ActionResult Transmiciones()
+        {
+            DataTable Query = carmodel.QueryTransmition();
+            return Json(Query, JsonRequestBehavior.AllowGet);
+        }
+
+        //native
+        public List<object> ConvertDatatableToJsonNative(DataTable dt)
+        {
+
+            var jsontxt = new List<object>();
+            //for (int i = 0; i < dt.Rows.Count; i++) {
+            //    for (int j = 0; j < dt.Columns.Count; j++) {
+            //        jsontxt.Add(new { dt.Columns[j].ColumnName = dt.Rows[i].ToString(), dt.Columns[j].ColumnName = dt.Rows[i].ToString() });
+            //    }
+            //}
+
+            foreach (DataRow row in dt.Rows)
+            {
+                jsontxt.Add(new { id = row["id"].ToString(), nombre = row["nombre"].ToString() });
+            }
+
+            return jsontxt;
+        }
+
+
+        public static string ConvertIntoJsonwithStringBuilder(DataTable dt)
+        {
+            //[{"id":"1","name":}]
+            var jsonString = new StringBuilder();
+            if (dt.Rows.Count > 0)
+            {
+                jsonString.Append("[");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    jsonString.Append("{");
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        jsonString.Append('"' + dt.Columns[j].ColumnName.ToString() + '"' + ":" + '"'
+                            + dt.Rows[i][j].ToString() + (j < dt.Columns.Count - 1 ? "\"," : "\""));
+                    }
+                    jsonString.Append(i < dt.Rows.Count - 1 ? "}," : "}");
+                }
+                return jsonString.Append("]").ToString();
+            }
+            else
+            {
+                return "[]";
+            }
+        }
+
+        public string DataTableToJSONwithJsonConvert(DataTable table)
+        {
+            string JSONString = string.Empty;
+            JSONString = JsonConvert.SerializeObject(table);
+            return JSONString;
+        }
+
+        public string DataTableToJSONWithJavaScriptSerializer(DataTable table)
+        {
+            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+            List<Dictionary<string, object>> parentRow = new List<Dictionary<string, object>>();
+            Dictionary<string, object> childRow;
+            foreach (DataRow row in table.Rows)
+            {
+                childRow = new Dictionary<string, object>();
+                foreach (DataColumn col in table.Columns)
+                {
+                    childRow.Add(col.ColumnName, row[col]);
+                }
+                parentRow.Add(childRow);
+            }
+            return jsSerializer.Serialize(parentRow);
+        }
+
+        public string ConvertDataTableToJSONwithDictionary(DataTable table)
+        {
+            var list = new List<Dictionary<string, object>>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                var dict = new Dictionary<string, object>();
+
+                foreach (DataColumn col in table.Columns)
+                {
+                    dict[col.ColumnName] = row[col];
+                }
+                list.Add(dict);
+            }
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            return serializer.Serialize(list);
         }
     }
 }

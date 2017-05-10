@@ -32,7 +32,6 @@
                         <div class="mdl-card__title ">
                             <h2 class="mdl-card__title-text text_center">Create a new account.</h2>
                         </div>
-                        <hr />
                         <div class="izq-item">
                             @Html.ValidationSummary("", new { @class = "text-danger" })
                         </div>            
@@ -54,10 +53,8 @@
                                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "mdl-textfield__input" })
                             </div>
                         </div>
-                        <div>
-                            <div>
-                                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-all mdl-button--colored" value="Register" />
-                            </div>
+                        <div class="mdl-card__actions mdl-card--border">                         
+                             <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-all mdl-button--colored" value="Register" />                          
                         </div>
                     }
                 </div>

@@ -5,7 +5,7 @@ using System.Web;
 using conexion;
 
 
-namespace ArquitecturaMVC.Models
+namespace Alquicar_mvc.Models
 {
     public class ClienteModels
     {

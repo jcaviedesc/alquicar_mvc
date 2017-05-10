@@ -1,11 +1,11 @@
-﻿using ArquitecturaMVC.Models;
+﻿using Alquicar_mvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ArquitecturaMVC.Controllers
+namespace Alquicar_mvc.Controllers
 {
     public class SearchCarController : Controller
     {

@@ -1,4 +1,4 @@
-﻿using ArquitecturaMVC.Models;
+﻿using Alquicar_mvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ArquitecturaMVC.Controllers
+namespace Alquicar_mvc.Controllers
 {
     public class ClienteController : Controller
     {
@@ -36,11 +36,16 @@ namespace ArquitecturaMVC.Controllers
         {
             try
             {
-                
+                if (ModelState.IsValid)
+                {
                     cli_model.registrarUsur(collection);
+                    return RedirectToAction("Index", "Dashboard");
+                }else
+                {
+                    return View();
+                }
+                
 
-                    return RedirectToAction("Index");
-                        
             }
             catch
             {
