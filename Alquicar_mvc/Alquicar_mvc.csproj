@@ -240,6 +240,7 @@
     <Content Include="Content\material.min.css" />
     <Content Include="Content\Searchcar\styles.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\layout.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
