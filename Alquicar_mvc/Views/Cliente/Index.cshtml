@@ -4,45 +4,41 @@
     ViewBag.Title = "Index";
 }
 
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create","Cliente")
-</p>
-
     <!----div  class="mdl-cell mdl-cell--10-col"-->
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet center">
+<div class="mdl-grid demo-content">
+    <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet center">
 
-            <table class="mdl-data-table mdl-js-data-table">
-                <thead>
-                    <tr>
-                        @foreach (System.Data.DataColumn col in Model.Columns){
-                            <th class="mdl-data-table__cell--non-numeric"> @col.Caption</th>}
-                        <th class="mdl-data-table__cell--non-numeric"> opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (System.Data.DataRow row in Model.Rows)
+        <table class="mdl-data-table mdl-js-data-table">
+            <thead>
+                <tr>
+                    @foreach (System.Data.DataColumn col in Model.Columns)
+                    {
+                        <th class="mdl-data-table__cell--non-numeric"> @col.Caption</th>}
+                    <th class="mdl-data-table__cell--non-numeric"> opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Rows)
             {
-                        <tr>
-                            @foreach (var cell in row.ItemArray)
+                    <tr>
+                        @foreach (var cell in row.ItemArray)
                 {
-                                <td class="mdl-data-table__cell--non-numeric"> @cell.ToString() </td>
-                            }
+                            <td class="mdl-data-table__cell--non-numeric"> @cell.ToString() </td>
+                        }
 
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                            </td>
-                        </tr>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
 
-                    }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-
+<p>
+    @Html.ActionLink("Create New", "Create", "Cliente")
+</p>
   <!--/div-->

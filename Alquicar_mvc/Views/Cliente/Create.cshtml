@@ -1,80 +1,75 @@
-﻿@model ArquitecturaMVC.Models.ClienteModels
+﻿@model Alquicar_mvc.Models.ClienteModels
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "RegistrarCliente";
 }
 
-<link href="~/Content/style.css" rel="stylesheet" />
-
-    <div class="page-content">
-        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Formulario Cliente</h2>
+<h2>Registrar Cliente</h2>
+<div class="mdl-grid demo-content">
+    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+                <input class="mdl-textfield__input" type="text" id="nombre" name="nombre">
+                <label class="mdl-textfield__label" for="nombre">Nombres</label>
             </div>
-
-            @using (Html.BeginForm())
-            {
-                           
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="nombre" name="nombre">
-                        <label class="mdl-textfield__label" for="nombre">Nombres</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="apellido" name="apellido">
-                        <label class="mdl-textfield__label" for="apellido">Apellidos</label>
-                    </div>
-                    <div>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genero-1">
-                            <input type="radio" id="genero-1" class="mdl-radio__button" name="genero" value="1" checked>
-                            <span class="mdl-radio__label">Masculino</span>
-                        </label>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genero-2">
-                            <input type="radio" id="genero-2" class="mdl-radio__button" name="genero" value="2">
-                            <span class="mdl-radio__label">Femenino</span>
-                        </label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" id="email" name="email">
-                        <label class="mdl-textfield__label" for="ced">E-mail</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="password" id="password" name="password">
-                        <label class="mdl-textfield__label" for="ced">contraseña</label>
-                    </div>
-                    <div>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cliente-1">
-                            <input type="radio" id="cliente-1" class="mdl-radio__button" name="tipo_cliente" value="1" checked>
-                            <span class="mdl-radio__label">Persona Natural</span>
-                        </label>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cliente-2">
-                            <input type="radio" id="cliente-2" class="mdl-radio__button" name="tipo_cliente" value="2">
-                            <span class="mdl-radio__label">Persona Juridica</span>
-                        </label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="num_identificacion" name="num_identificacion">
-                        <label class="mdl-textfield__label" for="ced">Identificación</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="phone" name="phone">
-                        <label class="mdl-textfield__label" for="ced">Celular</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="date" id="fecha_n" name="fecha_n" value="2016-10-06">
-                        <label class="mdl-textfield__label" for="tf4">Fecha de nacimiento</label>
-                    </div>
-                    <div >
-                        <div >
-                            <input id="show-dialog" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="chekear()" />
-                        </div>
-                    </div>
-                
-            }
-        </div>
-    </div>
-
-
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+                <input class="mdl-textfield__input" type="text" id="apellido" name="apellido">
+                <label class="mdl-textfield__label" for="apellido">Apellidos</label>
+            </div>
+            <div class="mdl-textfield mdl-pdt">
+                <label class="mdl-textfield__label">Genero</label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genero-1">
+                    <input type="radio" id="genero-1" class="mdl-radio__button" name="genero" value="1" checked>
+                    <span class="mdl-radio__label">Masculino</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genero-2">
+                    <input type="radio" id="genero-2" class="mdl-radio__button" name="genero" value="2">
+                    <span class="mdl-radio__label">Femenino</span>
+                </label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-pdt">
+                <input class="mdl-textfield__input" type="text" id="email" name="email">
+                <label class="mdl-textfield__label" for="ced">E-mail</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-pdt">
+                <input class="mdl-textfield__input" type="password" id="password" name="password">
+                <label class="mdl-textfield__label" for="ced">contraseña</label>
+            </div>
+            <div class="mdl-textfield mdl-pdt">
+                <span class="mdl-textfield__label mdl-radio__label">Tipo de cliente</span>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cliente-1">
+                    <input type="radio" id="cliente-1" class="mdl-radio__button" name="tipo_cliente" value="1" checked>
+                    <span class="mdl-radio__label">Persona Natural</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cliente-2">
+                    <input type="radio" id="cliente-2" class="mdl-radio__button" name="tipo_cliente" value="2">
+                    <span class="mdl-radio__label">Persona Juridica</span>
+                </label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+                <input class="mdl-textfield__input" type="text" id="num_identificacion" name="num_identificacion">
+                <label class="mdl-textfield__label" for="ced">Identificación</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+                <input class="mdl-textfield__input" type="text" id="phone" name="phone">
+                <label class="mdl-textfield__label" for="ced">Celular</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+                <input class="mdl-textfield__input" type="date" id="fecha_n" name="fecha_n" value="2016-10-06">
+                <label class="mdl-textfield__label" for="tf4">Fecha de nacimiento</label>
+            </div>
             <div>
-                @Html.ActionLink("Back to List", "Index")
+                <div>
+                    <input id="show-dialog" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="chekear()" />
+                </div>
             </div>
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

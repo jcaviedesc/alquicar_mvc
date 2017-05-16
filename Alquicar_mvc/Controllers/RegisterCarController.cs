@@ -7,57 +7,63 @@ using System.Web.Mvc;
 
 namespace Alquicar_mvc.Controllers
 {
-    public class CreateUserController : Controller
+    public class RegisterCarController : Controller
     {
-        CreateUserModel user = new CreateUserModel();
-        // GET: CreateUser
+        RegisterCarModels carmodel = new RegisterCarModels();
+        ClienteModels cliente = new ClienteModels();
+        // GET: RegisterCar
         public ActionResult Index()
-        {       
+        {
             return View();
         }
 
-        // GET: CreateUser/Details/5
+        // GET: RegisterCar/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: CreateUser/Create
+        // GET: RegisterCar/Create
         public ActionResult Create()
         {
-            ViewBag.permissions = user.QueryPermissions();
-            ViewBag.roles = user.QueryPermissions();
+            ViewBag.proveedores = carmodel.QueryProveedor();
+            ViewBag.vehiculos = carmodel.QueryTipoVehiculo();
+            ViewBag.direcciones = carmodel.QueryDireccion();
+            ViewBag.marcas = carmodel.QueryMarcas();
+            ViewBag.transmicion = carmodel.QueryTransmition();
             return View();
         }
 
-        // POST: CreateUser/Create
+        // POST: RegisterCar/Create
         [HttpPost]
-        public ActionResult Create(CreateUserModel collection)
+        public ActionResult Create(RegisterCarModels car)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    user.RegisterUser(collection);
-                    return RedirectToAction("Index");
+                    carmodel.RegistrarCar(car);
+                    return RedirectToAction("Index", "Dashboard");
                 }
-                else {
+                else
+                {
                     return View();
-                }           
+                }
+
             }
             catch
             {
                 return View();
             }
         }
-
-        // GET: CreateUser/Edit/5
+       
+        // GET: RegisterCar/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: CreateUser/Edit/5
+        // POST: RegisterCar/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -73,13 +79,13 @@ namespace Alquicar_mvc.Controllers
             }
         }
 
-        // GET: CreateUser/Delete/5
+        // GET: RegisterCar/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: CreateUser/Delete/5
+        // POST: RegisterCar/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

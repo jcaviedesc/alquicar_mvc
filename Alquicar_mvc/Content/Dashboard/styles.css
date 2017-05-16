@@ -259,7 +259,7 @@ _:-ms-input-placeholder, :root .demo-graph {
         list-style: none;
         padding: 0;
         margin: 0;
-        padding-left: 5px;
+        padding-left: 10px;
     }
 
     .sidebar-menu ul ul {
@@ -320,6 +320,10 @@ _:-ms-input-placeholder, :root .demo-graph {
     margin: auto 70px;
     padding: 20px 0;
 
+}
+/* --------   cliente/create  ------------*/
+.mdl-pdt {
+    margin:0 50px;
 }
 
     

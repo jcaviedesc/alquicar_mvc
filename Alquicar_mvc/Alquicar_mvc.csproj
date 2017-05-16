@@ -217,6 +217,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\marcasController.cs" />
+    <Compile Include="Controllers\RegisterCarController.cs" />
     <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Models\RegisterCarModels.cs" />
     <Compile Include="Controllers\SearchCarController.cs" />
@@ -323,8 +324,8 @@
     <Content Include="Views\Main\_Layout.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\RegistrarCliente.cshtml" />
-    <Content Include="Views\CreateUser\Index.cshtml" />
+    <Content Include="Views\CreateUser\Create.cshtml" />
+    <Content Include="Views\RegisterCar\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
