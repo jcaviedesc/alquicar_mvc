@@ -280,10 +280,6 @@ _:-ms-input-placeholder, :root .demo-graph {
     .sidebar-menu li > a > .pull-right-container {
         padding-left: 45px;
         float:right;
-        /*position: absolute;
-        right: 10px;
-        top: 50%;
-        margin-top: -7px;*/
     }
 
     .sidebar-menu > li > a {
@@ -301,3 +297,29 @@ _:-ms-input-placeholder, :root .demo-graph {
 .pull-right {
     float: right!important;
 }
+/*-----------------       create user css          ----------------*/
+.content_card {
+    position:relative;
+    
+}
+.column {
+    float:left;
+    width:50%;
+}
+    .column .center {
+        width: 80%;
+        margin:0 auto;
+    }
+.mdl-check {
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 300px;
+    max-width: 100%;
+    margin: auto 70px;
+    padding: 20px 0;
+
+}
+
+    

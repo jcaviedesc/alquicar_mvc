@@ -212,10 +212,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CreateUserController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\marcasController.cs" />
+    <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Models\RegisterCarModels.cs" />
     <Compile Include="Controllers\SearchCarController.cs" />
     <Compile Include="Global.asax.cs">
@@ -322,6 +324,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\RegistrarCliente.cshtml" />
+    <Content Include="Views\CreateUser\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

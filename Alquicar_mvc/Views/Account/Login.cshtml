@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title - Alquicar</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="~/Content/material.min.css" rel="stylesheet" />
     @*<link href="~/Content/Home/styles.css" rel="stylesheet" />*@
@@ -23,6 +23,7 @@
                 <div class="mdl_card mdl-cell mdl-cell--4-col mdl-cell--4-offset mdl-shadow--16dp contenido">
                     <div class="mdl-lg-ctr">
                         <section id="loginForm">
+                            <div id="loading" class="mdl"></div>
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
                              {
                                 <div class="mdl-card__title">
@@ -50,7 +51,7 @@
                                     </label>
                                 </div>
                                 <div class="lgn-horz-ctr mdl-card__actions">
-                                    <input type="submit" value="Log in" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-all mdl-button--colored" />
+                                    <input id="login"type="submit" value="Log in" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-all mdl-button--colored" />
                                 </div>
                                 <p class="mdl-typography--text-center pding_b">
                                     @Html.ActionLink("Register as a new user", "Register")
@@ -68,9 +69,19 @@
                     @Html.ActionLink("Regresar", "Index","Home")
                 </div>
         </main>
+        <script>
+        $(document).ready(function () {
+            $('#login').click(function () {
+                //$('#loading').addClass('functione');
+              $('#loading').attr('class','mdl-loading');
+            });
+        });
+        </script>
     </div>
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
+    
+        
     }
 </body>
 </html>

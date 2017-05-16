@@ -1,419 +1,160 @@
 ﻿@{
-    Layout = null;
+
 }
-<!doctype html>
-<!--
-  Material Design Lite
-  Copyright 2015 Google Inc. All rights reserved.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      https://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
--->
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Alqicar</title>
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
-    <link rel="shortcut icon" href="images/favicon.png">
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link href="~/Content/Dashboard/styles.css" rel="stylesheet" />
-    <script src="~/Scripts/material.min.js"></script>
-    <script src="~/Scripts/jquery-3.2.1.js"></script>
-    <!--para que funcione el list-->
-    <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
-    <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
-</head>
-<body>
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
-        <header class="demo-header mdl-layout__header mdl-color--red-500 mdl-color-text--grey-600">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Home</span>
-                <div class="mdl-layout-spacer"></div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                        <i class="material-icons">search</i>
-                    </label>
-                    <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" id="search">
-                        <label class="mdl-textfield__label" for="search">Enter your query...</label>
-                    </div>
-                </div>
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-                    <i class="material-icons">more_vert</i>
-                </button>
-                <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                    <li class="mdl-menu__item">About</li>
-                    <li class="mdl-menu__item">Contact</li>
-                    <li class="mdl-menu__item">Legal information</li>
+<div class="mdl-grid demo-content">
+    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            // ------------- proveedores ---------------------
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="proveedor_car" name="proveedor_car" value="selecione" readonly tabIndex="-1">
+                <label for="proveedor_car" class="mdl-textfield__label">Propietario</label>
+                <ul for="proveedor_car" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (System.Data.DataRow row in ViewBag.proveedores.Rows)
+                    {
+                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                    }
                 </ul>
             </div>
-        </header>
-        <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-            <header class="demo-drawer-header">
-                <img src="~/images/avatar.png" class="demo-avatar">
-                <div class="demo-avatar-dropdown">
-                    <span>@Session["nombre_user"].ToString()</span>
-                    <div class="mdl-layout-spacer"></div>
-                    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                        <i class="material-icons" role="presentation">arrow_drop_down</i>
-                        <span class="visuallyhidden">Accounts</span>
-                    </button>
-                    @using (Html.BeginForm("salirboard", "Dashboard", FormMethod.Post, new { id = "logoutForm" }))
+            //---------- tipo de vehiculo ----------
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="tipo_vehiculo" name="tipo_vehiculo" value="selecione" readonly tabIndex="-1">
+                <label for="tipo_vehiculo" class="mdl-textfield__label">Direccion</label>
+                <ul for="tipo_vehiculo" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows)
                     {
-                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                            <li class="mdl-menu__item">@Session["email"].ToString()</li>
-                            <a id="salirref" href="#" class="mdl-menu__item">salir</a>
-                            <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
-                        </ul>
+                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
                     }
-                </div>
-            </header>
-            <!--menu dinamico desde la base de datos MySql-->
-            <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-                <ul class="sidebar-menu">
-                    <li>
-                        <a class="mdl-navigation__link" href="../Dashboard"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Principal</a>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">domain</i>Crear Rol</a>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>Crear Usuario</a>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" id="parametricas" href="#">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">create</i>
-                            parametricas
-                        </a>
-                        <ul id="parametricas_row" style="display:none" class="treeview-menu">
-                            <li>
-                                <a class="mdl-navigation__link" href="../agregar_auto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>auto</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete_sweep</i>Deshabilitar</a>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href="/registrarcar"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">receipt</i>Registrar</a>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
-                    </li>
-                    <div class="mdl-layout-spacer"></div>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-                    </li>
-
                 </ul>
-            </nav>
-        </div>
-        <main class="mdl-layout__content mdl-color--grey-100">
-            <div class="mdl-grid demo-content">
-                <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-                    @using (Html.BeginForm())
+            </div>
+            //-------------- direccion  ----------------
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion" value="selecione" readonly tabIndex="-1">
+                <label for="tipo_direccion" class="mdl-textfield__label">Direccion</label>
+                <ul for="tipo_direccion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (System.Data.DataRow row in ViewBag.direcciones.Rows)
                     {
-                        @Html.AntiForgeryToken()
-                        // ------------- proveedores ---------------------
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                            <input class="mdl-textfield__input" type="text" id="proveedor_car" name="proveedor_car" value="selecione" readonly tabIndex="-1">
-                            <label for="proveedor_car" class="mdl-textfield__label">Propietario</label>
-                            <ul for="proveedor_car" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                @foreach (System.Data.DataRow row in ViewBag.proveedores.Rows)
-                                {
-                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
-                                }
-                            </ul>
-                        </div>
-                        //---------- tipo de vehiculo ----------
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                            <input class="mdl-textfield__input" type="text" id="tipo_vehiculo" name="tipo_vehiculo" value="selecione" readonly tabIndex="-1">
-                            <label for="tipo_vehiculo" class="mdl-textfield__label">Direccion</label>
-                            <ul for="tipo_vehiculo" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                @foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows)
-                                {
-                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
-                                }
-                            </ul>
-                        </div>
-                        //-------------- direccion  ----------------
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                            <input class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion" value="selecione" readonly tabIndex="-1">
-                            <label for="tipo_direccion" class="mdl-textfield__label">Direccion</label>
-                            <ul for="tipo_direccion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                @foreach (System.Data.DataRow row in ViewBag.direcciones.Rows)
-                                {
-                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
-                                }
-                            </ul>
-                        </div>
-                        //---------------------- tipo trasmiciones  ------------
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                                <input class="mdl-textfield__input" type="text" id="tipo_trasmicion" name="tipo_trasmicion" value="selecione" readonly tabIndex="-1">
-                                <label for="tipo_trasmicion" class="mdl-textfield__label">Transmicion</label>
-                                <ul for="tipo_trasmicion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                    @foreach (System.Data.DataRow row in ViewBag.transmicion.Rows)
-                                    {
-                                        <li class="mdl-menu__item" value="@row["id"].ToString()" id= @row["id"].ToString()>@row["nombre"].ToString()</li>
-                                    }
-                                </ul>
-                        </div>
-                        //------------- marca ---------------
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                            <input class="mdl-textfield__input" type="text" id="marca" name="marca" value="selecione marca" readonly tabIndex="-1">
-                            <label for="marca" class="mdl-textfield__label">Marcas</label>
-                            <ul for="marca" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                @foreach (System.Data.DataRow row in ViewBag.marcas.Rows)
-                                {
-                                    <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
-                                }
-                            </ul>
-                        </div>
+                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                    }
+                </ul>
+            </div>
+            //---------------------- tipo trasmiciones  ------------
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="tipo_trasmicion" name="tipo_trasmicion" value="selecione" readonly tabIndex="-1">
+                <label for="tipo_trasmicion" class="mdl-textfield__label">Transmicion</label>
+                <ul for="tipo_trasmicion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (System.Data.DataRow row in ViewBag.transmicion.Rows)
+                    {
+                        <li class="mdl-menu__item" value="@row["id"].ToString()" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                    }
+                </ul>
+            </div>
+            //------------- marca ---------------
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="marca" name="marca" value="selecione marca" readonly tabIndex="-1">
+                <label for="marca" class="mdl-textfield__label">Marcas</label>
+                <ul for="marca" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (System.Data.DataRow row in ViewBag.marcas.Rows)
+                    {
+                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                    }
+                </ul>
+            </div>
+            @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="gama" name="gama">
+                    <label class="mdl-textfield__label" for="nombre">Gama</label>
+                </div>*@
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="color" name="color" value="Seleccione su tipo" readonly tabIndex="-1">
+                <label for="color" class="mdl-textfield__label">Select</label>
+                <ul for="color" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item" id="azul">azul</li>
+                    <li class="mdl-menu__item" id="verde">verde</li>
+                    <li class="mdl-menu__item" id="rojo">rojo</li>
+                    <li class="mdl-menu__item" id="Otro">Otros</li>
+                </ul>
+            </div>
                         @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="gama" name="gama">
-                                <label class="mdl-textfield__label" for="nombre">Gama</label>
+                                <input class="mdl-textfield__input" type="text" id="color" name="color">
+                                <label class="mdl-textfield__label" for="nombre">Color</label>
                             </div>*@
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                                <input class="mdl-textfield__input" type="text" id="color" name="color" value="Seleccione su tipo" readonly tabIndex="-1">
-                                <label for="color" class="mdl-textfield__label">Select</label>
-                                <ul for="color" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                    <li class="mdl-menu__item" id="azul">azul</li>
-                                    <li class="mdl-menu__item" id="verde">verde</li>
-                                    <li class="mdl-menu__item" id="rojo">rojo</li>
-                                    <li class="mdl-menu__item" id="Otro">Otros</li>
-                                </ul>
-                            </div>
-                        @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="color" name="color">
-                            <label class="mdl-textfield__label" for="nombre">Color</label>
-                        </div>*@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="text" id="cilindraje" name="cilindraje">
                             <label class="mdl-textfield__label" for="nombre">Cilindraje</label>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="modelo" name="modelo">
-                            <label class="mdl-textfield__label" for="nombre">Modelo</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="descripcion" name="descripcion">
-                            <label class="mdl-textfield__label" for="n">Descripcion</label>
-                        </div>
-                        @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="tipo_combustible" name="tipo_combustible">
-                                <label class="mdl-textfield__label" for="nombre">Tipo combustible</label>
-                            </div>*@
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="placa" name="placa">
-                            <label class="mdl-textfield__label" for="c">placa</label>
-                        </div>
-                        <div>
-                            <div>
-                                <input id="register_car" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" onclick="chekear()" />
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="modelo" name="modelo">
+                                <label class="mdl-textfield__label" for="nombre">Modelo</label>
                             </div>
-                        </div>
-                    }
-                    <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
-                        <use xlink:href="#chart" />
-                    </svg>
-                    <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
-                        <use xlink:href="#chart" />
-                    </svg>
-                </div>
-                <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-                    <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-                        <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                            <h2 class="mdl-card__title-text">Updates</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                            Non dolore elit adipisicing ea reprehenderit consectetur culpa.
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
-                        </div>
-                    </div>
-                    <div class="demo-separator mdl-cell--1-col"></div>
-                    <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
-                        <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
-                            <h3>View options</h3>
-                            <ul>
-                                <li>
-                                    <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Click per object</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Views per object</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Objects selected</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Objects viewed</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
-                            <div class="mdl-layout-spacer"></div>
-                            <i class="material-icons">location_on</i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="descripcion" name="descripcion">
+                                <label class="mdl-textfield__label" for="n">Descripcion</label>
+                            </div>
+                            @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="tipo_combustible" name="tipo_combustible">
+                                    <label class="mdl-textfield__label" for="nombre">Tipo combustible</label>
+                                </div>*@
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="placa" name="placa">
+                                <label class="mdl-textfield__label" for="c">placa</label>
+                            </div>
+                            <div>
+                                <div>
+                                    <input id="register_car" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" onclick="chekear()" />
+                                </div>
+                            </div>
+        }
     </div>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
-
-    </svg>
-
-    <script type="text/javascript">
-        function leerCookie() {
-            // Obtener un array con el nombre y valor de una cookie guardados como cadena, en cada posición:
-            var aCookies = document.cookie;
-            // Variables auxiliares:
-
-            return console.log(aCookies);
-        }
-        $(document).ready(function () {
-            $("#parametricas").click(function (evento) {
-                if ($("#parametricas_row").css("display") == "none") {
-                    $("#parametricas_row").css("display", "block");
-                } else {
-                    $("#parametricas_row").css("display", "none");
-                }
-            });
-            $("#salirref").click(function (evento) {
-                leerCookie();
-                document.getElementById('logoutForm').submit();
-                console.log("hola");
-                sessionStorage.clear();
-
-
-            });
-            //load_trasmiciones();
-            load_direcciones();
-            load_marcas();
-            load_tiposvehiculos();
-        });
-
-        @*function load_trasmiciones() {
-            $.getJSON('@Url.Action("getTrasmicion", "Dashboard")', displaydata);
-        }*@
-
-        function displaydata(response) {
-            if (response != null) {
-                for (var i = 0; i < response.length; i++) {
-                     var lit = $('<li/>', {
-                        'class': 'mdl-menu__item',
-                        'id': response[i].id,
-                        'tabindex': -1,
-                        'text': response[i].nombre
-                    });
-                    $(".ul_direccion").append(lit)
-                }
-            }
-        }
-        function displaymarcas(response) {
-            if (response != null) {
-                for (var i = 0; i < response.length; i++) {
-                    var lit = $('<li/>', {
-                        'class': 'mdl-menu__item',
-                        'id': response[i].id,
-                        'tabindex': -1,
-                        'text': response[i].nombre
-                    });
-                    $(".ul_marca").append(lit)
-                }
-            }
-        }
-        function displayvehiculos(response) {
-            if (response != null) {
-                for (var i = 0; i < response.length; i++) {
-                    var lit = $('<li/>', {
-                        'class': 'mdl-menu__item',
-                        'id': response[i].id,
-                        'tabindex': -1,
-                        'text': response[i].nombre
-                    });
-                    $(".ul_vehiculo").append(lit)
-                }
-            }
-        }
-
-        function load_direcciones() {
-            $.getJSON('@Url.Action("getdireccion", "Dashboard")', displaydata);
-        }
-
-        function load_marcas() {        
-            $.getJSON('@Url.Action("getmarcas", "Dashboard")', displaymarcas);       
-        }
-
-        function load_tiposvehiculos() {
-            $.getJSON('@Url.Action("tipovehiculo", "Dashboard")', displayvehiculos);     
-        }
-
-        function datos ( data ) {
-            var items = [];
-            $.each( data, function( key, val ) {
-                items.push( "<li id='" + key + "'class=mdl-menu__item>" + val + "</li>" );
-            });
-           $()
-        }
-    </script>
-</body>
-
-</html>
-@*.done(function (data) {
-        $.each(data, function (i, item) {
-            console.log(item);
-            console.log("i  "+i);
-            //var $li = $('</li>');
-            //$li.attr({"id": row.id,
-            //       "class":"mdl-menu__item"});
-            //$li.html(row.transmicion);
-            //$('#list_transmition').append($li);
-        })
-    })*@
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+        <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">Updates</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                Non dolore elit adipisicing ea reprehenderit consectetur culpa.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
+            </div>
+        </div>
+        <div class="demo-separator mdl-cell--1-col"></div>
+        <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+                <h3>View options</h3>
+                <ul>
+                    <li>
+                        <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Click per object</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Views per object</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Objects selected</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Objects viewed</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
+                <div class="mdl-layout-spacer"></div>
+                <i class="material-icons">location_on</i>
+            </div>
+        </div>
+    </div>
 </div>
+   
