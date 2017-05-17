@@ -211,6 +211,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlquilerController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CreateUserController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\marcasController.cs" />
     <Compile Include="Controllers\RegisterCarController.cs" />
+    <Compile Include="Models\AlquilerCarModel.cs" />
     <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Models\RegisterCarModels.cs" />
     <Compile Include="Controllers\SearchCarController.cs" />
@@ -326,6 +328,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\CreateUser\Create.cshtml" />
     <Content Include="Views\RegisterCar\Create.cshtml" />
+    <Content Include="Views\Alquiler\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -40,3 +40,10 @@ C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\bin\Debug\MySql.Web.xml
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\obj\Debug\conexion.csprojResolveAssemblyReference.cache
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\obj\Debug\conexion.dll
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\conexion\obj\Debug\conexion.pdb
+D:\gitprojects\alquicar_mvc\conexion\obj\Debug\conexion.csprojResolveAssemblyReference.cache
+D:\gitprojects\alquicar_mvc\conexion\obj\Debug\conexion.dll
+D:\gitprojects\alquicar_mvc\conexion\obj\Debug\conexion.pdb
+D:\gitprojects\alquicar_mvc\conexion\bin\Debug\conexion.dll
+D:\gitprojects\alquicar_mvc\conexion\bin\Debug\conexion.pdb
+D:\gitprojects\alquicar_mvc\conexion\bin\Debug\MySql.Data.dll
+D:\gitprojects\alquicar_mvc\conexion\bin\Debug\MySql.Web.v20.dll
