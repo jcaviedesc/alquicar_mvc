@@ -218,9 +218,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\marcasController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\RegisterCarController.cs" />
     <Compile Include="Models\AlquilerCarModel.cs" />
     <Compile Include="Models\CreateUserModel.cs" />
+    <Compile Include="Models\ProveedorModel.cs" />
     <Compile Include="Models\RegisterCarModels.cs" />
     <Compile Include="Controllers\SearchCarController.cs" />
     <Compile Include="Global.asax.cs">
@@ -235,6 +237,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Alquiler\alquiler.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cliente\clistyle.css" />
@@ -243,6 +246,7 @@
     <Content Include="Content\indigo.min.css" />
     <Content Include="Content\Login\StyleLogin.css" />
     <Content Include="Content\material.min.css" />
+    <Content Include="Content\Proveedor\proveedor.css" />
     <Content Include="Content\Searchcar\styles.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\layout.css" />
@@ -329,6 +333,7 @@
     <Content Include="Views\CreateUser\Create.cshtml" />
     <Content Include="Views\RegisterCar\Create.cshtml" />
     <Content Include="Views\Alquiler\Create.cshtml" />
+    <Content Include="Views\Proveedor\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

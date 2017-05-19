@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "RegistrarCliente";
-}
 
-<h2>Registrar Cliente</h2>
+}
+<div>
+    <h3 class="center-text">Registrar Cliente</h3>
+</div>
 <div class="mdl-grid demo-content">
     <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
         @using (Html.BeginForm())
@@ -18,16 +20,14 @@
                 <input class="mdl-textfield__input" type="text" id="apellido" name="apellido">
                 <label class="mdl-textfield__label" for="apellido">Apellidos</label>
             </div>
-            <div class="mdl-textfield mdl-pdt">
-                <label class="mdl-textfield__label">Genero</label>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genero-1">
-                    <input type="radio" id="genero-1" class="mdl-radio__button" name="genero" value="1" checked>
-                    <span class="mdl-radio__label">Masculino</span>
-                </label>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genero-2">
-                    <input type="radio" id="genero-2" class="mdl-radio__button" name="genero" value="2">
-                    <span class="mdl-radio__label">Femenino</span>
-                </label>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="Genero" name="Genero" value="Seleccione su tipo" readonly tabIndex="-1">
+                <label for="Genero" class="mdl-textfield__label">Genero</label>
+                <ul for="Genero" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item" id="azul">Femenino</li>
+                    <li class="mdl-menu__item" id="verde">Masculino</li>
+                    <li class="mdl-menu__item" id="verde">Otro</li>
+                </ul>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-pdt">
                 <input class="mdl-textfield__input" type="text" id="email" name="email">
@@ -37,16 +37,13 @@
                 <input class="mdl-textfield__input" type="password" id="password" name="password">
                 <label class="mdl-textfield__label" for="ced">contraseña</label>
             </div>
-            <div class="mdl-textfield mdl-pdt">
-                <span class="mdl-textfield__label mdl-radio__label">Tipo de cliente</span>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cliente-1">
-                    <input type="radio" id="cliente-1" class="mdl-radio__button" name="tipo_cliente" value="1" checked>
-                    <span class="mdl-radio__label">Persona Natural</span>
-                </label>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cliente-2">
-                    <input type="radio" id="cliente-2" class="mdl-radio__button" name="tipo_cliente" value="2">
-                    <span class="mdl-radio__label">Persona Juridica</span>
-                </label>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="tipo_cliente" name="tipo_cliente" value="Seleccione su tipo" readonly tabIndex="-1">
+                <label for="tipo_cliente" class="mdl-textfield__label">Tipo de cliente</label>
+                <ul for="tipo_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item" id="azul">Persona Juridica</li>
+                    <li class="mdl-menu__item" id="verde">Persona Natural</li>
+                </ul>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                 <input class="mdl-textfield__input" type="text" id="num_identificacion" name="num_identificacion">

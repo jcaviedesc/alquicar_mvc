@@ -27,7 +27,7 @@
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
                              {
                                 <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text text-center">Iniciar sesión</h2>
+                                    <h2 class="mdl-card__title-text text_center">Iniciar sesión</h2>
                                 </div>
                                 @Html.AntiForgeryToken()
                                 <div class="mdl-card__supporting-text izq-item">
@@ -56,6 +56,9 @@
                                 <p class="mdl-typography--text-center pding_b">
                                     @Html.ActionLink("Register as a new user", "Register")
                                 </p>
+                                <div class="back mdl-typography--text-center">
+                                    @Html.ActionLink("Regresar", "Index", "Home")
+                                </div>
                                 @* Enable this once you have account confirmation enabled for password reset functionality
                                     <p>
                                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
@@ -65,9 +68,7 @@
                         </section>
                     </div>
                 </div>
-                <div>
-                    @Html.ActionLink("Regresar", "Index","Home")
-                </div>
+                
         </main>
         <script>
         $(document).ready(function () {

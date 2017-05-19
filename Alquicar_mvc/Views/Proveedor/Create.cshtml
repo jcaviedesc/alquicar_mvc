@@ -1,0 +1,72 @@
+﻿@model Alquicar_mvc.Models.ProveedorModel
+
+@{
+    ViewBag.Title = "Create";
+    
+}
+<div>
+    <h3 class="center-text">Registrar Proveedor</h3>
+</div>
+<div class="mdl-grid demo-content">
+    <div class="demo-graphs  center mdl-color--white mdl-cell mdl-cell--10-col">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div>         
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })                 
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.apellido, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })                 
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.genero, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.genero, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.genero, "", new { @class = "text-danger" })
+                  
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.tipo_proveedor, htmlAttributes: new { @class = "mdl-textfield__label" })                
+                    @Html.EditorFor(model => model.tipo_proveedor, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.tipo_proveedor, "", new { @class = "text-danger" })
+                    
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.num_identificacion, htmlAttributes: new { @class = "mdl-textfield__label" })                 
+                    @Html.EditorFor(model => model.num_identificacion, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.num_identificacion, "", new { @class = "text-danger" })                 
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "mdl-textfield__label" })                   
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })            
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>

@@ -1,6 +1,6 @@
 ﻿.together-section {
     position: relative;
-    background-color: #9E9E9E;
+   /* background-color: #9E9E9E;*/
     background-size: cover;
     height: 800px;
     width: auto;
@@ -35,4 +35,7 @@
 }
 .text_center {
     margin:auto;
+}
+.back {
+    padding-bottom: 8px;
 }

@@ -233,7 +233,6 @@ C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\System.Web.WebPag
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\System.Web.WebPages.dll
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\System.Web.WebPages.Razor.dll
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\WebGrease.dll
-C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\MySql.Data.dll
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\conexion.pdb
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -267,7 +266,6 @@ C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Se
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\MySql.Data.xml
 D:\gitprojects\alquicar_mvc\Alquicar_mvc\obj\Debug\Alquicar_mvc.csprojResolveAssemblyReference.cache
 D:\gitprojects\alquicar_mvc\Alquicar_mvc\obj\Debug\Alquicar_mvc.dll
 D:\gitprojects\alquicar_mvc\Alquicar_mvc\obj\Debug\Alquicar_mvc.pdb
@@ -359,3 +357,5 @@ D:\gitprojects\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Security.OAuth.xml
 D:\gitprojects\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Security.Google.xml
 D:\gitprojects\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Security.Twitter.xml
 D:\gitprojects\alquicar_mvc\Alquicar_mvc\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\MySql.Data.dll
+C:\Users\GIECOM\Documents\GitHub\alquicar_mvc\Alquicar_mvc\bin\MySql.Data.xml

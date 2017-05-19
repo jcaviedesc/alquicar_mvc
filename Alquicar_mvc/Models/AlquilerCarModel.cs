@@ -1,6 +1,7 @@
 ﻿using conexion;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,9 +9,14 @@ namespace Alquicar_mvc.Models
 {
     public class AlquilerCarModel
     {
+        [Display(Name = "Fecha de alquiler")]
         public string start_date { get; set; }
+
+        [Display(Name = "Fecha de devolución")]
         public string final_date { get; set; }
+
         public string car_id { get; set; }
+
         public string cliente_id { get; set; }
 
         Connection ConnAlquiler = new Connection();

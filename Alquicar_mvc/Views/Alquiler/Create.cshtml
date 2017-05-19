@@ -3,40 +3,43 @@
 @{
     ViewBag.Title = "Create";
 }
-
-<h4>Alquilar Vehiculo</h4>
-<div class="mdl-grid demo-content">
-    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
+<div>
+    <h3 class="center-text">Alquilar Vehiculo</h3>
+</div>
+<div class="mdl-alquilar mdl-grid demo-content">
+    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col arbol">
         @using (Html.BeginForm())
         {  
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div >
+            <!----div -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                     @Html.LabelFor(model => model.start_date, htmlAttributes: new { @class = "mdl-textfield__label" })
-                    @Html.EditorFor(model => model.start_date, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    <input class="mdl-textfield__input" type="date" id="start_date" name="start_date" value="2017-05-18">
                     @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
                 </div>
                 
                 <!----------------------------     calendar        ------------------------>
-                <div id="cal">
+                <div id="cal" style="display:none">
                     <div class="header">
                         <span class="left button" id="prev"> &lang; </span>       
                         <span class="month-year" id="label"> June 20&0 </span>
                         <span class="right button" id="next"> &rang; </span>
                     </div>
-                    <table class="mdl-data-table mdl-js-data-table" id="days">
-                        <tr>
-                            <td>sun</td>
-                            <td>mon</td>
-                            <td>tue</td>
-                            <td>wed</td>
-                            <td>thu</td>
-                            <td>fri</td>
-                            <td>sat</td>
-                        </tr>
+                    <table class="mdl-data-table" id="days">
+                        <thead>
+                            <tr>
+                                <td>do</td>
+                                <td>lu</td>
+                                <td>ma</td>
+                                <td>mi</td>
+                                <td>ju</td>
+                                <td>vi</td>
+                                <td>sa</td>
+                            </tr>
+                        </thead>             
                     </table>
                     <div id="cal-frame">
-                        <table class="curr">
+                        <table class="curr mdl-data-table mdl-js-data-table">
                             <tbody>
                                 <tr><td class="nil"></td><td class="nil"></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
                                 <tr><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td class="today">11</td><td>12</td></tr>
@@ -48,38 +51,70 @@
                     </div>
                 </div>
 
-             </div>
+           
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                 @Html.LabelFor(model => model.final_date, htmlAttributes: new { @class = "mdl-textfield__label" })
-                <div>
-                    @Html.EditorFor(model => model.final_date, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                    @Html.ValidationMessageFor(model => model.final_date, "", new { @class = "text-danger" })
-                </div>
+                <input id="final_date" class="mdl-textfield__input" type="date" value="2017-05-18">
+                @Html.ValidationMessageFor(model => model.final_date, "", new { @class = "text-danger" })          
             </div>
 
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt" style="display:none">
                 @Html.LabelFor(model => model.car_id, htmlAttributes: new { @class = "mdl-textfield__label" })
-                <div>
-                    @Html.EditorFor(model => model.car_id, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                    @Html.ValidationMessageFor(model => model.car_id, "", new { @class = "text-danger" })
-                </div>
+                @Html.EditorFor(model => model.car_id, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                @Html.ValidationMessageFor(model => model.car_id, "", new { @class = "text-danger" })
             </div>
 
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt" style="display:none">
                 @Html.LabelFor(model => model.cliente_id, htmlAttributes: new { @class = "mdl-textfield__label" })
-                <div>
-                    @Html.EditorFor(model => model.cliente_id, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                    @Html.ValidationMessageFor(model => model.cliente_id, "", new { @class = "text-danger" })
-                </div>
+                @Html.EditorFor(model => model.cliente_id, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                @Html.ValidationMessageFor(model => model.cliente_id, "", new { @class = "text-danger" })
             </div>
             <div>
                 <div>
-                    <input type="submit" value="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
+                    <input type="submit" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
                 </div>
             </div>
          }
     </div>
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <header class="section__play-btn mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
+            <i class="material-icons">play_circle_filled</i>
+        </header>
+        <div class="mdl-card mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Caracteristicas</h2>
+            </div>
+            <div class="md-caracteristicas mdl-card__supporting-text">
+                <div><label>Tipo</label><label class="izq">Luv D-max</label></div>
+                <div><label>Direccion</label><label class="izq">hidraulica</label></div>
+                <div><label>Transmicion</label><label class="izq">automatica</label></div>
+                <div><label>Marca</label><label class="izq">Chevrolet</label></div>
+            </div>
+            <div class="mdl-card__actions">
+                <a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alquilar</a>
+            </div>
+        </div>
+    </section>
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <header class="section__play-btn mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
+            <i class="material-icons">play_circle_filled</i>
+        </header>
+        <div class="mdl-card mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Caracteristicas</h2>
+            </div>
+            <div class="md-caracteristicas mdl-card__supporting-text">
+                <div><label>Tipo</label><label class="izq">Luv D-max</label></div>
+                <div><label>Direccion</label><label class="izq">hidraulica</label></div>
+                <div><label>Transmicion</label><label class="izq">automatica</label></div>
+                <div><label>Marca</label><label class="izq">Chevrolet</label></div>
+            </div>
+            <div class="mdl-card__actions">
+                <a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alquilar</a>
+            </div>
+        </div>
+    </section>
 </div>
 
 <script>
@@ -87,7 +122,34 @@
         var cal = CALENDAR();
 
         cal.init();
+        current();
+        min_date_return();
     });
+    function current() {
+        var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+        var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
+        var f = new Date();
+        var month = monthcurrent(f.getMonth());
+        var initalDate = f.getFullYear() + "-" + month + "-" + f.getDate();
+        $('#start_date').attr({ "value": initalDate, "min": initalDate });
+        $('#final_date').val(initalDate);
+
+    }      
+    function monthcurrent(month) {
+        if (month > 10) {
+            return month;
+        } else {
+            return "0" + month;
+        }
+    }
+    function min_date_return() {
+        $('#final_date').click(function () {
+            $minimal = $('#start_date').val();
+            console.log($minimal);
+            $($(this)).attr("min", $minimal);
+        });
+    }
+
     var CALENDAR = function () {
         var wrap, label,
                 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
