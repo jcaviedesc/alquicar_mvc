@@ -44,6 +44,7 @@ namespace Alquicar_mvc.Models
         //string tipo_combustible { set; get; }
         public string placa { set; get; }
 
+        public string rutaImg { set; get; }
         //method return all types of car
         public SelectList get_tiposcar() {
             var tipovehiculolist = new List<tipovehiculo>();
@@ -60,7 +61,7 @@ namespace Alquicar_mvc.Models
                     Nombre = row["auto_nombre"].ToString()
                 });
             }
-            var listVehiculos = new SelectList(tipovehiculolist, "Id", "Nombre");
+            var listVehiculos = new SelectList(tipovehiculolist, "Id", "Nombres");
             return listVehiculos;
         }
 
@@ -80,7 +81,7 @@ namespace Alquicar_mvc.Models
 
                 });
             }
-            var list = new SelectList(ListDir, "Id", "Nombre");
+            var list = new SelectList(ListDir, "Id", "Nombres");
             return list;
         }
 
@@ -101,7 +102,7 @@ namespace Alquicar_mvc.Models
 
                 });
             }
-            var list = new SelectList(ListDir, "Id", "Nombre");
+            var list = new SelectList(ListDir, "Id", "Nombres");
             return list;
         }
 
@@ -144,15 +145,15 @@ namespace Alquicar_mvc.Models
             return registracar.Query("PR_QUERYPROPIETARIO", null);
         }
 
-        public bool RegistrarCar(RegisterCarModels car)
+        public bool RegistrarCar(RegisterCarModels car, string rutaimg)
         {
-            Parameter[] para_car = new Parameter[10];
+            Parameter[] para_car = new Parameter[11];
 
-            para_car[0] = new Parameter("_provedorid", car.proveedor_car);
+            para_car[0] = new Parameter("_proveedorid", car.proveedor_car);
             para_car[1] = new Parameter("_tipo_vehiculo", car.tipo_vehiculo);
             para_car[2] = new Parameter("_tipo_direccion", car.tipo_direccion);
             para_car[3] = new Parameter("_tipo_transmicion", car.tipo_trasmicion);
-            para_car[4] = new Parameter("_marca", car.marca);
+            para_car[4] = new Parameter("_marca_id", car.marca);
             para_car[5] = new Parameter("_modelo", car.modelo);
             para_car[6] = new Parameter("_descripcion", car.descripcion);
             //para[4] = new Parameter("_gama", car.gama);
@@ -163,6 +164,7 @@ namespace Alquicar_mvc.Models
             //para[11] = new Parameter("_maletero", car.maletero);
             //para[12] = new Parameter("_car.tipo_combustible", car.tipo_combustible);
             para_car[9] = new Parameter("_placa", car.placa);
+            para_car[10] = new Parameter("_ruta_img", rutaimg);
             Transaction[] trans = new Transaction[1];
             trans[0] = new Transaction("PR_REGISTER_CAR", para_car);
             return registracar.Transaction(trans);

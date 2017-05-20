@@ -83,9 +83,9 @@ namespace Alquicar_mvc.Models
         Connection connRegister = new Connection();
 
         //[Required]
-        //[Display(Name = "Nombre")]
+        //[Display(Name = "Nombres")]
         //[DataType(DataType.Text)]
-        //public string Nombre { get; set; }
+        //public string Nombres { get; set; }
 
         //[Required]
         //[Display(Name = "Apellido")]
@@ -125,7 +125,7 @@ namespace Alquicar_mvc.Models
         //public bool registrarUsur(RegisterViewModel us)
         //{
         //    Parameter[] para = new Parameter[8];
-        //    para[0] = new Parameter("_nombres", us.Nombre);
+        //    para[0] = new Parameter("_nombres", us.Nombres);
         //    para[1] = new Parameter("_apellidos", us.Apellido);
         //    para[2] = new Parameter("_genero", us.Genero);
         //    para[3] = new Parameter("_email", us.Email);

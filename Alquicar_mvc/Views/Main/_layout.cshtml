@@ -102,10 +102,10 @@
                         <a class="mdl-navigation__link" href="~/Dashboard/Index"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Principal</a>
                     </li>
                     <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">domain</i>Crear Rol</a>
+                        <a class="mdl-navigation__link" href="~/CreateRol/Create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">domain</i>Crear Rol</a>
                     </li>
                     <li>
-                        <a class="mdl-navigation__link" href="../CreateUser/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>Crear Usuario</a>
+                        <a class="mdl-navigation__link" href="~/CreateUser/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>Crear Usuario</a>
                     </li>
                     <li class="treview">
                         <a class="mdl-navigation__link" id="parametricas" href="#">
@@ -172,7 +172,7 @@
             @RenderBody()
         </main>
     </div>   
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
             $(".treview").click(function () {
                 $(this).children("ul").slideToggle();
@@ -181,8 +181,21 @@
             $("#salirref").click(function () {
                 $("#logoutForm").submit();
             });
-        });
 
+            $('.mdl-menu__item').click(function () {
+
+                $inputid = $(this).attr("value");
+                console.log($inputid);
+
+                $p = $("#" + $inputid).attr("value")
+                console.log("valor input  " + $p);
+
+                $("#" + $inputid).val($(this).attr("id"));
+
+                console.log($(this).attr("id"));
+            });
+        });
+    
     </script>
 </body>
 

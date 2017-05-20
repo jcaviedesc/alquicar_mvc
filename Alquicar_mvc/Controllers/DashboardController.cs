@@ -26,73 +26,7 @@ namespace Alquicar_mvc.Controllers
         {
             return View();
         }
-        //GET: registrar auto
-        [HttpGet]
-        public ActionResult Registrarcar()
-        {
-            ViewBag.proveedores = carmodel.QueryProveedor();
-            ViewBag.vehiculos = carmodel.QueryTipoVehiculo();
-            ViewBag.direcciones = carmodel.QueryDireccion();
-            ViewBag.marcas = carmodel.QueryMarcas();
-            ViewBag.transmicion = carmodel.QueryTransmition();
-            return View();
-        }
-
-        //Post Dashboard/registercar 
-        [HttpPost]
-        public ActionResult Registrarcar(RegisterCarModels car)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    carmodel.RegistrarCar(car);
-                    return RedirectToAction("Index", "Dashboard");
-                }
-                else
-                {
-                    return View();
-                }
-
-            }
-            catch
-            {
-                return View();
-            }
-
-        }
-
-        //GET: registrar cliente
-        [HttpGet]
-        public ActionResult RegistrarCliente()
-        {
-           
-            return View();
-        }
-        [HttpPost]
-        public ActionResult RegistrarCliente(ClienteModels cli)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    cliente.registrarUsur(cli);
-
-                    return RedirectToAction("Index", "Dashboard");
-                }
-                else
-                {
-                    return View();
-                }
-
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-
+       
         //Post para salir de toda la app
         [HttpPost]
         public ActionResult salirboard() {

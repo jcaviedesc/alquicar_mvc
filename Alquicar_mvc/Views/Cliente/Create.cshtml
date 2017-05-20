@@ -1,5 +1,4 @@
 ﻿@model Alquicar_mvc.Models.ClienteModels
-
 @{
     ViewBag.Title = "RegistrarCliente";
 
@@ -8,65 +7,84 @@
     <h3 class="center-text">Registrar Cliente</h3>
 </div>
 <div class="mdl-grid demo-content">
-    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
+    <div class="demo-graphs  center mdl-color--white mdl-cell mdl-cell--8-col-desktop">
         @using (Html.BeginForm())
         {
+           
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
-                <input class="mdl-textfield__input" type="text" id="nombre" name="nombre">
-                <label class="mdl-textfield__label" for="nombre">Nombres</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
-                <input class="mdl-textfield__input" type="text" id="apellido" name="apellido">
-                <label class="mdl-textfield__label" for="apellido">Apellidos</label>
-            </div>
+           
+             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                 <input class="mdl-textfield__input" type="text" id="nombre" name="nombre">
+                 <label class="mdl-textfield__label" for="nombre">Nombres</label>
+             </div>
+            <div class="padding-separator"></div>
+
+             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                 <input class="mdl-textfield__input" type="text" id="apellido" name="apellido">
+                 <label class="mdl-textfield__label" for="apellido">Apellidos</label>
+             </div>
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" type="text" id="Genero" name="Genero" value="Seleccione su tipo" readonly tabIndex="-1">
-                <label for="Genero" class="mdl-textfield__label">Genero</label>
-                <ul for="Genero" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" id="azul">Femenino</li>
-                    <li class="mdl-menu__item" id="verde">Masculino</li>
-                    <li class="mdl-menu__item" id="verde">Otro</li>
+                <input class="mdl-textfield__input" type="text" id="gen" name="gen" value="Seleccione tipo" readonly tabIndex="-1">
+                <label for="gen" class="mdl-textfield__label">Genero</label>
+                <ul for="gen" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (System.Data.DataRow row in ViewBag.Genero.Rows)
+                    {
+                        <li class="mdl-menu__item" value="Genero" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                    }
                 </ul>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-pdt">
+            <div class="padding-separator"></div>
+            <input style="display:none" class="mdl-textfield__input" type="text" id="Genero" name="Genero" value="waitinig">
+           
+            <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="text" id="email" name="email">
                 <label class="mdl-textfield__label" for="ced">E-mail</label>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-pdt">
+   
+            <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="password" id="password" name="password">
                 <label class="mdl-textfield__label" for="ced">contraseña</label>
             </div>
+            <div class="padding-separator"></div>
+
+            <!-- ---------------  tipo de cliente o propietario          -->
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" type="text" id="tipo_cliente" name="tipo_cliente" value="Seleccione su tipo" readonly tabIndex="-1">
-                <label for="tipo_cliente" class="mdl-textfield__label">Tipo de cliente</label>
-                <ul for="tipo_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" id="azul">Persona Juridica</li>
-                    <li class="mdl-menu__item" id="verde">Persona Natural</li>
+                <input class="mdl-textfield__input" type="text" id="tipo_cli" name="tipo_cli" value="Seleccione tipo" readonly tabIndex="-1">
+                <label for="tipo_cli" class="mdl-textfield__label">Tipo de cliente</label>
+                <ul for="tipo_cli" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (System.Data.DataRow row in ViewBag.TipoPer.Rows)
+                    {
+                        <li class="mdl-menu__item" value="tipo_cliente" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                    }
                 </ul>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+            <input style="display:none" class="mdl-textfield__input" type="text" id="tipo_cliente" name="tipo_cliente" value="waitinig">
+
+             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="num_identificacion" name="num_identificacion">
                 <label class="mdl-textfield__label" for="ced">Identificación</label>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+            <div class="padding-separator"></div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="phone" name="phone">
                 <label class="mdl-textfield__label" for="ced">Celular</label>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="date" id="fecha_n" name="fecha_n" value="2016-10-06">
                 <label class="mdl-textfield__label" for="tf4">Fecha de nacimiento</label>
             </div>
+
             <div>
                 <div>
                     <input id="show-dialog" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="chekear()" />
                 </div>
             </div>
-        }
-    </div>
+          }
+     </div>
 </div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 

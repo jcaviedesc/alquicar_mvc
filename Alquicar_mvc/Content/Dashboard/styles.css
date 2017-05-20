@@ -325,5 +325,9 @@ _:-ms-input-placeholder, :root .demo-graph {
 .mdl-pdt {
     margin:0 50px;
 }
-
+/*--------    register car ------------*/
+.padding-separator {
+    padding:0 15px;
+    display:inline-block;
+}
     

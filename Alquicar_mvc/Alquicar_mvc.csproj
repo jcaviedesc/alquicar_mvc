@@ -213,6 +213,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlquilerController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CreateRolController.cs" />
     <Compile Include="Controllers\CreateUserController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -221,7 +222,9 @@
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\RegisterCarController.cs" />
     <Compile Include="Models\AlquilerCarModel.cs" />
+    <Compile Include="Models\CreateRolModel.cs" />
     <Compile Include="Models\CreateUserModel.cs" />
+    <Compile Include="Models\DatosBasicosModel.cs" />
     <Compile Include="Models\ProveedorModel.cs" />
     <Compile Include="Models\RegisterCarModels.cs" />
     <Compile Include="Controllers\SearchCarController.cs" />
@@ -258,7 +261,7 @@
     <Content Include="images\alquicar-logo.png" />
     <Content Include="images\android-logo-white.png" />
     <Content Include="images\andy.png" />
-    <Content Include="images\auto-on.jpg" />
+    <Content Include="images\vehiculos\auto-on.jpg" />
     <Content Include="images\avatar.png" />
     <Content Include="images\more-from-1.png" />
     <Content Include="images\more-from-2.png" />
@@ -279,6 +282,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\vehiculos\ViewPage1.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -334,6 +338,7 @@
     <Content Include="Views\RegisterCar\Create.cshtml" />
     <Content Include="Views\Alquiler\Create.cshtml" />
     <Content Include="Views\Proveedor\Create.cshtml" />
+    <Content Include="Views\CreateRol\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

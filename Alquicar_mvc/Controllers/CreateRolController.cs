@@ -1,54 +1,43 @@
 ﻿using Alquicar_mvc.Models;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Alquicar_mvc.Controllers
 {
-    public class ClienteController : Controller
+    public class CreateRolController : Controller
     {
-        ClienteModels cli_model = new ClienteModels();
-        DatosBasicosModel datosbs = new DatosBasicosModel();
-        // GET: Cliente
+        CreateRolModel rolmod = new CreateRolModel();
+        // GET: CreateRol
         public ActionResult Index()
         {
-            DataTable datos_cli = cli_model.QueryUser();
-            return View(datos_cli);
+            return View();
         }
 
-        // GET: Cliente/Details/5
+        // GET: CreateRol/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Cliente/Create
+        // GET: CreateRol/Create
         public ActionResult Create()
         {
-            ViewBag.Genero = datosbs.QueryGenero();
-            ViewBag.TipoPer = datosbs.QueryTiposPer();
+            ViewBag.permissions = rolmod.QueryPermissionRol();
             return View();
         }
 
-        // POST: Cliente/Create
+        // POST: CreateRol/Create
         [HttpPost]
-        public ActionResult Create(ClienteModels collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    cli_model.registrarUsur(collection);
-                    return RedirectToAction("Index", "Dashboard");
-                }else
-                {
-                    return View();
-                }
-                
+                // TODO: Add insert logic here
 
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -56,15 +45,15 @@ namespace Alquicar_mvc.Controllers
             }
         }
 
-        // GET: Cliente/Edit/5
+        // GET: CreateRol/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Cliente/Edit/5
+        // POST: CreateRol/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ClienteModels collection)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
@@ -78,15 +67,15 @@ namespace Alquicar_mvc.Controllers
             }
         }
 
-        // GET: Cliente/Delete/5
+        // GET: CreateRol/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Cliente/Delete/5
+        // POST: CreateRol/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, ClienteModels collection)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {

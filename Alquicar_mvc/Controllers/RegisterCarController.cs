@@ -1,6 +1,7 @@
 ﻿using Alquicar_mvc.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,22 +37,37 @@ namespace Alquicar_mvc.Controllers
 
         // POST: RegisterCar/Create
         [HttpPost]
-        public ActionResult Create(RegisterCarModels car)
+        public ActionResult Create(RegisterCarModels car,HttpPostedFileBase vehiculoimg)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    carmodel.RegistrarCar(car);
-                    return RedirectToAction("Index", "Dashboard");
+               
+                if (vehiculoimg != null)
+                {               
+                    if (ModelState.IsValid)
+                    {
+                        string img = Path.GetFileName(vehiculoimg.FileName);
+                        string ruta = "~/images/vehiculos/" + img;
+                        string carpeta = Path.Combine(Server.MapPath("~/images/vehiculos"), img);
+                                      
+                        carmodel.RegistrarCar(car, ruta);
+                        vehiculoimg.SaveAs(carpeta);
+
+                        return RedirectToAction("Index", "Dashboard");
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
-                else
-                {
+                else {
+                    ViewBag.errorimg = "no has seleccionado una imagen";
                     return View();
                 }
+                
 
             }
-            catch
+            catch(Exception exc)
             {
                 return View();
             }

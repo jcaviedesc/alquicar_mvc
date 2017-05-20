@@ -1,0 +1,44 @@
+﻿@model Alquicar_mvc.Models.CreateRolModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<div>
+    <h3 class="center-text">Crear Rol</h3>
+</div>
+<div class="mdl-grid demo-content">
+    <div class="center demo-graphs content_card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="fre">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.rol_name, htmlAttributes: new { @class = "mdl-textfield__label" })            
+                    @Html.EditorFor(model => model.rol_name, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.rol_name, "", new { @class = "text-danger" })
+                </div>
+
+                @foreach (System.Data.DataRow row in ViewBag.permissions.Rows)
+                {
+                    <div class="mdl-check">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id=@row["id"].ToString() class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">@row["nombre"].ToString()</span>
+                        </label>
+                    </div>
+                }
+                <div class="x" style="display:none">            
+                        @Html.EditorFor(model => model.Permissions, new { htmlAttributes = new { @class = "form-control" } })      
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

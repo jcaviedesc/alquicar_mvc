@@ -5,80 +5,87 @@
 <div>
     <h3 class="center-text">Registrar Automovil</h3>
 </div>
+
 <div class="mdl-grid demo-content">
-    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-        @using (Html.BeginForm())
+    <div class="demo-graphs center mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+        @using (Html.BeginForm("create","RegisterCar",FormMethod.Post, new {enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             // ------------- proveedores ---------------------
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" type="text" id="proveedor_car" name="proveedor_car" value="selecione" readonly tabIndex="-1">
-                <label for="proveedor_car" class="mdl-textfield__label">Propietario</label>
-                <ul for="proveedor_car" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">        
+                <input class="mdl-textfield__input" type="text" id="proveedor" name="proveedor" value="selecione" readonly tabIndex="-1">
+                <label for="proveedor" class="mdl-textfield__label">Propietario</label>
+                <ul for="proveedor" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                     @foreach (System.Data.DataRow row in ViewBag.proveedores.Rows)
                     {
-                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                        <li class="mdl-menu__item" value="proveedor_car" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
                     }
                 </ul>
             </div>
+            <div class="padding-separator"></div>
             //---------- tipo de vehiculo ----------
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" type="text" id="tipo_vehiculo" name="tipo_vehiculo" value="selecione" readonly tabIndex="-1">
-                <label for="tipo_vehiculo" class="mdl-textfield__label">Direccion</label>
-                <ul for="tipo_vehiculo" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                <input class="mdl-textfield__input" type="text" id="tipo_vehiculos" name="tipo_vehiculos" value="selecione" readonly tabIndex="-1">
+                <label for="tipo_vehiculos" class="mdl-textfield__label">Tipo de auto</label>
+                <ul for="tipo_vehiculos" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                     @foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows)
                     {
-                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                        <li class="mdl-menu__item" value="tipo_vehiculo" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
                     }
                 </ul>
             </div>
+   
             //-------------- direccion  ----------------
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion" value="selecione" readonly tabIndex="-1">
-                <label for="tipo_direccion" class="mdl-textfield__label">Direccion</label>
-                <ul for="tipo_direccion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                <input class="mdl-textfield__input" type="text" id="tipo_direccions" name="tipo_direccions" value="selecione" readonly tabIndex="-1">
+                <label for="tipo_direccions" class="mdl-textfield__label">Direccion</label>
+                <ul for="tipo_direccions" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                     @foreach (System.Data.DataRow row in ViewBag.direcciones.Rows)
                     {
-                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                        <li class="mdl-menu__item" value="tipo_direccion" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
                     }
                 </ul>
             </div>
+            <div class="padding-separator"></div>
             //---------------------- tipo trasmiciones  ------------
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" type="text" id="tipo_trasmicion" name="tipo_trasmicion" value="selecione" readonly tabIndex="-1">
-                <label for="tipo_trasmicion" class="mdl-textfield__label">Transmicion</label>
-                <ul for="tipo_trasmicion" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                <input class="mdl-textfield__input" type="text" id="tipo_trasmicione" name="tipo_trasmicione" value="selecione" readonly tabIndex="-1">
+                <label for="tipo_trasmicione" class="mdl-textfield__label">Transmicion</label>
+                <ul for="tipo_trasmicione" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                     @foreach (System.Data.DataRow row in ViewBag.transmicion.Rows)
                     {
-                        <li class="mdl-menu__item" value="@row["id"].ToString()" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                        <li class="mdl-menu__item" value="tipo_trasmicion" id=@row["id"]>@row["nombre"].ToString()</li>
                     }
                 </ul>
             </div>
+            
             //------------- marca ---------------
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" type="text" id="marca" name="marca" value="selecione marca" readonly tabIndex="-1">
-                <label for="marca" class="mdl-textfield__label">Marcas</label>
-                <ul for="marca" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                <input class="mdl-textfield__input" type="text" id="marcax" name="marcax" value="selecione marca" readonly tabIndex="-1">
+                <label for="marcax" class="mdl-textfield__label">Marcas</label>
+                <ul for="marcax" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                     @foreach (System.Data.DataRow row in ViewBag.marcas.Rows)
                     {
-                        <li class="mdl-menu__item" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                        <li class="mdl-menu__item" value="marca" id=@row["id"].ToString()> @row["nombre"].ToString()</li>
                     }
                 </ul>
             </div>
+            <div class="padding-separator"></div>
             @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="gama" name="gama">
                     <label class="mdl-textfield__label" for="nombre">Gama</label>
                 </div>*@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
                 <input class="mdl-textfield__input" type="text" id="color" name="color" value="Seleccione su tipo" readonly tabIndex="-1">
-                <label for="color" class="mdl-textfield__label">Select</label>
+                <label for="color" class="mdl-textfield__label">Color</label>
                 <ul for="color" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                     <li class="mdl-menu__item" id="azul">azul</li>
                     <li class="mdl-menu__item" id="verde">verde</li>
                     <li class="mdl-menu__item" id="rojo">rojo</li>
-                    <li class="mdl-menu__item" id="Otro">Otros</li>
+                    <li class="mdl-menu__item" id="Otro">Otro</li>
                 </ul>
             </div>
+           
             @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="color" name="color">
                     <label class="mdl-textfield__label" for="nombre">Color</label>
@@ -87,27 +94,41 @@
                 <input class="mdl-textfield__input" type="text" id="cilindraje" name="cilindraje">
                 <label class="mdl-textfield__label" for="nombre">Cilindraje</label>
             </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="modelo" name="modelo">
-                            <label class="mdl-textfield__label" for="nombre">Modelo</label>
-                        </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="descripcion" name="descripcion">
-                                <label class="mdl-textfield__label" for="n">Descripcion</label>
-                            </div>
-                            @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="tipo_combustible" name="tipo_combustible">
-                                    <label class="mdl-textfield__label" for="nombre">Tipo combustible</label>
-                                </div>*@
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="placa" name="placa">
-                                <label class="mdl-textfield__label" for="c">placa</label>
-                            </div>
-                            <div>
-                                <div>
-                                    <input id="register_car" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" onclick="chekear()" />
-                                </div>
-                            </div>
+            <div class="padding-separator"></div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="modelo" name="modelo">
+                <label class="mdl-textfield__label" for="nombre">Modelo</label>
+            </div>
+            
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="descripcion" name="descripcion">
+                <label class="mdl-textfield__label" for="n">Descripcion</label>
+            </div>
+            <div class="padding-separator"></div>
+            @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="tipo_combustible" name="tipo_combustible">
+                    <label class="mdl-textfield__label" for="nombre">Tipo combustible</label>
+                </div>*@
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="placa" name="placa">
+                <label class="mdl-textfield__label" for="c">placa</label>
+            </div>
+            <div class="mdl-textfield">
+                <input type="file" id="vehiculoimg" name="vehiculoimg">
+            </div>
+            <input style="display:none" class="mdl-textfield__input" type="text" id="proveedor_car" name="proveedor_car" value="waiting">
+            <input style="display:none" class="mdl-textfield__input" type="text" id="tipo_vehiculo" name="tipo_vehiculo" value="vehiculos">
+            <input style="display:none" class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion" value="dirreccion">
+            <input style="display:none" class="mdl-textfield__input" type="text" id="tipo_trasmicion" name="tipo_trasmicion" value="trans">
+            <input style="display:none" class="mdl-textfield__input" type="text" id="marca" name="marca" value="marca">
+            <div>
+                 <div>
+                      <input id="register_car" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" onclick="chekear()" />
+                 </div>
+             </div>
         }
     </div>
     <!--div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">

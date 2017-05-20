@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alquicar_mvc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace Alquicar_mvc.Controllers
 {
     public class ProveedorController : Controller
     {
+        ProveedorModel proveedor = new ProveedorModel();
+        DatosBasicosModel datosbs = new DatosBasicosModel();
         // GET: Proveedor
         public ActionResult Index()
         {
@@ -23,18 +26,25 @@ namespace Alquicar_mvc.Controllers
         // GET: Proveedor/Create
         public ActionResult Create()
         {
+            ViewBag.Genero = datosbs.QueryGenero();
+            ViewBag.TipoPer = datosbs.QueryTiposPer();
             return View();
         }
 
         // POST: Proveedor/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ProveedorModel pro)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    proveedor.registrarProveedor(pro);
+                    return RedirectToAction("index", "Dashboard");
+                }
+                else {
+                    return RedirectToAction("Create");
+                }             
             }
             catch
             {

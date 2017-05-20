@@ -26,7 +26,7 @@ namespace Alquicar_mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.permissions = user.QueryPermissions();
-            ViewBag.roles = user.QueryPermissions();
+            ViewBag.roles = user.QueryRoles();
             return View();
         }
 
