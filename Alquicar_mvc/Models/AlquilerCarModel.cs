@@ -30,12 +30,12 @@ namespace Alquicar_mvc.Models
         {
             Parameter[] data_alquiler = new Parameter[4];
             data_alquiler[0] = new Parameter("_start_date", alquiler.start_date);
-            data_alquiler[1] = new Parameter("_final_date", alquiler.start_date);
-            data_alquiler[2] = new Parameter("_car_id", alquiler.start_date);
-            data_alquiler[3] = new Parameter("_cliente_id", alquiler.start_date);
+            data_alquiler[1] = new Parameter("_final_date", alquiler.final_date);
+            data_alquiler[2] = new Parameter("_car_id", alquiler.car_id);
+            data_alquiler[3] = new Parameter("_cliente_id", alquiler.cliente_id);
 
             Transaction[] trans = new Transaction[1];
-            trans[0] = new Transaction("PR_INSRALQUILER", data_alquiler);
+            trans[0] = new Transaction("PR_ALQUILER", data_alquiler);
             return ConnAlquiler.Transaction(trans);
         }
     }

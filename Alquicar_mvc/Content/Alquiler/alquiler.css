@@ -128,6 +128,7 @@
 .section--center {    
     max-width: 525px;
     width: 525px;
+    margin-bottom:10px;
 }
 .md-caracteristicas label {
     font-size: 16px;
@@ -138,3 +139,24 @@
 .middle {
     display:inline-block;
 }
+.demo-card-event.mdl-card {
+  width: 256px;
+  height: 256px;
+  background: #3E4EB8;
+}
+.demo-card-event > .mdl-card__actions {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.demo-card-event > .mdl-card__title {
+  align-items: flex-start;
+  text-aling:center;
+}
+.demo-card-event > .mdl-card__title > h4 {
+  margin-top: 0;
+}
+.demo-card-event > .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+

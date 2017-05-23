@@ -79,6 +79,7 @@ namespace Alquicar_mvc.Controllers
                     Session["status"] = status;
                     Session["nombre_user"] = login.Rows[0]["Nombres"].ToString()+" "+login.Rows[0]["Apellidos"].ToString(); 
                     string tipo = login.Rows[0]["rol_name"].ToString();
+                    Session["user_id"] = login.Rows[0]["Id"];
                     Session["email"] = userLog.Email;
                     Session["rol"] = tipo;
                     if (tipo.Substring(0, 2) == "ad") {

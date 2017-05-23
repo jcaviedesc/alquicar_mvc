@@ -8,13 +8,13 @@
 </div>
 <div class="mdl-alquilar mdl-grid demo-content">
     <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col arbol">
-        @using (Html.BeginForm())
-        {  
+        @using (Html.BeginForm("Create", "Alquiler", FormMethod.Post))
+        {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <!----div -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                     @Html.LabelFor(model => model.start_date, htmlAttributes: new { @class = "mdl-textfield__label" })
-                    <input class="mdl-textfield__input" type="date" id="start_date" name="start_date" value="2017-05-18">
+                    <input class="mdl-textfield__input" type="date" id="start_date" name="start_date" value="@ViewBag.idate">
                     @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
                 </div>
                 
@@ -55,50 +55,94 @@
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                 @Html.LabelFor(model => model.final_date, htmlAttributes: new { @class = "mdl-textfield__label" })
-                <input id="final_date" class="mdl-textfield__input" type="date" value="2017-05-18">
+                <input id="final_date" name="final_date" class="mdl-textfield__input" type="date" value="@ViewBag.fdate">
                 @Html.ValidationMessageFor(model => model.final_date, "", new { @class = "text-danger" })          
             </div>
 
+            
+
+         
+            <div>
+                <div>
+                    <input type="submit" id="show-dialog" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
+                </div>
+            </div>
+         }
+    </div>
+    <div style="display:none">
+        @using (Html.BeginForm("alquilar", "Alquiler", FormMethod.Post, new { id = "alquilarForm" }))
+        {
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt" style="display:none">
                 @Html.LabelFor(model => model.car_id, htmlAttributes: new { @class = "mdl-textfield__label" })
                 @Html.EditorFor(model => model.car_id, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
                 @Html.ValidationMessageFor(model => model.car_id, "", new { @class = "text-danger" })
             </div>
-
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt" style="display:none">
                 @Html.LabelFor(model => model.cliente_id, htmlAttributes: new { @class = "mdl-textfield__label" })
-                @Html.EditorFor(model => model.cliente_id, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                @Html.EditorFor(model => model.cliente_id, new { htmlAttributes = new { @class = "mdl-textfield__input", @value="@Session['user_id'].ToString()"} })
                 @Html.ValidationMessageFor(model => model.cliente_id, "", new { @class = "text-danger" })
             </div>
-            <div>
-                <div>
-                    <input type="submit" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
-                </div>
-            </div>
-         }
+        }
     </div>
-    @foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows) {
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-        <header class="section__play-btnr mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
-            <img width="210" height="210" src="@Url.Action("ImagePath(@row['foto'].ToString())")"/>
-        </header>
-        <div class="mdl-card mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Caracteristicas</h2>
-            </div>
-            <div class="md-caracteristicas mdl-card__supporting-text">
-                <div><label>Tipo</label><label class="izq">@row["tipo"].ToString()</label></div>
-                <div><label>Direccion</label><label class="izq">@row["direccion"].ToString()</label></div>
-                <div><label>Transmicion</label><label class="izq">@row["transmicion"].ToString()</label></div>
-                <div><label>Marca</label><label class="izq">@row["marca"].ToString()</label></div>
-            </div>
-            <div class="mdl-card__actions">
-                <a href="#" id="@row["id"].ToString()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alquilar</a>
-            </div>
+    
+
+    <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title">Alquilar</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Desea alquilar este vehiculo?
+            </p>
         </div>
-    </section>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button accept">aceptar</button>
+            <button type="button" class="mdl-button close">cancelar</button>
+        </div>
+    </dialog>
+  
+
+    <div id="modalyes" style="display:none" class="demo-card-event mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <h4>Alquilar vehiculo</h4>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Desea alquilar este vehiculo?
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <button id="acceptmdl" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                aceptar
+            </button>
+            <div class="mdl-layout-spacer"></div>
+            <button id="canelarmdl" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                cancelar
+            </button>
+        </div>
+    </div>
+    @if (ViewBag.vehiculos != null)
+    {
+        foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows)
+        {
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <header class="section__play-btnr mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
+                    <img width="210" height="210" src="@Url.Action("@row['foto'].ToString()")" />
+                </header>
+                <div class="mdl-card mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Caracteristicas</h2>
+                    </div>
+                    <div class="md-caracteristicas mdl-card__supporting-text">
+                        <div><label>Tipo</label><label class="izq">@row["tipo"].ToString()</label></div>
+                        <div><label>Direccion</label><label class="izq">@row["direccion"].ToString()</label></div>
+                        <div><label>Transmicion</label><label class="izq">@row["transmicion"].ToString()</label></div>
+                        <div><label>Marca</label><label class="izq">@row["marca"].ToString()</label></div>
+                    </div>
+                    <div class="mdl-card__actions cars">
+                        <a href="#" id="@row["id"].ToString()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alquilar</a>
+                    </div>
+                </div>
+            </section>
+        }
     }
- 
+    
 </div>
 
 <script>
@@ -108,7 +152,39 @@
         cal.init();
         current();
         min_date_return();
+        modal();
     });
+    function modal() {
+        $('.cars .mdl-button').click(function () {
+            $id = $($(this)).attr('id');
+            $('#modalyes').fadeIn();
+            $('#car_id').val($id);
+            $('#acceptmdl').click(function () {           
+                var cliente = @Session["user_id"].ToString();
+                $('#cliente_id').val(cliente);
+                $('#alquilarForm').submit()
+            });
+            $('#canelarmdl').click(function () {
+                $('#modalyes').fadeOut();
+            });
+            console.log($id);       
+        });     
+       
+    }
+    function modalaux() {
+        
+            var dialog = document.querySelector('dialog');
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            dialog.showModal();
+            
+            dialog.querySelector('.close').addEventListener('click', function () {
+                dialog.close();
+            });
+    
+    }
+
     function current() {
         var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
         var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");

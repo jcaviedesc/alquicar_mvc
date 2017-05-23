@@ -26,19 +26,37 @@ namespace Alquicar_mvc.Controllers
         // GET: Alquiler/Create
         public ActionResult Create()
         {
-            ViewBag.vehiculos = alquilerM.QueryVehiculos();
+            ViewBag.idate = "2017-01-2";
+            ViewBag.fdate = "2018-05-23";
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult alquilar(AlquilerCarModel alquilerm)
+        {
+            try
+            {
+                alquilerM.RegisterAlquiler(alquilerm);
+
+                return RedirectToAction("Index","Dashboard");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Alquiler/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(string start_date, string final_date, AlquilerCarModel alquilerm)
         {
             try
             {
-                // TODO: Add insert logic here
+                ViewBag.idate = start_date;
+                ViewBag.fdate = final_date;
+                ViewBag.vehiculos = alquilerM.QueryVehiculos();
 
-                return RedirectToAction("Index");
+                return View();
             }
             catch
             {
