@@ -117,14 +117,14 @@
 .arbol {
  margin:15px auto;
 }
-.section__play-btn {
+/*.section__play-btn {
     background-image: url('https://http2.mlstatic.com/D_Q_NP_635054-MCO25600682985_052017-H.webp');
     background-size: cover;
     max-width: 100%;
     max-height: 100%;
     width: 210px;
     height: 210px;
-}
+}*/
 .section--center {    
     max-width: 525px;
     width: 525px;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alquicar_mvc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace Alquicar_mvc.Controllers
 {
     public class AlquilerController : Controller
     {
+        AlquilerCarModel alquilerM = new AlquilerCarModel();
         // GET: Alquiler
         public ActionResult Index()
         {
@@ -24,6 +26,7 @@ namespace Alquicar_mvc.Controllers
         // GET: Alquiler/Create
         public ActionResult Create()
         {
+            ViewBag.vehiculos = alquilerM.QueryVehiculos();
             return View();
         }
 

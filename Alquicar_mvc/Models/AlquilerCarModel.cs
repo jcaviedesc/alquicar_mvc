@@ -20,6 +20,12 @@ namespace Alquicar_mvc.Models
         public string cliente_id { get; set; }
 
         Connection ConnAlquiler = new Connection();
+
+        public System.Data.DataTable QueryVehiculos()
+        {
+            return ConnAlquiler.Query("PR_QUERYCARS", null);
+        }
+
         public bool RegisterAlquiler(AlquilerCarModel alquiler)
         {
             Parameter[] data_alquiler = new Parameter[4];

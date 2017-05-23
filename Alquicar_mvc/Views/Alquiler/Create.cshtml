@@ -77,44 +77,28 @@
             </div>
          }
     </div>
+    @foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows) {
     <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-        <header class="section__play-btn mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
-            <i class="material-icons">play_circle_filled</i>
+        <header class="section__play-btnr mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
+            <img width="210" height="210" src="@Url.Action("ImagePath(@row['foto'].ToString())")"/>
         </header>
         <div class="mdl-card mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Caracteristicas</h2>
             </div>
             <div class="md-caracteristicas mdl-card__supporting-text">
-                <div><label>Tipo</label><label class="izq">Luv D-max</label></div>
-                <div><label>Direccion</label><label class="izq">hidraulica</label></div>
-                <div><label>Transmicion</label><label class="izq">automatica</label></div>
-                <div><label>Marca</label><label class="izq">Chevrolet</label></div>
+                <div><label>Tipo</label><label class="izq">@row["tipo"].ToString()</label></div>
+                <div><label>Direccion</label><label class="izq">@row["direccion"].ToString()</label></div>
+                <div><label>Transmicion</label><label class="izq">@row["transmicion"].ToString()</label></div>
+                <div><label>Marca</label><label class="izq">@row["marca"].ToString()</label></div>
             </div>
             <div class="mdl-card__actions">
-                <a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alquilar</a>
+                <a href="#" id="@row["id"].ToString()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alquilar</a>
             </div>
         </div>
     </section>
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-        <header class="section__play-btn mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
-            <i class="material-icons">play_circle_filled</i>
-        </header>
-        <div class="mdl-card mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Caracteristicas</h2>
-            </div>
-            <div class="md-caracteristicas mdl-card__supporting-text">
-                <div><label>Tipo</label><label class="izq">Luv D-max</label></div>
-                <div><label>Direccion</label><label class="izq">hidraulica</label></div>
-                <div><label>Transmicion</label><label class="izq">automatica</label></div>
-                <div><label>Marca</label><label class="izq">Chevrolet</label></div>
-            </div>
-            <div class="mdl-card__actions">
-                <a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alquilar</a>
-            </div>
-        </div>
-    </section>
+    }
+ 
 </div>
 
 <script>

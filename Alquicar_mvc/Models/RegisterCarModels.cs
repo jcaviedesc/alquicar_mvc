@@ -43,8 +43,9 @@ namespace Alquicar_mvc.Models
         //string maletero { set; get; }
         //string tipo_combustible { set; get; }
         public string placa { set; get; }
+        public string kilomentros { set; get; }
 
-        public string rutaImg { set; get; }
+        //public string rutaImg { set; get; }
         //method return all types of car
         public SelectList get_tiposcar() {
             var tipovehiculolist = new List<tipovehiculo>();
@@ -147,7 +148,7 @@ namespace Alquicar_mvc.Models
 
         public bool RegistrarCar(RegisterCarModels car, string rutaimg)
         {
-            Parameter[] para_car = new Parameter[11];
+            Parameter[] para_car = new Parameter[12];
 
             para_car[0] = new Parameter("_proveedorid", car.proveedor_car);
             para_car[1] = new Parameter("_tipo_vehiculo", car.tipo_vehiculo);
@@ -165,6 +166,7 @@ namespace Alquicar_mvc.Models
             //para[12] = new Parameter("_car.tipo_combustible", car.tipo_combustible);
             para_car[9] = new Parameter("_placa", car.placa);
             para_car[10] = new Parameter("_ruta_img", rutaimg);
+            para_car[11] = new Parameter("_km", car.kilomentros);
             Transaction[] trans = new Transaction[1];
             trans[0] = new Transaction("PR_REGISTER_CAR", para_car);
             return registracar.Transaction(trans);
