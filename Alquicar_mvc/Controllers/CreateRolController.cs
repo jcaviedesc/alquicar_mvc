@@ -1,6 +1,7 @@
 ﻿using Alquicar_mvc.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +14,8 @@ namespace Alquicar_mvc.Controllers
         // GET: CreateRol
         public ActionResult Index()
         {
-            return View();
+            DataTable roles = rolmod.QueryRolesCurrent();
+            return View(roles);
         }
 
         // GET: CreateRol/Details/5
@@ -31,12 +33,11 @@ namespace Alquicar_mvc.Controllers
 
         // POST: CreateRol/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CreateRolModel collectionRol)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                rolmod.RegisterRol(collectionRol);
                 return RedirectToAction("Index");
             }
             catch

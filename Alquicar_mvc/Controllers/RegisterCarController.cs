@@ -1,6 +1,7 @@
 ﻿using Alquicar_mvc.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,8 @@ namespace Alquicar_mvc.Controllers
         // GET: RegisterCar
         public ActionResult Index()
         {
-            return View();
+            DataTable autos = carmodel.QueryCurrentCars();
+            return View(autos);
         }
 
         // GET: RegisterCar/Details/5

@@ -1,28 +1,28 @@
-﻿<link href="~/Content/cliente/clistyle.css" rel="stylesheet" />
+﻿
 
 @{
     ViewBag.Title = "Index";
+    
 }
 
-    <!----div  class="mdl-cell mdl-cell--10-col"-->
-<div class="mdl-grid demo-content">
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet center">
-
+<div  class="mdl-grid demo-content">
+    <div class="center">
         <table class="mdl-data-table mdl-js-data-table">
             <thead>
                 <tr>
                     @foreach (System.Data.DataColumn col in Model.Columns)
-                    {
-                        <th class="mdl-data-table__cell--non-numeric"> @col.Caption</th>}
+                     {
+                        <th class="mdl-data-table__cell--non-numeric"> @col.Caption</th>
+                     }
                     <th class="mdl-data-table__cell--non-numeric"> opciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (System.Data.DataRow row in Model.Rows)
-            {
+                {
                     <tr>
                         @foreach (var cell in row.ItemArray)
-                {
+                        {
                             <td class="mdl-data-table__cell--non-numeric"> @cell.ToString() </td>
                         }
 
@@ -32,11 +32,9 @@
                             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                         </td>
                     </tr>
-
+                    
                 }
             </tbody>
         </table>
     </div>
 </div>
-
-  <!--/div-->

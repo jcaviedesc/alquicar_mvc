@@ -38,7 +38,7 @@ namespace Alquicar_mvc.Controllers
             {
                 alquilerM.RegisterAlquiler(alquilerm);
 
-                return RedirectToAction("Index","Dashboard");
+                return RedirectToAction("Index");
             }
             catch
             {

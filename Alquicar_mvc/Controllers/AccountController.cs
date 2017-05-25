@@ -78,11 +78,11 @@ namespace Alquicar_mvc.Controllers
                 if (status == "OK"){
                     Session["status"] = status;
                     Session["nombre_user"] = login.Rows[0]["Nombres"].ToString()+" "+login.Rows[0]["Apellidos"].ToString(); 
-                    string tipo = login.Rows[0]["rol_name"].ToString();
+                    string rol = login.Rows[0]["rol_name"].ToString();
                     Session["user_id"] = login.Rows[0]["Id"];
                     Session["email"] = userLog.Email;
-                    Session["rol"] = tipo;
-                    if (tipo.Substring(0, 2) == "ad") {
+                    Session["rol"] = rol;
+                    if (rol != "default") {
                         return RedirectToAction("Index", "Dashboard");
                     }else
                     {
@@ -100,6 +100,11 @@ namespace Alquicar_mvc.Controllers
             {
                 return View(userLog);
             }
+        }
+
+        public void crearmenu(string rolname) {
+
+
         }
         //[HttpPost]
         //[AllowAnonymous]

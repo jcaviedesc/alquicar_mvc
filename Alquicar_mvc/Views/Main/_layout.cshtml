@@ -128,10 +128,10 @@
                                 <a class="mdl-navigation__link" href="../cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">portrait</i>Clientes</a>
                             </li>
                             <li>
-                                <a class="mdl-navigation__link" href="../cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>Alquileres</a>
+                                <a class="mdl-navigation__link" href="../Alquiler"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>Alquileres</a>
                             </li>
                             <li>
-                                <a class="mdl-navigation__link" href="../cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Autos</a>
+                                <a class="mdl-navigation__link" href="../RegisterCar"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Autos</a>
                             </li>
                         </ul>
                     </li>
@@ -172,31 +172,7 @@
             @RenderBody()
         </main>
     </div>   
-    <script>
-        $(document).ready(function () {
-            $(".treview").click(function () {
-                $(this).children("ul").slideToggle();
-            });
-
-            $("#salirref").click(function () {
-                $("#logoutForm").submit();
-            });
-
-            $('.mdl-menu__item').click(function () {
-
-                $inputid = $(this).attr("value");
-                console.log($inputid);
-
-                $p = $("#" + $inputid).attr("value")
-                console.log("valor input  " + $p);
-
-                $("#" + $inputid).val($(this).attr("id"));
-
-                console.log($(this).attr("id"));
-            });
-        });
-    
-    </script>
+    <script src="~/Scripts/Layout/MainScript.js"></script>
 </body>
 
 </html>

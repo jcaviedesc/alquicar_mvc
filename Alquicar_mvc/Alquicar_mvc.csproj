@@ -205,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -292,6 +291,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Layout\MainScript.js" />
     <Content Include="Scripts\material.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -339,6 +339,8 @@
     <Content Include="Views\Alquiler\Create.cshtml" />
     <Content Include="Views\Proveedor\Create.cshtml" />
     <Content Include="Views\CreateRol\Create.cshtml" />
+    <Content Include="Views\CreateRol\Index.cshtml" />
+    <Content Include="Views\RegisterCar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,11 +9,11 @@ body {
 
 .demo-card-square > .mdl-card__title {
     color: #fff;
-    background: url('../Img/518084-background-hd.jpg') center / cover;
+    /*background: url('../Img/518084-background-hd.jpg') center / cover;*/
 
 }
 .demo-card-square > .xt{
-    background:url('../../Img/fd.jpg') center/cover;
+    /*background:url('../../Img/fd.jpg') center/cover;*/
 }
 
 

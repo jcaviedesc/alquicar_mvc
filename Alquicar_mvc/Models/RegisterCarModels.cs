@@ -146,6 +146,12 @@ namespace Alquicar_mvc.Models
             return registracar.Query("PR_QUERYPROPIETARIO", null);
         }
 
+        public System.Data.DataTable QueryCurrentCars()
+        {
+            return registracar.Query("PR_QUERYCARCURRENT", null);
+        }
+
+
         public bool RegistrarCar(RegisterCarModels car, string rutaimg)
         {
             Parameter[] para_car = new Parameter[12];
