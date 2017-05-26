@@ -7,16 +7,21 @@
         $("#logoutForm").submit();
     });
 
-    $('.mdl-menu__item').click(function () {
+    $('.cars .mdl-menu__item').click(function () {
 
         $inputid = $(this).attr("value");
-        console.log($inputid);
-
         $p = $("#" + $inputid).attr("value")
-        console.log("valor input  " + $p);
-
-        $("#" + $inputid).val($(this).attr("id"));
-
-        console.log($(this).attr("id"));
+        $("#" + $inputid).val($(this).attr("id"));     
     });
+
+    //$(".register_check").click(function () {
+    //    var per = "";
+    //    $("input:checkbox:checked").each(function () {
+    //        per += $(this).attr("id") + ",";
+    //        console.log(per);
+    //    });
+
+    //    $('#Permissions').val(per);
+    //    $('#UserForm').submit();
+    //});
 });

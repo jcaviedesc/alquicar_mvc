@@ -22,8 +22,9 @@ namespace Alquicar_mvc.Models
         }
 
         public System.Data.DataTable QueryRolesCurrent() {
-            return rolconn.Query("PR_QUERYROLESCURRENT",null);
+            return rolconn.Query("PR_QUERYROLES", null);
         }
+
         public bool RegisterRol(CreateRolModel Role)
         {
             Parameter[] para = new Parameter[2];

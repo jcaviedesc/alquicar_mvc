@@ -330,4 +330,11 @@ _:-ms-input-placeholder, :root .demo-graph {
     padding:0 15px;
     display:inline-block;
 }
+.padding-separator-a {
+    padding:0 20px;
+    display:inline-block;
+}
+.margin {
+   margin-bottom: 40px;
+}
     

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    int cont = 1;
     
 }
 
@@ -10,6 +11,7 @@
         <table class="mdl-data-table mdl-js-data-table">
             <thead>
                 <tr>
+                    <th class="mdl-data-table__cell--non-numeric">num</th>
                     @foreach (System.Data.DataColumn col in Model.Columns)
                      {
                         <th class="mdl-data-table__cell--non-numeric"> @col.Caption</th>
@@ -21,6 +23,7 @@
                 @foreach (System.Data.DataRow row in Model.Rows)
                 {
                     <tr>
+                        <td class="mdl-data-table__cell--non-numeric">@cont</td>
                         @foreach (var cell in row.ItemArray)
                         {
                             <td class="mdl-data-table__cell--non-numeric"> @cell.ToString() </td>
@@ -32,7 +35,8 @@
                             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                         </td>
                     </tr>
-                    
+                    cont = cont + 1;
+
                 }
             </tbody>
         </table>

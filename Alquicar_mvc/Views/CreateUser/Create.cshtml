@@ -7,76 +7,95 @@
     <h3 class="center-text">Crear Usuario</h3>
 </div>
 <div class="mdl-grid demo-content">
-    <div class="content_card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
+    <div class="demo-graphs margin content_card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
         @using (Html.BeginForm("Create", "CreateUser", FormMethod.Post, new { id = "UserForm" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="column">
-                <div class="center">
-
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                        <input class="mdl-textfield__input" type="text" id="r" name="r" value="Seleccione rol" readonly tabIndex="-1">
-                        <label for="r" class="mdl-textfield__label">Rol</label>
-                        <ul for="r" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                            @foreach (System.Data.DataRow row in ViewBag.roles.Rows)
-                            {
-                                <li class="mdl-menu__item" value="Rol" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
-                            }
-                        </ul>
-                    </div>
-                    <input style="display:none" class="mdl-textfield__input" type="text" id="Rol" name="Rol" value="waitinig">
-
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    </div>
+           
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
-            </div>
 
-            <div class="column">
-                <div class="center">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                    </div>
+                <div class="padding-separator-a"></div>
 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                    </div>
-
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="display:none">
-                        @Html.LabelFor(model => model.Permissions, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.EditorFor(model => model.Permissions, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                    </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                    <input class="mdl-textfield__input" type="text" id="r" name="r" value="Seleccione rol" readonly tabIndex="-1">
+                    <label for="r" class="mdl-textfield__label">Rol</label>
+                    <ul for="r" class="mdl-menu mdl-menu--bottom-left mdl-js-menu cuser">
+                        @foreach (System.Data.DataRow row in ViewBag.roles.Rows)
+                        {
+                            <li class="mdl-menu__item" value=@row["permisos"].ToString() id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                        }
+                    </ul>
                 </div>
-            </div>
+                <input style="display:none" class="mdl-textfield__input" type="text" id="Rol" name="Rol" value="waitinig">
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="display:none">
+                    @Html.LabelFor(model => model.Permissions, htmlAttributes: new { @class = "mdl-textfield__label" })
+                    @Html.EditorFor(model => model.Permissions, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                </div>
         }
     </div>
-    <div class="content_card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
-        @foreach (System.Data.DataRow row in ViewBag.permissions.Rows)
-        {
-            <div class="mdl-check">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for=@row["id"].ToString()>
-                    <input type="checkbox" id=@row["id"].ToString() class="mdl-checkbox__input">
-                    <span class="mdl-checkbox__label">@row["nombre"].ToString()</span>
-                </label>
-            </div>
-        }
+
+    <div class="center demo-graphs content_card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
         <div>
-            <div>
-                <input id="register_user" value="Registrar" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" />
+            <h6 class="center-text">permisos</h6>
+        </div>
+        <div>
+            @foreach (System.Data.DataRow row in ViewBag.permissions.Rows)
+            {
+                <div class="mdl-check">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for=@row["id"].ToString()>
+                        <input type="checkbox" id=@row["id"].ToString() class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">@row["nombre"].ToString()</span>
+                    </label>
+                </div>
+            }
+        </div>
+
+        <div class="t">
+            <div class="s">
+                <input type="text" value="Create" class="register_check mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" />
             </div>
         </div>
     </div>
+
 </div>
+
 <script>
     $(document).ready(function () {
-        $("#register_user").click(function () {
+        $(".cuser .mdl-menu__item").click(function () {
+            alert("hola" + $(this).attr("value"))
+            $inputid = $(this).attr("value");
+            var permisos = $inputid.split(",");
+            var max = permisos.length;
+            $("input:checkbox").each(function () {
+                for (var i = 0; i <= max; i++) {
+                    if ($(this).attr("id") === permisos[i]) {
+                        $(this).parent().addClass("is-checked");
+                         $(this).attr("checked", "checked");
+                    }
+                }
+                $(this).attr('disabled', 'disabled');          
+            });
+        });
+
+        $(".register_check").click(function () {
             var per = "";
             $("input:checkbox:checked").each(function() {
                 per += $(this).attr("id") + ",";
@@ -91,6 +110,4 @@
 
 
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

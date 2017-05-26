@@ -35,10 +35,24 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" />
+                        <input type="submit" value="Create" class="register_check mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-form  mdl-button--colored" />
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $(".register_check").click(function () {
+            var per = "";
+            $("input:checkbox:checked").each(function() {
+                per += $(this).attr("id") + ",";
+                console.log(per);
+            });
+
+            $('#Permissions').val(per.substring(0,(per.length-1)));
+            $('#UserForm').submit();
+        });
+    });
+</script>
