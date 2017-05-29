@@ -38,7 +38,7 @@ namespace Alquicar_mvc.Controllers
             try
             {
                 rolmod.RegisterRol(collectionRol);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Dashboard");
             }
             catch
             {

@@ -42,13 +42,13 @@ namespace Alquicar_mvc.Models
 
         public bool RegisterUser(CreateUserModel user) {
             Parameter[] para = new Parameter[4];
-            para[0] = new Parameter("_Email",user.Email);
-            para[1] = new Parameter("_Password",user.Password);
-            para[2] = new Parameter("_Permissions", user.Permissions);
-            para[3] = new Parameter("_Rol",user.Rol);
+            para[0] = new Parameter("_email",user.Email);
+            para[1] = new Parameter("_password",user.Password);
+            para[2] = new Parameter("_permissions", user.Permissions);
+            para[3] = new Parameter("_rol",user.Rol);
  
             Transaction[] trans = new Transaction[1];
-            trans[0] = new Transaction("PR_CREATEUSER", para);
+            trans[0] = new Transaction("PR_INSRUSER", para);
             return conbd.Transaction(trans);
         }
     }

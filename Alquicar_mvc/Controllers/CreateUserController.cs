@@ -32,18 +32,19 @@ namespace Alquicar_mvc.Controllers
 
         // POST: CreateUser/Create
         [HttpPost]
-        public ActionResult Create(CreateUserModel collection)
+        public ActionResult Create(CreateUserModel collectionUser)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    user.RegisterUser(collection);
-                    return RedirectToAction("Index");
-                }
-                else {
-                    return View();
-                }           
+                user.RegisterUser(collectionUser);
+                return RedirectToAction("Index", "Cliente");
+                //if (ModelState.IsValid)
+                //{
+                   
+                //}
+                //else {
+                //    return View();
+                //}           
             }
             catch
             {

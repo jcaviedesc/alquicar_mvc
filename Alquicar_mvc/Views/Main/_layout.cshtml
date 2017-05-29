@@ -101,69 +101,7 @@
                     <li>
                         <a class="mdl-navigation__link" href="~/Dashboard/Index"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Principal</a>
                     </li>
-                    <li>
-                        <a class="mdl-navigation__link" href="~/CreateRol/Create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">domain</i>Crear Rol</a>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href="~/CreateUser/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>Crear Usuario</a>
-                    </li>
-                    <li class="treview">
-                        <a class="mdl-navigation__link" id="parametricas" href="#">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">create</i>
-                           <span>parametricas</span><span class="pull-right-container"><i class="fa-angle-left pull-right material-icons">keyboard_arrow_down</i></span> 
-                        </a>
-                        <ul id="parametricas" class="treeview-menu">
-                            <li>
-                                <a class="mdl-navigation__link" href="../agregar_auto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>autos</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="treview">
-                        <a class="mdl-navigation__link" id="query"href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">equalizer</i>
-                               <span>Reportes</span>
-                           <span class="pull-right-container"><i class="fa-angle-left pull-right material-icons">keyboard_arrow_down</i></span>
-                        </a>
-                        <ul id="consultas" class="treeview-menu">
-                            <li>
-                                <a class="mdl-navigation__link" href="../cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">portrait</i>Clientes</a>
-                            </li>
-                            <li>
-                                <a class="mdl-navigation__link" href="../Alquiler"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>Alquileres</a>
-                            </li>
-                            <li>
-                                <a class="mdl-navigation__link" href="../RegisterCar"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Autos</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete_sweep</i>Deshabilitar</a>
-                    </li>
-                    <li class="treview">
-                        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">receipt</i><span>Registrar</span>
-                          <span class="pull-right-container"><i class="fa-angle-left pull-right material-icons">keyboard_arrow_down</i>
-                          </span></a>
-                        <ul id="registros" class="treeview-menu">
-                            <li>
-                                <a class="mdl-navigation__link" href="~/RegisterCar/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Auto</a>
-                            </li>
-                            <li>
-                                <a class="mdl-navigation__link" href="~/Cliente/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">portrait</i>Cliente</a>
-                            </li>
-                            <li>
-                                <a class="mdl-navigation__link" href="~/Proveedor/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_walk</i>Proveedor</a>
-                            </li>
-                            <li>
-                                <a class="mdl-navigation__link" href="~/Alquiler/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>Alquiler</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
-                    </li>
-                    <div class="mdl-layout-spacer"></div>
-                    <li>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-                    </li>
+                    @Html.Raw(@Session["menu"])
 
                 </ul>
             </nav>
@@ -176,3 +114,71 @@
 </body>
 
 </html>
+@*---------------------------------menu base para seguir construyendo el dinamico --------------------------
+    <li>
+    <a class="mdl-navigation__link" href="~/CreateRol/Create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">domain</i>Crear Rol</a>
+</li>
+<li>
+    <a class="mdl-navigation__link" href="~/CreateUser/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">person_add</i>Crear Usuario</a>
+</li>
+<li class="treview">
+    <a class="mdl-navigation__link" id="parametricas" href="#">
+        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">create</i>
+        <span>parametricas</span><span class="pull-right-container"><i class="fa-angle-left pull-right material-icons">keyboard_arrow_down</i></span>
+    </a>
+    <ul id="parametricas" class="treeview-menu">
+        <li>
+            <a class="mdl-navigation__link" href="../agregar_auto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>autos</a>
+        </li>
+    </ul>
+</li>
+<li class="treview">
+    <a class="mdl-navigation__link" id="query" href="#">
+        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">equalizer</i>
+        <span>Reportes</span>
+        <span class="pull-right-container"><i class="fa-angle-left pull-right material-icons">keyboard_arrow_down</i></span>
+    </a>
+    <ul id="consultas" class="treeview-menu">
+        <li>
+            <a class="mdl-navigation__link" href="../cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">portrait</i>Clientes</a>
+        </li>
+        <li>
+            <a class="mdl-navigation__link" href="../Alquiler"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>Alquileres</a>
+        </li>
+        <li>
+            <a class="mdl-navigation__link" href="../RegisterCar"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Autos</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete_sweep</i>Deshabilitar</a>
+</li>
+<li class="treview">
+    <a class="mdl-navigation__link" href="#">
+        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">receipt</i><span>Registrar</span>
+        <span class="pull-right-container">
+            <i class="fa-angle-left pull-right material-icons">keyboard_arrow_down</i>
+        </span>
+    </a>
+    <ul id="registros" class="treeview-menu">
+        <li>
+            <a class="mdl-navigation__link" href="~/RegisterCar/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Auto</a>
+        </li>
+        <li>
+            <a class="mdl-navigation__link" href="~/Cliente/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">portrait</i>Cliente</a>
+        </li>
+        <li>
+            <a class="mdl-navigation__link" href="~/Proveedor/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_walk</i>Proveedor</a>
+        </li>
+        <li>
+            <a class="mdl-navigation__link" href="~/Alquiler/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>Alquiler</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
+</li>
+<div class="mdl-layout-spacer"></div>
+<li>
+    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+</li>*@

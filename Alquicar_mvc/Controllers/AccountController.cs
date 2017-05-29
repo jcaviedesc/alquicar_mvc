@@ -83,6 +83,9 @@ namespace Alquicar_mvc.Controllers
                     Session["email"] = userLog.Email;
                     Session["rol"] = rol;
                     if (rol != "default") {
+                        string per = login.Rows[0].ItemArray[10].ToString();
+                    
+                        Session["menu"] = crearmenu(per);
                         return RedirectToAction("Index", "Dashboard");
                     }else
                     {
@@ -102,9 +105,50 @@ namespace Alquicar_mvc.Controllers
             }
         }
 
-        public void crearmenu(string rolname) {
+        public IHtmlString crearmenu(string permisos) {
+            char delimiter = ',';
+            string finalpermisos = "<li>";
+            bool registrarbool = false;
+            string[] araypermisos = permisos.Split(delimiter);
+            foreach (var p in araypermisos) {
+                if (p.Equals("1"))
+                {
+                    finalpermisos += "<a class='mdl-navigation__link' href='../CreateUser/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>person_add</i> Crear Usuario</a></li>";
+                }
+                else if (p.Equals("2"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../CreateRol/Create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>domain</i> Crear Rol</a></li>";
+                }
+                else if (p.Equals("3"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Cliente/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i> Cliente</a></li>";
+                }
+                else if (p.Equals("4"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Proveedor/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>directions_walk</i> Proveedor</a></li>";
+                }
+                else if (p.Equals("5"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Alquiler/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>account_balance_wallet</i> Alquiler</a></li>";
+                }
+                else if (p.Equals("6"))
+                {
+                    finalpermisos += " <li><a class='mdl-navigation__link' href='../RegisterCar/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>directions_car</i> Auto</a></li>";
+                }
+                //else if (p.Equals("4") || p.Equals("5") || p.Equals("6") || p.Equals("1")) {
+                //    if (registrarbool) {
+                //        finalpermisos += "<li class='treview'><a class='mdl-navigation__link' href='#'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>receipt</i><span>Registrar</span>";
+                //        finalpermisos += "<span class='pull-right-container'><i class='fa-angle-left pull-right material-icons'>keyboard_arrow_down</i></span></a>";
+                //        finalpermisos += "<ul id = 'registros' class='treeview-menu'>";
+                //        registrarbool = false;
+                //    }
+                    
+                //}
 
-
+            }
+            //return Server.HtmlEncode(finalpermisos);
+            IHtmlString response = new HtmlString(finalpermisos);
+            return response;
         }
         //[HttpPost]
         //[AllowAnonymous]

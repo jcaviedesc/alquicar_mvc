@@ -7,7 +7,7 @@
     <h3 class="center-text">Crear Usuario</h3>
 </div>
 <div class="mdl-grid demo-content">
-    <div class="demo-graphs margin content_card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
+    <div class="demo-graphs margin center content_card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col">
         @using (Html.BeginForm("Create", "CreateUser", FormMethod.Post, new { id = "UserForm" }))
         {
             @Html.AntiForgeryToken()
@@ -80,7 +80,7 @@
 <script>
     $(document).ready(function () {
         $(".cuser .mdl-menu__item").click(function () {
-            alert("hola" + $(this).attr("value"))
+            $("#Rol").val($(this).attr("id"));
             $inputid = $(this).attr("value");
             var permisos = $inputid.split(",");
             var max = permisos.length;
@@ -92,18 +92,10 @@
                     }
                 }
                 $(this).attr('disabled', 'disabled');          
-            });
+            });           
         });
-
         $(".register_check").click(function () {
-            var per = "";
-            $("input:checkbox:checked").each(function() {
-                per += $(this).attr("id") + ",";
-                console.log(per);
-            });
-
-            $('#Permissions').val(per);
-            $('#UserForm').submit();
+            $("#UserForm").submit();
         });
     });
 </script>
