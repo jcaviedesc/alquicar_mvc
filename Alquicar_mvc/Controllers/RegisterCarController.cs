@@ -49,7 +49,7 @@ namespace Alquicar_mvc.Controllers
                     if (ModelState.IsValid)
                     {
                         string img = Path.GetFileName(vehiculoimg.FileName);
-                        string ruta = "~/images/vehiculos/" + img;
+                        string ruta = "../images/vehiculos/" + img;
                         string carpeta = Path.Combine(Server.MapPath("~/images/vehiculos"), img);
                                       
                         carmodel.RegistrarCar(car, ruta);

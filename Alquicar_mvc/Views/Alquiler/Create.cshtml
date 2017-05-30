@@ -116,14 +116,16 @@
                 cancelar
             </button>
         </div>
+        
     </div>
     @if (ViewBag.vehiculos != null)
     {
         foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows)
         {
+     
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                 <header class="section__play-btnr mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
-                    <img width="210" height="210" src="@Url.Action("@row['foto'].ToString()")" />
+                    <img width="210" height="210" src="@row["foto"].ToString()" />
                 </header>
                 <div class="mdl-card mdl-cell mdl-cell--7-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                     <div class="mdl-card__title">

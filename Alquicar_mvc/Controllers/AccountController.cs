@@ -121,20 +121,33 @@ namespace Alquicar_mvc.Controllers
                 }
                 else if (p.Equals("3"))
                 {
-                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Cliente/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i> Cliente</a></li>";
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Cliente/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i>Registrar cliente</a></li>";
                 }
                 else if (p.Equals("4"))
                 {
-                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Proveedor/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>directions_walk</i> Proveedor</a></li>";
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Proveedor/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>directions_walk</i>Registrar proveedor</a></li>";
                 }
                 else if (p.Equals("5"))
                 {
-                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Alquiler/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>account_balance_wallet</i> Alquiler</a></li>";
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Alquiler/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>account_balance_wallet</i>Registar alquiler</a></li>";
                 }
                 else if (p.Equals("6"))
                 {
-                    finalpermisos += " <li><a class='mdl-navigation__link' href='../RegisterCar/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>directions_car</i> Auto</a></li>";
+                    finalpermisos += " <li><a class='mdl-navigation__link' href='../RegisterCar/create'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>directions_car</i>Registrar auto</a></li>";
                 }
+                else if (p.Equals("7"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../RegisterCar'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>directions_car</i>Repor Autos</a></li>";
+                }
+                else if (p.Equals("8"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Alquiler'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>account_balance_wallet</i>Repor Alquileres</a></li>";
+                }
+                else if (p.Equals("9"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../cliente'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i>Repor Clientes</a></li>";
+                }
+                
                 //else if (p.Equals("4") || p.Equals("5") || p.Equals("6") || p.Equals("1")) {
                 //    if (registrarbool) {
                 //        finalpermisos += "<li class='treview'><a class='mdl-navigation__link' href='#'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>receipt</i><span>Registrar</span>";
@@ -142,7 +155,7 @@ namespace Alquicar_mvc.Controllers
                 //        finalpermisos += "<ul id = 'registros' class='treeview-menu'>";
                 //        registrarbool = false;
                 //    }
-                    
+
                 //}
 
             }

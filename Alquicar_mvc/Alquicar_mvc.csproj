@@ -260,7 +260,6 @@
     <Content Include="images\alquicar-logo.png" />
     <Content Include="images\android-logo-white.png" />
     <Content Include="images\andy.png" />
-    <Content Include="images\vehiculos\auto-on.jpg" />
     <Content Include="images\avatar.png" />
     <Content Include="images\more-from-1.png" />
     <Content Include="images\more-from-2.png" />
@@ -274,6 +273,23 @@
     <Content Include="images\renult.jpg" />
     <Content Include="images\slide01.jpg" />
     <Content Include="images\tv-on.jpg" />
+    <Content Include="images\vehiculos\auto-on.jpg" />
+    <Content Include="images\vehiculos\camaro.jpg" />
+    <Content Include="images\vehiculos\colorado.jpg" />
+    <Content Include="images\vehiculos\creta.jpg" />
+    <Content Include="images\vehiculos\cruze.jpg" />
+    <Content Include="images\vehiculos\kia.jpg" />
+    <Content Include="images\vehiculos\mazda1.jpg" />
+    <Content Include="images\vehiculos\mazda2.jpg" />
+    <Content Include="images\vehiculos\mazda6.jpg" />
+    <Content Include="images\vehiculos\sandero r.jpg" />
+    <Content Include="images\vehiculos\sportage.jpg" />
+    <Content Include="images\vehiculos\thoe.jpg" />
+    <Content Include="images\vehiculos\toyotahilux.jpg" />
+    <Content Include="images\vehiculos\toyotapradoblin.jpg" />
+    <Content Include="images\vehiculos\tucyson.jpg" />
+    <Content Include="images\vehiculos\vanshyndai.jpg" />
+    <Content Include="images\vehiculos\ViewPage1.cshtml" />
     <Content Include="images\wear-black-on.png" />
     <Content Include="images\wear-silver-on.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -281,7 +297,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\vehiculos\ViewPage1.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

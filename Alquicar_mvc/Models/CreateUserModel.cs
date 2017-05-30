@@ -13,6 +13,10 @@ namespace Alquicar_mvc.Models
 
         public string Rol { get; set; }
 
+        public string Nombres { get; set; }
+
+        public string Apellidos { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -41,12 +45,14 @@ namespace Alquicar_mvc.Models
         }
 
         public bool RegisterUser(CreateUserModel user) {
-            Parameter[] para = new Parameter[4];
+            Parameter[] para = new Parameter[6];
             para[0] = new Parameter("_email",user.Email);
             para[1] = new Parameter("_password",user.Password);
             para[2] = new Parameter("_permissions", user.Permissions);
             para[3] = new Parameter("_rol",user.Rol);
- 
+            para[4] = new Parameter("_nombre",user.Nombre);
+            para[5] = new Parameter("_apellido", user.Apellido);
+
             Transaction[] trans = new Transaction[1];
             trans[0] = new Transaction("PR_INSRUSER", para);
             return conbd.Transaction(trans);
