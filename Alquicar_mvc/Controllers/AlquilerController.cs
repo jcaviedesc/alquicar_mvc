@@ -26,7 +26,7 @@ namespace Alquicar_mvc.Controllers
         // GET: Alquiler/Create
         public ActionResult Create()
         {
-            ViewBag.idate = "2017-01-2";
+            ViewBag.idate = "2017-05-22";
             ViewBag.fdate = "2018-05-23";
             return View();
         }
@@ -50,7 +50,7 @@ namespace Alquicar_mvc.Controllers
         [HttpPost]
         public ActionResult Create(string start_date, string final_date, AlquilerCarModel alquilerm)
         {
-            try
+            try 
             {
                 ViewBag.idate = start_date;
                 ViewBag.fdate = final_date;

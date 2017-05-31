@@ -14,7 +14,7 @@
             <!----div -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                     @Html.LabelFor(model => model.start_date, htmlAttributes: new { @class = "mdl-textfield__label" })
-                    <input class="mdl-textfield__input" type="date" id="start_date" name="start_date" value="@ViewBag.idate">
+                    <input class="mdl-textfield__input" type="date" id="start_date" name="start_date" value="@ViewBag.idate" >
                     @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
                 </div>
                 
@@ -194,7 +194,9 @@
         var month = monthcurrent(f.getMonth());
         var initalDate = f.getFullYear() + "-" + month + "-" + f.getDate();
         $('#start_date').attr({ "value": initalDate, "min": initalDate });
+        $('#start_date').click();
         $('#final_date').val(initalDate);
+        $('#final_date').click();
 
     }      
     function monthcurrent(month) {
