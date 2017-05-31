@@ -159,4 +159,10 @@
   box-sizing:border-box;
   align-items: center;
 }
+.price {
+    margin:0 5 0 5;
+    background-color: yellow;
+}
+
+}
 

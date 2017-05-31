@@ -19,6 +19,8 @@ namespace Alquicar_mvc.Models
 
         public string cliente_id { get; set; }
 
+        public string registrador_por { get; set; }
+
         Connection ConnAlquiler = new Connection();
 
         public System.Data.DataTable QueryVehiculos()
