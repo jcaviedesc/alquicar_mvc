@@ -85,7 +85,7 @@
                     <li class="mdl-menu__item" id="Otro">Otro</li>
                 </ul>
             </div>
-           
+
             @*<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="color" name="color">
                     <label class="mdl-textfield__label" for="nombre">Color</label>
@@ -100,7 +100,7 @@
                 <input class="mdl-textfield__input" type="text" id="modelo" name="modelo">
                 <label class="mdl-textfield__label" for="nombre">Modelo</label>
             </div>
-            
+
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="descripcion" name="descripcion">
@@ -118,14 +118,21 @@
             </div>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="kilomentros" name="kilometros">
-                <label class="mdl-textfield__label" for="kilomentros">kilometraje</label>
+                @Html.LabelFor(model => model.kilomentros, htmlAttributes: new { @class = "mdl-textfield__label" })
+                @Html.EditorFor(model => model.kilomentros, new { htmlAttributes = new { @class = "mdl-textfield__input", @value = "@Session['user_id'].ToString()" } })
+                @Html.ValidationMessageFor(model => model.kilomentros, "", new { @class = "text-danger" })
             </div>
             <div class="padding-separator"></div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="precio_pago" name="precio_pago">
+                <label class="mdl-textfield__label" for="kilomentros">valor precio dia</label>
+            </div>
 
             <div class="mdl-textfield">
                 <input type="file" id="vehiculoimg" name="vehiculoimg">
             </div>
+            <input style="display:none" class="mdl-textfield__input" type="text" id="registrado_por" name="registrado_por" value="employ">
             <input style="display:none" class="mdl-textfield__input" type="text" id="proveedor_car" name="proveedor_car" value="waiting">
             <input style="display:none" class="mdl-textfield__input" type="text" id="tipo_vehiculo" name="tipo_vehiculo" value="vehiculos">
             <input style="display:none" class="mdl-textfield__input" type="text" id="tipo_direccion" name="tipo_direccion" value="dirreccion">
@@ -138,56 +145,12 @@
              </div>
         }
     </div>
-    <!--div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-        <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h2 class="mdl-card__title-text">Updates</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                Non dolore elit adipisicing ea reprehenderit consectetur culpa.
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
-            </div>
-        </div>
-        <div class="demo-separator mdl-cell--1-col"></div>
-        <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
-            <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
-                <h3>View options</h3>
-                <ul>
-                    <li>
-                        <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                            <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Click per object</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                            <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Views per object</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                            <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Objects selected</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                            <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Objects viewed</span>
-                        </label>
-                    </li>
-                </ul>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
-                <div class="mdl-layout-spacer"></div>
-                <i class="material-icons">location_on</i>
-            </div>
-        </div>
-    </div-->
+   <script>
+       $(document).ready(function () {
+           $('#registrado_por').attr("value", @Session["user_id"].ToString());
+       })
+       
+   </script>
 </div>
 
 
