@@ -126,7 +126,7 @@
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="precio_pago" name="precio_pago">
-                <label class="mdl-textfield__label" for="kilomentros">valor precio dia</label>
+                <label class="mdl-textfield__label" for="precio_pago">Valor pago mensual</label>
             </div>
 
             <div class="mdl-textfield">
@@ -148,7 +148,14 @@
    <script>
        $(document).ready(function () {
            $('#registrado_por').attr("value", @Session["user_id"].ToString());
-       })
+           
+           $('.cars .mdl-menu__item').click(function () {
+
+               $inputid = $(this).attr("value");
+               $p = $("#" + $inputid).attr("value")
+               $("#" + $inputid).val($(this).attr("id"));
+           });
+       });
        
    </script>
 </div>

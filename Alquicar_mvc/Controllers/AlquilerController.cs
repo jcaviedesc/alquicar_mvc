@@ -31,8 +31,15 @@ namespace Alquicar_mvc.Controllers
             return View();
         }
 
+
+        // GET: Alquiler/Create
+        public ActionResult Alquilar()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult alquilar(AlquilerCarModel alquilerm)
+        public ActionResult Alquilar(AlquilerCarModel alquilerm)
         {
             try
             {
@@ -48,7 +55,7 @@ namespace Alquicar_mvc.Controllers
 
         // POST: Alquiler/Create
         [HttpPost]
-        public ActionResult Create(string start_date, string final_date, AlquilerCarModel alquilerm)
+        public ActionResult Create(string start_date, string final_date)
         {
             try 
             {
@@ -56,7 +63,7 @@ namespace Alquicar_mvc.Controllers
                 ViewBag.fdate = final_date;
                 ViewBag.vehiculos = alquilerM.QueryVehiculos();
 
-                return View();
+                return View("Alquilar");
             }
             catch
             {

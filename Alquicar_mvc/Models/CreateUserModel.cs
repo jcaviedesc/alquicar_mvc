@@ -54,7 +54,7 @@ namespace Alquicar_mvc.Models
             para[5] = new Parameter("_apellido", user.Apellidos);
 
             Transaction[] trans = new Transaction[1];
-            trans[0] = new Transaction("PR_INSRUSER", para);
+            trans[0] = new Transaction("PR_CREATEUSER", para);
             return conbd.Transaction(trans);
         }
     }
