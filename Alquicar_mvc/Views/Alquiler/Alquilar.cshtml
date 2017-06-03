@@ -8,14 +8,14 @@
     <h3 class="center-text">Alquilar Vehiculo</h3>
 </div>
 <div class="mdl-alquilar mdl-grid demo-content">
-    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col arbol">
+    <div class="select demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--10-col arbol">
         @using (Html.BeginForm("Create", "Alquiler", FormMethod.Post))
         {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <!----div -->
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                 @Html.LabelFor(model => model.start_date, htmlAttributes: new { @class = "mdl-textfield__label" })
-                <input class="mdl-textfield__input" type="date" id="start_date" name="start_date" value="@ViewBag.idate">
+                <input class="mdl-textfield__input" type="date" id="start" name="start" value="@ViewBag.idate">
                 @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
             </div>
 
@@ -56,12 +56,20 @@
 
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                     @Html.LabelFor(model => model.final_date, htmlAttributes: new { @class = "mdl-textfield__label" })
-                    <input id="final_date" name="final_date" class="mdl-textfield__input" type="date" value="@ViewBag.fdate">
+                    <input id="final" name="final" class="mdl-textfield__input" type="date" value="@ViewBag.fdate">
                     @Html.ValidationMessageFor(model => model.final_date, "", new { @class = "text-danger" })
                 </div>
 
-
-
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth mdl-pdt">
+                    <input class="mdl-textfield__input" type="text" id="clien" name="clien" value="Seleccione cliente" readonly tabIndex="-1">
+                    <label for="clien" class="mdl-textfield__label">Cliente</label>
+                    <ul for="clien" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        @foreach (System.Data.DataRow row in ViewBag.Clientes.Rows)
+                        {
+                            <li class="mdl-menu__item" value="cliente_id" id=@row["id"].ToString()>@row["nombre"].ToString()</li>
+                        }
+                    </ul>
+                </div>
 
                 <div>
                     <div>
@@ -80,8 +88,24 @@
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt" style="display:none">
                 @Html.LabelFor(model => model.cliente_id, htmlAttributes: new { @class = "mdl-textfield__label" })
-                @Html.EditorFor(model => model.cliente_id, new { htmlAttributes = new { @class = "mdl-textfield__input", @value = "@Session['user_id'].ToString()" } })
+                @Html.EditorFor(model => model.cliente_id, new { htmlAttributes = new { @class = "mdl-textfield__input"} })
                 @Html.ValidationMessageFor(model => model.cliente_id, "", new { @class = "text-danger" })
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt" style="display:none">
+                @Html.LabelFor(model => model.registrador_por, htmlAttributes: new { @class = "mdl-textfield__label" })
+                @Html.EditorFor(model => model.registrador_por, new { htmlAttributes = new { @class = "mdl-textfield__input", @value = "@Session['user_id'].ToString()" } })
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+                @Html.LabelFor(model => model.start_date, htmlAttributes: new { @class = "mdl-textfield__label" })
+                <input class="mdl-textfield__input" type="date" id="start_date" name="start_date" value="@ViewBag.idate">
+                @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
+                @Html.LabelFor(model => model.final_date, htmlAttributes: new { @class = "mdl-textfield__label" })
+                <input id="final_date" name="final_date" class="mdl-textfield__input" type="date" value="@ViewBag.fdate">
+                @Html.ValidationMessageFor(model => model.final_date, "", new { @class = "text-danger" })
             </div>
         }
     </div>
@@ -92,6 +116,7 @@
         <div id="alquilercont" class="mdl-dialog__content">
             <p id="price_day"></p>
             <p id="price_final"></p>
+            <p id="car" style="display:none"></p>
         </div>
         <div class="mdl-dialog__actions">
             <button type="button" class="mdl-button accept">aceptar</button>
@@ -151,18 +176,31 @@
         min_date_return();
         dayalquiler();
         launchModal();
+        alquilar();
     });
 
     function launchModal() {
         $('.cars .mdl-button').click(function () {
             var p = $(this).attr("id");
             var price = $("." + p).text();
-            var fecha_in = $('#start_date').val().split("-");
-            var fecha_fn = $('#final_date').val().split("-");
+            $('#car').text(p);
+            var fecha_in = $('#start').val().split("-");
+            var fecha_fn = $('#final').val().split("-");
             var total = cal_days(fecha_fn[2], fecha_in[2]) * parseInt(price.substring(1));
             $('#price_day').text("Precio dia: " + price);
             $('#price_final').text("Precio final: $" + total);
             modalaux();
+        });
+    }
+
+    function alquilar() {
+        $('.accept').click(function () {
+            $('#car_id').attr("value", $('#car').text());;
+            $('#registrador_por').attr("value",@Session["user_id"]);
+            //$('#cliente_id').attr("value",$('#clien').attr("id"));
+            $('#start_date').attr("value",$('#start').val());
+            $('#final_date').attr("value",$('#final').val());
+            $('#alquilarForm').submit();
         });
     }
 
@@ -185,12 +223,12 @@
     }
 
     function dayalquiler() {
-        $dateone = $('#start_date').val();
+        $dateone = $('#start').val();
         var f = new Date();
         var month = monthcurrent(f.getMonth());
         var day = daycurrent(f.getDate());
         var initalDate = f.getFullYear() + "-" + month + "-" + day;
-        $('#start_date').attr({ "value": $dateone, "min": initalDate });
+        $('#start').attr({ "value": $dateone, "min": initalDate });
     }
     
     function monthcurrent(month) {
@@ -210,8 +248,8 @@
     }
 
     function min_date_return() {
-        $('#final_date').click(function () {
-            $minimal = $('#start_date').val().split("-");
+        $('#final').click(function () {
+            $minimal = $('#start').val().split("-");
             var fecha = parseInt($minimal[2])+1;
             $($(this)).attr("min", $minimal[0]+"-" + $minimal[1] +"-"+ daycurrent(fecha));
         });

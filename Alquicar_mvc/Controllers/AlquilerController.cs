@@ -45,7 +45,7 @@ namespace Alquicar_mvc.Controllers
             {
                 alquilerM.RegisterAlquiler(alquilerm);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Dashboard");
             }
             catch
             {
@@ -59,6 +59,7 @@ namespace Alquicar_mvc.Controllers
         {
             try 
             {
+                ViewBag.Clientes = alquilerM.QueryClientes();
                 ViewBag.idate = start_date;
                 ViewBag.fdate = final_date;
                 ViewBag.vehiculos = alquilerM.QueryVehiculos();
@@ -69,6 +70,12 @@ namespace Alquicar_mvc.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: Alquiler/devolucion
+        public ActionResult devolucion()
+        {
+            return View();
         }
 
         // GET: Alquiler/Edit/5

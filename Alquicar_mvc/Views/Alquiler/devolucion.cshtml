@@ -1,0 +1,58 @@
+﻿@model Alquicar_mvc.Models.AlquilerCarModel
+
+@{
+    ViewBag.Title = "devolucion";
+}
+
+<h2>devolucion</h2>
+
+<div>
+    <h4>AlquilerCarModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.final_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.final_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registrador_por)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrador_por)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

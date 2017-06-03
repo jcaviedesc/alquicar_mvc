@@ -125,7 +125,14 @@
                             $("#logoutForm").submit();
                         });
 
-                        
+                        $('#registrado_por').attr("value", @Session["user_id"].ToString());
+           
+                        $('.select .mdl-menu__item').click(function () {
+
+                            $inputid = $(this).attr("value");
+                            $p = $("#" + $inputid).attr("value")
+                            $("#" + $inputid).val($(this).attr("id"));
+                        });
                     });
                 </script>
             </body>

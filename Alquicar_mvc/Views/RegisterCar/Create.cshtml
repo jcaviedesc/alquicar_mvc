@@ -7,7 +7,7 @@
 </div>
 
 <div class="mdl-grid demo-content">
-    <div class="cars demo-graphs center mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+    <div class="select demo-graphs center mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
         @using (Html.BeginForm("create","RegisterCar",FormMethod.Post, new {enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
@@ -145,19 +145,7 @@
              </div>
         }
     </div>
-   <script>
-       $(document).ready(function () {
-           $('#registrado_por').attr("value", @Session["user_id"].ToString());
-           
-           $('.cars .mdl-menu__item').click(function () {
-
-               $inputid = $(this).attr("value");
-               $p = $("#" + $inputid).attr("value")
-               $("#" + $inputid).val($(this).attr("id"));
-           });
-       });
-       
-   </script>
+  
 </div>
 
 

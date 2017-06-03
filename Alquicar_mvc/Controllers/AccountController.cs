@@ -79,7 +79,7 @@ namespace Alquicar_mvc.Controllers
                     Session["status"] = status;
                     Session["nombre_user"] = login.Rows[0]["Nombres"].ToString()+" "+login.Rows[0]["Apellidos"].ToString(); 
                     string rol = login.Rows[0]["rol_name"].ToString();
-                    Session["user_id"] = login.Rows[0]["Id"];
+                    Session["user_id"] = login.Rows[0]["Id"];// id de empleado
                     Session["email"] = userLog.Email;
                     Session["rol"] = rol;
                     if (rol != "default") {
@@ -147,7 +147,11 @@ namespace Alquicar_mvc.Controllers
                 {
                     finalpermisos += "<li><a class='mdl-navigation__link' href='../cliente'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i>Repor Clientes</a></li>";
                 }
-                
+                else if (p.Equals("10"))
+                {
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Alquiler/devolucion'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i>Devolucino auto</a></li>";
+                }
+
                 //else if (p.Equals("4") || p.Equals("5") || p.Equals("6") || p.Equals("1")) {
                 //    if (registrarbool) {
                 //        finalpermisos += "<li class='treview'><a class='mdl-navigation__link' href='#'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>receipt</i><span>Registrar</span>";
