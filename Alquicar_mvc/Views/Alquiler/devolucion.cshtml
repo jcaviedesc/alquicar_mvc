@@ -24,11 +24,11 @@
                     </div>
                 </div>
             </div>
+            <div>
                 <div>
-                    <div>
-                        <input type="submit" id="show-dialog" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
-                    </div>
+                    <input type="submit" id="show-dialog" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
                 </div>
+            </div>
                 @*<dl class="dl-horizontal">*@
                 @*<dt class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <label class="mdl-textfield__label">@Html.DisplayNameFor(model => model.start_date)</label>
@@ -76,10 +76,11 @@
 
     @if (ViewBag.querycar != null)
     {
-        using (Html.BeginForm("recibido", "Alquiler", FormMethod.Post))
-        {
-            <div class="select demo-graphs  center mdl-color--white mdl-cell mdl-cell--8-col-desktop">
-                @foreach (System.Data.DataRow row in ViewBag.querycar.Rows)
+
+        <div class="select demo-graphs  center mdl-color--white mdl-cell mdl-cell--8-col-desktop">
+            @using (Html.BeginForm("recibido", "Alquiler", FormMethod.Post))
+            {
+                foreach (System.Data.DataRow row in ViewBag.querycar.Rows)
                 {
                     <dl class="dl-horizontal">
                         <dt class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -148,11 +149,14 @@
                         <input type="submit" id="recibircar" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+
     }
 
 </div>
+
+
 
             @*<p>
                 @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
