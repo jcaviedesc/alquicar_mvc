@@ -217,9 +217,9 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\marcasController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\RegisterCarController.cs" />
+    <Compile Include="Controllers\SeekCarController.cs" />
     <Compile Include="Models\AlquilerCarModel.cs" />
     <Compile Include="Models\CreateRolModel.cs" />
     <Compile Include="Models\CreateUserModel.cs" />

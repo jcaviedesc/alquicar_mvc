@@ -33,6 +33,13 @@ namespace Alquicar_mvc.Models
             return ConnAlquiler.Query("PR_QUERYCARS", null);
         }
 
+        public System.Data.DataTable QueryVehiculoAlquilado(string placa)
+        {
+            Parameter[] placacar = new Parameter[1];
+            placacar[0] = new Parameter("_placa", placa);
+            return ConnAlquiler.Query("PR_QUERYCARAlQUILER", placacar);
+        }
+
         public bool RegisterAlquiler(AlquilerCarModel alquiler)
         {
             Parameter[] data_alquiler = new Parameter[5];

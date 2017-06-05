@@ -149,7 +149,7 @@ namespace Alquicar_mvc.Controllers
                 }
                 else if (p.Equals("10"))
                 {
-                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Alquiler/devolucion'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i>Devolucino auto</a></li>";
+                    finalpermisos += "<li><a class='mdl-navigation__link' href='../Alquiler/devolucion'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>portrait</i>Devolucion auto</a></li>";
                 }
 
                 //else if (p.Equals("4") || p.Equals("5") || p.Equals("6") || p.Equals("1")) {

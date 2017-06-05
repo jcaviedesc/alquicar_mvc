@@ -1,7 +1,5 @@
-﻿using Alquicar_mvc.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,33 +7,37 @@ using System.Web.Http;
 
 namespace Alquicar_mvc.Controllers
 {
-    public class marcasController : ApiController
+    public class SeekCarController : ApiController
     {
-        RegisterCarModels carmodel = new RegisterCarModels();
-        // GET: api/marcas
-        public IHttpActionResult Get()
+        // GET: api/SeekCar
+        public IEnumerable<string> Get()
         {
-            DataTable dtmarcas = carmodel.QueryMarcas();
-            return Json(dtmarcas);
+            return new string[] { "value1", "value2" };
         }
 
-        // GET: api/marcas/5
+        public IHttpActionResult cars()
+        {
+            return Json("value1value2");
+        }
+
+
+        // GET: api/SeekCar/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/marcas
+        // POST: api/SeekCar
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/marcas/5
+        // PUT: api/SeekCar/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/marcas/5
+        // DELETE: api/SeekCar/5
         public void Delete(int id)
         {
         }

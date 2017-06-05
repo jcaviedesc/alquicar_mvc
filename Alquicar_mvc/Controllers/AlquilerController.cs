@@ -1,6 +1,7 @@
 ﻿using Alquicar_mvc.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -78,6 +79,36 @@ namespace Alquicar_mvc.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult devolucion(string searchcar)
+        {
+            try
+            {
+                ViewBag.querycar = alquilerM.QueryVehiculoAlquilado(searchcar);
+
+                return View("devolucion");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult recibido(int searchcar)
+        {
+            try
+            {
+               
+
+                return View("devolucion");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        
         // GET: Alquiler/Edit/5
         public ActionResult Edit(int id)
         {
@@ -120,6 +151,41 @@ namespace Alquicar_mvc.Controllers
             {
                 return View();
             }
+        }
+
+
+        //Json SeekCar
+        // /Alquiler/getalquiler
+        [HttpGet]
+        public JsonResult getcar()
+        {
+            DataTable seekcardt = new DataTable();
+            return Json(ConvertDatatableToJsonNative(seekcardt), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult getcar(string placa)
+        {
+            DataTable seekcardt = new DataTable();
+            return Json(ConvertDatatableToJsonNative(seekcardt), JsonRequestBehavior.AllowGet);
+        }
+
+        public List<object> ConvertDatatableToJsonNative(DataTable dt)
+        {
+
+            var jsontxt = new List<object>();
+            //for (int i = 0; i < dt.Rows.Count; i++) {
+            //    for (int j = 0; j < dt.Columns.Count; j++) {
+            //        jsontxt.Add(new { dt.Columns[j].ColumnName = dt.Rows[i].ToString(), dt.Columns[j].ColumnName = dt.Rows[i].ToString() });
+            //    }
+            //}
+
+            foreach (DataRow row in dt.Rows)
+            {
+                jsontxt.Add(new { id = row["id"].ToString(), nombre = row["nombre"].ToString() });
+            }
+
+            return jsontxt;
         }
     }
 }

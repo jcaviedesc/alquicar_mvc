@@ -57,7 +57,6 @@
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-pdt">
                     @Html.LabelFor(model => model.final_date, htmlAttributes: new { @class = "mdl-textfield__label" })
                     <input id="final" name="final" class="mdl-textfield__input" type="date" value="@ViewBag.fdate">
-                    @Html.ValidationMessageFor(model => model.final_date, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth mdl-pdt">
@@ -251,7 +250,8 @@
         $('#final').click(function () {
             $minimal = $('#start').val().split("-");
             var fecha = parseInt($minimal[2])+1;
-            $($(this)).attr("min", $minimal[0]+"-" + $minimal[1] +"-"+ daycurrent(fecha));
+            var min = $minimal[0]+"-" + $minimal[1] +"-"+ daycurrent(fecha);
+            $($(this)).attr({"value":min,"min": min});
         });
     }
 </script>

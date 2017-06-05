@@ -3,56 +3,158 @@
 @{
     ViewBag.Title = "devolucion";
 }
-
-<h2>devolucion</h2>
-
 <div>
-    <h4>AlquilerCarModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.start_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.start_date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.final_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.final_date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.car_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.car_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cliente_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cliente_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.registrador_por)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.registrador_por)
-        </dd>
-
-    </dl>
+    <h3 class="center-text">Devolucion de vehiculo</h3>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="mdl-grid demo-content">
+    <div class="select demo-graphs  center mdl-color--white mdl-cell mdl-cell--8-col-desktop">
+        @using (Html.BeginForm())
+        {
+            <div class="buscar">
+                <span>Buscar  auto por placa</span>
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="searchcar">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" name="searchcar" id="searchcar">
+                        <label class="mdl-textfield__label" for="searchcar">Enter your query...</label>
+                    </div>
+                </div>
+            </div>
+                <div>
+                    <div>
+                        <input type="submit" id="show-dialog" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
+                    </div>
+                </div>
+                @*<dl class="dl-horizontal">*@
+                @*<dt class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="mdl-textfield__label">@Html.DisplayNameFor(model => model.start_date)</label>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.start_date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.final_date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.final_date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.car_id)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.car_id)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.cliente_id)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.cliente_id)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.registrador_por)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.registrador_por)
+                        </dd>
+                    </dl>*@
+        }
+
+    </div>
+
+    @if (ViewBag.querycar != null)
+    {
+        using (Html.BeginForm("recibido", "Alquiler", FormMethod.Post))
+        {
+            <div class="select demo-graphs  center mdl-color--white mdl-cell mdl-cell--8-col-desktop">
+                @foreach (System.Data.DataRow row in ViewBag.querycar.Rows)
+                {
+                    <dl class="dl-horizontal">
+                        <dt class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="mdl-textfield__label">@Html.DisplayNameFor(model => model.start_date)</label>
+                        </dt>
+
+                        <dd>
+                            @row["fecha_alquiler"].ToString()
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.final_date)
+                        </dt>
+
+                        <dd>
+                            @row["fecha_devolucion"].ToString()
+                        </dd>
+                        <dt>
+                            Modelo
+                        </dt>
+
+                        <dd>
+                            @row["modelo"].ToString()
+                        </dd>
+
+                        <dt>
+                            tipo
+                        </dt>
+
+                        <dd>
+                            @row["tipo"].ToString()
+                        </dd>
+
+                        @*<dt>
+                                @Html.DisplayNameFor(model => model.registrador_por)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.registrador_por)
+                            </dd>*@
+                        <dt>
+                            marca
+                        </dt>
+                        <dd>
+                            @row["marca"].ToString()
+                        </dd>
+                        <dt>
+                            cliente
+                        </dt>
+                        <dd>
+                            @row["nombre"].ToString()
+                        </dd>
+                        <dt>
+                            identificacion
+                        </dt>
+                        <dd>
+                            @row["identificacion"].ToString()
+                        </dd>
+                        <dt>
+                            <img width="210" height="210" src="@row["foto"].ToString()" />
+                        </dt>
+                    </dl>
+                }
+                <div>
+                    <div>
+                        <input type="submit" id="recibircar" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>
+
+            @*<p>
+                @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>*@

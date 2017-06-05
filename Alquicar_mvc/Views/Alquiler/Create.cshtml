@@ -60,8 +60,6 @@
             </div>
 
             
-
-         
             <div>
                 <div>
                     <input type="submit" id="show-dialog" value="Buscar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" />
@@ -93,7 +91,7 @@
                 Desea alquilar este vehiculo?
             </p>
         </div>
-        <div class="mdl-dialog__actions">
+        <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
             <button type="button" class="mdl-button accept">aceptar</button>
             <button type="button" class="mdl-button close">cancelar</button>
         </div>
@@ -121,8 +119,7 @@
     @if (ViewBag.vehiculos != null)
     {
         foreach (System.Data.DataRow row in ViewBag.vehiculos.Rows)
-        {
-     
+        { 
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                 <header class="section__play-btnr mdl-cell mdl-cell--5-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone  mdl-color-text--white">
                     <img width="210" height="210" src="@row["foto"].ToString()" />
@@ -155,6 +152,7 @@
             //modalaux();
             current();
             min_date_return();
+            changefinalday();
         });
 
         function modal() {
@@ -222,6 +220,11 @@
                 $minimal = $('#start_date').val().split("-");
                 var fecha = parseInt($minimal[2])+1;
                 $($(this)).attr("min", $minimal[0]+"-" + $minimal[1] +"-"+ daycurrent(fecha));
+            });
+        }
+        function changefinalday(){
+            $("#final_date").change(function(){
+                $('#start_date').attr("max",$(this).val());
             });
         }
 

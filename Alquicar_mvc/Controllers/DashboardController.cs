@@ -122,6 +122,7 @@ namespace Alquicar_mvc.Controllers
             DataTable marcasdt = carmodel.QueryMarcas();
             return Json(ConvertDatatableToJsonNative(marcasdt), JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
         public JsonResult getdireccion()
         {
