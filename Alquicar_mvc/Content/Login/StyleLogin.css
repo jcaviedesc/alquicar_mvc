@@ -39,3 +39,10 @@
 .back {
     padding-bottom: 8px;
 }
+.mdl-text__error {
+    color: #d50000;
+    font-size: 12px;
+    margin-top: 3px;
+    /*visibility: hidden;*/
+    display: block;
+}

@@ -95,13 +95,20 @@ namespace Alquicar_mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult recibido(int searchcar)
+        public ActionResult recibido(string idcar)
         {
             try
             {
-               
-
-                return View("devolucion");
+                string response = "";
+                if (alquilerM.RegisterDevolucioncar(idcar))
+                {
+                    response = "Automovil actualizado con exito.";
+                }
+                else {
+                    response = "Algo salio mal.";
+                }
+                ViewBag.res = response;
+                return View("index","Dashboard");
             }
             catch
             {

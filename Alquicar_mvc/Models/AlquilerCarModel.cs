@@ -40,6 +40,16 @@ namespace Alquicar_mvc.Models
             return ConnAlquiler.Query("PR_QUERYCARAlQUILER", placacar);
         }
 
+        public bool RegisterDevolucioncar(string caralquilado)
+        {
+            Parameter[] data_alquiler = new Parameter[1];
+            data_alquiler[0] = new Parameter("_car", caralquilado );
+            Transaction[] trans = new Transaction[1];
+            trans[0] = new Transaction("PR_UPTDCARDEVOLUCION", data_alquiler);
+            return ConnAlquiler.Transaction(trans);
+        }
+
+
         public bool RegisterAlquiler(AlquilerCarModel alquiler)
         {
             Parameter[] data_alquiler = new Parameter[5];

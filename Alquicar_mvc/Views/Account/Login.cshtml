@@ -63,7 +63,10 @@
                                     <p>
                                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
                                     </p>*@
-                                <p><span>@ViewBag.description</span></p>
+                                <div class="mdl-textfield mdl-typography--text-center ">
+                                    <p><span class="mdl-text__error">@ViewBag.description</span></p>
+                                </div>
+                               
                             }
                         </section>
                     </div>

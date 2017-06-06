@@ -39,8 +39,14 @@ namespace Alquicar_mvc.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    proveedor.registrarProveedor(pro);
-                    return RedirectToAction("index", "Dashboard");
+                    if (proveedor.registrarProveedor(pro))
+                    {
+                        return RedirectToAction("index", "Dashboard");
+                    }
+                    else {
+                        ViewBag.response = "Error registro invalido";
+                        return View();
+                    }               
                 }
                 else {
                     return RedirectToAction("Create");
@@ -48,6 +54,7 @@ namespace Alquicar_mvc.Controllers
             }
             catch
             {
+                ViewBag.response = "Error registro invalido";
                 return View();
             }
         }
