@@ -1,0 +1,65 @@
+﻿@*@model Alquicar_mvc.Models.AlquilerCarModel*@
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+      
+            @foreach (System.Data.DataColumn col in Model.Columns)
+            {
+
+                <dt class="mdl-data-table__cell--non-numeric"> @col.Caption</dt>
+                <dd class="mdl-data-table__cell--non-numeric">@Model.Rows[0][@col.Caption].ToString() </dd>
+
+            }
+        
+       
+        @*<dt>
+            @Html.DisplayNameFor(model => model.start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.final_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.final_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registrador_por)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrador_por)
+        </dd>*@
+
+    </dl>
+</div>
+

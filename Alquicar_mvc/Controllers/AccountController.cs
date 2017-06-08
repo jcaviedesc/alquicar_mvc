@@ -82,6 +82,7 @@ namespace Alquicar_mvc.Controllers
                     Session["user_id"] = login.Rows[0]["Id"];// id de empleado
                     Session["email"] = userLog.Email;
                     Session["rol"] = rol;
+                    @Session["response"] = "0";
                     if (rol != "default") {
                         string per = login.Rows[0].ItemArray[10].ToString();
                     

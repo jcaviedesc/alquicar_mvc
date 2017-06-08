@@ -138,19 +138,23 @@ namespace Alquicar_mvc.Models
         public System.Data.DataTable QueryMarcas() {
             return registracar.Query("PR_QUERY_MARCAS", null);
         }
+
         public System.Data.DataTable QueryTipoVehiculo()
         {
             return registracar.Query("PR_QERYTIPOSAUTOS", null);
         }
+
         public System.Data.DataTable QueryDireccion()
         {
             return registracar.Query("PR_QUERY_TIPO_DIR", null);
         }
+
         //types transmition
         public System.Data.DataTable QueryTransmition()
         {
             return registracar.Query("PR_QUERYTRANSMITION", null);
         }
+
         public System.Data.DataTable QueryProveedor()
         {
             return registracar.Query("PR_QUERYPROPIETARIO", null);
@@ -161,6 +165,12 @@ namespace Alquicar_mvc.Models
             return registracar.Query("PR_QUERYCARCURRENT", null);
         }
 
+        public System.Data.DataTable QueryDetalleCar(int idcar)
+        {
+            Parameter[] detalleacar = new Parameter[1];
+            detalleacar[0] = new Parameter("_idcar", Convert.ToString(idcar));
+            return registracar.Query("PR_QUERYDETALLECAR", detalleacar);
+        }
 
         public bool RegistrarCar(RegisterCarModels car, string rutaimg)
         {

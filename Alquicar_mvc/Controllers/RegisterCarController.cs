@@ -23,7 +23,8 @@ namespace Alquicar_mvc.Controllers
         // GET: RegisterCar/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            DataTable detallecar = carmodel.QueryDetalleCar(id);
+            return View(detallecar);
         }
 
         // GET: RegisterCar/Create
@@ -51,11 +52,16 @@ namespace Alquicar_mvc.Controllers
                         string img = Path.GetFileName(vehiculoimg.FileName);
                         string ruta = "../images/vehiculos/" + img;
                         string carpeta = Path.Combine(Server.MapPath("~/images/vehiculos"), img);
-                                      
-                        carmodel.RegistrarCar(car, ruta);
-                        vehiculoimg.SaveAs(carpeta);
-
-                        return RedirectToAction("Index", "Dashboard");
+                        if (carmodel.RegistrarCar(car, ruta))
+                        {
+                            vehiculoimg.SaveAs(carpeta);
+                            Session["response"] = "Auto registrado correctamente";
+                            return RedirectToAction("index", "Dashboard");
+                        }
+                        else {
+                            ViewBag.response = "Error! algo salio mal";
+                            return View();
+                        }
                     }
                     else
                     {
@@ -66,11 +72,10 @@ namespace Alquicar_mvc.Controllers
                     ViewBag.errorimg = "no has seleccionado una imagen";
                     return View();
                 }
-                
-
             }
             catch(Exception exc)
             {
+                ViewBag.response = "Error! algo salio mal";
                 return View();
             }
         }

@@ -84,8 +84,10 @@ namespace Alquicar_mvc.Controllers
         {
             try
             {
-                ViewBag.querycar = alquilerM.QueryVehiculoAlquilado(searchcar);
-
+                if (searchcar != null) {
+                    ViewBag.querycar = alquilerM.QueryVehiculoAlquilado(searchcar);
+                }
+                
                 return View("devolucion");
             }
             catch
@@ -107,7 +109,7 @@ namespace Alquicar_mvc.Controllers
                 else {
                     response = "Algo salio mal.";
                 }
-                ViewBag.res = response;
+                Session["response"] = response;
                 return View("index","Dashboard");
             }
             catch

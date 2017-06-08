@@ -1,21 +1,24 @@
 ﻿
-
-   @{
-
-       ViewBag.Title = "Index";
-  }
-
-<div class="mdl-grid demo-content">
-    <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-        <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
-            <use xlink:href="#chart" />
-        </svg>
-        <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
-            <use xlink:href="#chart" />
-        </svg>
-    </div>
-</div>
-@if (ViewBag.res != null) {
-
-
+@{
+    ViewBag.Title = "Index";
 }
+    <div class="mdl-grid demo-content">
+        <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+            <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
+                <use xlink:href="#chart" />
+            </svg>
+            <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
+                <use xlink:href="#chart" />
+            </svg>
+           
+        </div>
+        <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+        </div>
+    </div>
+
+
+
+
+
+

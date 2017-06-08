@@ -41,6 +41,7 @@ namespace Alquicar_mvc.Controllers
                 {
                     if (proveedor.registrarProveedor(pro))
                     {
+                        Session["response"] = "Registro Existoso";
                         return RedirectToAction("index", "Dashboard");
                     }
                     else {

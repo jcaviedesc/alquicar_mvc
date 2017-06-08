@@ -41,8 +41,16 @@ namespace Alquicar_mvc.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    cli_model.registrarUsur(collection);
-                    return RedirectToAction("Index", "Dashboard");
+                    if (cli_model.registrarUsur(collection))
+                    {
+                        Session["response"] = "Cliente registrado";
+                        return RedirectToAction("index", "Dashboard");
+                    }
+                    else {
+                        ViewBag.response = "Error! algo va mal";
+                        return View();
+                    }
+                   
                 }else
                 {
                     return View();
