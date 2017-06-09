@@ -359,6 +359,7 @@
     <Content Include="Views\Alquiler\Alquilar.cshtml" />
     <Content Include="Views\Alquiler\devolucion.cshtml" />
     <Content Include="Views\RegisterCar\Details.cshtml" />
+    <Content Include="Views\Alquiler\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

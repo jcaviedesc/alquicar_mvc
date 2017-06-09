@@ -3,63 +3,88 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-      
+    <h3 class="center-text">Details</h3>
+</div>
+
+<div class="mdl-grid demo-content">
+    <div class="select demo-graphs  center mdl-color--white mdl-cell mdl-cell--8-col-desktop">
+
+        <hr />
+        <dl class="dl-horizontal">
+
             @foreach (System.Data.DataColumn col in Model.Columns)
             {
 
                 <dt class="mdl-data-table__cell--non-numeric"> @col.Caption</dt>
-                <dd class="mdl-data-table__cell--non-numeric">@Model.Rows[0][@col.Caption].ToString() </dd>
+                if (@col.Caption == "disponible")
+                {
+                    if (@Model.Rows[0][@col.Caption].ToString() == "0")
+                    {
+                        <dd class="mdl-data-table__cell--non-numeric">No Disponible</dd>
+                    }
+                    else
+                    {
+                        <dd class="mdl-data-table__cell--non-numeric">Disponible</dd>
+                    }
+
+
+                }
+                else if (@col.Caption == "foto")
+                {
+                    <dd class="mdl-data-table__cell--non-numeric">
+                        <img width="210" height="210" src=@Model.Rows[0][@col.Caption].ToString() />
+                    </dd>
+                }
+                else
+                {
+                    <dd class="mdl-data-table__cell--non-numeric"> @Model.Rows[0][@col.Caption].ToString() </dd>
+                }
+
 
             }
-        
-       
-        @*<dt>
-            @Html.DisplayNameFor(model => model.start_date)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.start_date)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.final_date)
-        </dt>
+            @*<dt>
+                    @Model.Columns[0].ToString()
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.final_date)
-        </dd>
+                <dd>
+                    @Model.Rows[0][@Model.Columns[0].ToString()].ToString()
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.car_id)
-        </dt>
+                <dt>
+                   @Model.Columns[1].ToString()
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.car_id)
-        </dd>
+                <dd>
+                    @Model.Rows[0][@Model.Columns[1].ToString()].ToString()
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cliente_id)
-        </dt>
+                <dt>
+                   @Model.Columns[2].ToString()
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.cliente_id)
-        </dd>
+                <dd>
+                    @Model.Rows[0][@Model.Columns[2].ToString()].ToString()
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.registrador_por)
-        </dt>
+                <dt>
+                   @Model.Columns[3].ToString()
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.registrador_por)
-        </dd>*@
+                <dd>
+                   @Model.Rows[0][@Model.Columns[3].ToString()].ToString()
+                </dd>
 
-    </dl>
+                <dt>
+                   @Model.Columns[4].ToString()
+                </dt>
+
+                <dd>
+                    @Model.Rows[0][@Model.Columns[4].ToString()].ToString()
+                </dd>
+
+        </dl>*@
+    </div>
 </div>
-

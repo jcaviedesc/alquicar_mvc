@@ -14,7 +14,8 @@ namespace Alquicar_mvc.Controllers
         // GET: Alquiler
         public ActionResult Index()
         {
-            return View();
+            DataTable alquileres = alquilerM.QueryAlquileres();
+            return View(alquileres);
 
         }
 
@@ -44,9 +45,17 @@ namespace Alquicar_mvc.Controllers
         {
             try
             {
-                alquilerM.RegisterAlquiler(alquilerm);
+                if (alquilerM.RegisterAlquiler(alquilerm))
+                {
+                    Session["response"] = "alquiler registrado correctamente";
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else {
+                    ViewBag.response = "Error registrar el alquiler";
+                    return View();
+                }
 
-                return RedirectToAction("Index","Dashboard");
+                
             }
             catch
             {
@@ -110,7 +119,7 @@ namespace Alquicar_mvc.Controllers
                     response = "Algo salio mal.";
                 }
                 Session["response"] = response;
-                return View("index","Dashboard");
+                return RedirectToAction("index","Dashboard");
             }
             catch
             {
